@@ -7,6 +7,6 @@
           container: "viewDiv", // Reference to the view div created in step 5
           map: map, // Reference to the map object created before the view
           zoom: 4, // Sets zoom level based on level of detail (LOD)
-          center: [15, 65] // Sets center point of view using longitude,latitude
+          center: [-95, 40] // Sets center point of view using longitude,latitude
         });
       });
