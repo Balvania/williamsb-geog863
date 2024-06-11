@@ -23,10 +23,6 @@ require(["esri/Map", "esri/views/MapView", "esri/geometry/Point", "esri/symbols/
         const ptGraphic = new Graphic({
           geometry: pt,
           symbol: sym,
-          popupTemplate: {
-            title: "Lusaka, Zambia",
-            content: "Lusaka is the capital of Zambia. The city sits at a 4,196 ft elevation and has a population of approximately 3.3 million residents. Zambia is a land-locked country in southern Africa and is surrounded by Angola, Zaire, Tanzania, Malawi, Mozambique, Zimbabwe, Botswana and Namibia."
-          }
         });
         view.graphics.add(ptGraphic);
       });
