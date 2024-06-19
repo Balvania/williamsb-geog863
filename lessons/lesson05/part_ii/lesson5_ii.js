@@ -11,7 +11,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
 	          sublayers: [
 	            {
 	            	id: 0,			// Cities Layer
-	            	visible: true
+	            	visible: false
 	            },
 	            {
 	            	id: 1,			// Highways Layer
@@ -23,7 +23,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
 	            },
 	            {
 	            	id: 3,			// Counties Layer
-	            	visible: false
+	            	visible: true
 	            }
 
 	          ]
