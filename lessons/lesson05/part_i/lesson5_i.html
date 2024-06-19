@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>VectorTileLayer | Sample | ArcGIS Maps SDK for JavaScript 4.29</title>
+    <title>GEOG863 | Bernadette Williams | Lesson 5 - Part 1 </title>
     <style>
       html,
       body,
@@ -49,7 +49,7 @@
         const map = new Map();
 
 
-        // Make map view and bind it to the map
+        // Make 3D scene view and bind it to the map
         // Center on Houston, Texas
         const view = new SceneView({
           container: "viewDiv",
@@ -64,7 +64,6 @@
          *********************************************************************/
         const tileLayer = new VectorTileLayer({
           url:
-           /* "https://jsapi.maps.arcgis.com/sharing/rest/content/items/75f4dfdff19e445395653121a95a85db/resources/styles/root.json" */
             "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
         });
         map.add(tileLayer);
@@ -72,7 +71,7 @@
         view.when(function() {
           // when the scene and view resolve, display the scene's
           // title in the DOM
-          const title = map.title;
+          const title = "Assignment 5.1: Texas Department of Transportation Vector Tile Layer";
           titleDiv.innerHTML = title;
         });
       });
