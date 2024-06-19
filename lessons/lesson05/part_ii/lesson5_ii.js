@@ -66,6 +66,8 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
         const view = new MapView({
           container: "viewDiv",
           map: map,
+          center: [-98, 34],
+          zoom: 4
         });
 
 
