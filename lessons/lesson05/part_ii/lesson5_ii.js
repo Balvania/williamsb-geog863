@@ -15,15 +15,15 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
 	            },
 	            {
 	            	id: 1,			// Highways Layer
-	            	visible: true
+	            	visible: false
 	            },
 	            {
 	              	id: 2,			// States Layer
-	              	visible: true
+	              	visible: false
 	            },
 	            {
 	            	id: 3,			// Counties Layer
-	            	visible: true
+	            	visible: false
 	            }
 
 	          ]
