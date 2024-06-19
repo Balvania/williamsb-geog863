@@ -1,10 +1,15 @@
 
+/**************************************************************************** 
+ * GEOG863 - Lesson 5, Part I - Bernadette Williams
+ * 3D Map Scene of Texas Department of Transportation Vector Tile Basemap
+ * Created: 19 June 2024
+ ****************************************************************************/
+
 require(["esri/Map", "esri/views/SceneView", "esri/WebScene", "esri/layers/VectorTileLayer"], (
     Map,
     SceneView,
     WebScene,
-    VectorTileLayer
-) => {
+    VectorTileLayer) => {
 
     // Create a Map - this is resulting in an underlying basemap?
     const map = new Map({

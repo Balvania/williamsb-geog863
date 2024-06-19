@@ -1,3 +1,8 @@
+/**************************************************************************** 
+ * GEOG863 - Lesson 5, Part II - Bernadette Williams
+ * 2D Map of MapImageLayer for Esri's USA map service 
+ * Created: 19 June 2024
+ ****************************************************************************/
 
 require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
         Map,
@@ -43,4 +48,4 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
           zoom: 3
         });
 
-      });
+});
