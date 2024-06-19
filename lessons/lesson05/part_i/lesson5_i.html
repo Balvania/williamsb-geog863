@@ -29,17 +29,17 @@
         const map = new Map();
 
         // Make map view and bind it to the map
+        // Center on Houston, Texas
         const view = new MapView({
           container: "viewDiv",
           map: map,
-          center: [-98.5795, 39.8282],
+          center: [29.7607, -95.3656]
           zoom: 3
         });
 
         /********************************************************************
-         * Add a vector tile layer to the map
+         * Add the TxDOT vector tile layer to the map
          *
-         * The url must point to the style or the vector tile service
          *********************************************************************/
         const tileLayer = new VectorTileLayer({
           url:
