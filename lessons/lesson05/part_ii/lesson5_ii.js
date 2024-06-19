@@ -4,55 +4,28 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
         MapView,
         MapImageLayer) => {
 
-        /*****************************************************************
-         * Create a renderer for the dynamic data layer (table).
-         *****************************************************************/
-
-        const renderer = {
-          type: "simple", // autocasts as new SimpleRenderer()
-          symbol: {
-            type: "simple-line", // autocasts as new SimpleLineSymbol()
-            color: [255, 255, 255, 0.5],
-            width: 0.75,
-            style: "long-dash-dot-dot"
-          }
-        };
 
       	// create a MapImageLayer instance pointing to the USA map service
       	const layer = new MapImageLayer({
 	          url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer",
 	          sublayers: [
 	            {
-	              id: 2,
-	              visible: true
+	            	id: 0,			// Cities Layer
+	            	visible: true
 	            },
 	            {
-	              id: 4,
-	              visible: false,
-	              title: "Railroads",
-	              renderer: renderer,
-	              source: {
-	                // indicates the source of the sublayer is a dynamic data layer
-	                type: "data-layer",
-	                // this object defines the data source of the layer
-	                // in this case it's a feature class table from a file geodatabase
-	                dataSource: {
-	                  type: "table",
-	                  // workspace name
-	                  workspaceId: "MyDatabaseWorkspaceIDSSR2",
-	                  // table name
-	                  dataSourceName: "ss6.gdb.Railroads"
-	                }
-	              }
+	            	id: 1,			// Highways Layer
+	            	visible: true
 	            },
 	            {
-	              id: 1,
-	              visible: true
+	              	id: 2,			// States Layer
+	              	visible: true
 	            },
 	            {
-	              id: 0,
-	              visible: true
+	            	id: 3,			// Counties Layer
+	            	visible: true
 	            }
+
 	          ]
         });
 
@@ -67,7 +40,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
           container: "viewDiv",
           map: map,
           center: [-98, 34],
-          zoom: 4
+          zoom: 3
         });
 
 
