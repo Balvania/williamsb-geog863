@@ -14,25 +14,54 @@
         height: 100%;
         width: 100%;
       }
+
+      #titleDiv {
+        background-color: lightgray;
+        color: black;
+        padding: 5px;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        font-size: 20pt;
+        font-weight: bolder;
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        opacity: 0.75;
+      }
     </style>
+
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.29/"></script>
 
     <script>
-      require(["esri/Map", "esri/views/MapView", "esri/layers/VectorTileLayer"], (
+      require(["esri/Map", "esri/views/SceneView", "esri/WebScene","esri/layers/VectorTileLayer"], (
         Map,
-        MapView,
+        SceneView,
+        WebScene,
         VectorTileLayer
       ) => {
-        // Create a Map
-        const map = new Map();
+
+        /************************************************************
+         * Create a new WebScene instance referencing
+         * a PortalItem ID that represents a WebScene saved to
+         * arcgis.com
+         *
+         ************************************************************/
+        const scene = new WebScene({
+          portalItem: {
+            // autocasts as new PortalItem()
+            id: "507a9905e7154ce484617c7327ee8bc4"
+          }
+        });
 
         // Make map view and bind it to the map
         // Center on Houston, Texas
-        const view = new MapView({
+        const view = new SceneView({
           container: "viewDiv",
-          map: map,
+          map: scene,
           center: [-95.3656, 29.7607],
           zoom: 10
         });
@@ -46,11 +75,19 @@
            /* "https://jsapi.maps.arcgis.com/sharing/rest/content/items/75f4dfdff19e445395653121a95a85db/resources/styles/root.json" */
             "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
         });
-        map.add(tileLayer);
+        scene.add(tileLayer);
+
+        view.when(function() {
+          // when the scene and view resolve, display the scene's
+          // title in the DOM
+          const title = scene.portalItem.title;
+          titleDiv.innerHTML = title;
+        });
       });
     </script>
+
   </head>
   <body>
-    <div id="viewDiv"></div>
+    <div id="viewDiv" class="esri-widget"><div id="titleDiv"></div></div>
   </body>
 </html>
