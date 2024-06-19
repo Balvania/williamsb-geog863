@@ -2,85 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title>GEOG863 | Bernadette Williams | Lesson 5 - Part 1 </title>
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
-
-      #titleDiv {
-        background-color: lightgray;
-        color: black;
-        padding: 5px;
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        right: 0;
-        font-size: 20pt;
-        font-weight: bolder;
-        width: 100%;
-        height: 30px;
-        text-align: center;
-        opacity: 0.75;
-      }
-    </style>
-
-
+    <link rel="stylesheet" href="lesson5_i.css"></link>
     <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.29/"></script>
-
-    <script>
-      require(["esri/Map", "esri/views/SceneView", "esri/WebScene","esri/layers/VectorTileLayer"], (
-        Map,
-        SceneView,
-        WebScene,
-        VectorTileLayer
-      ) => {
-
-
-        // Create a Map
-        const map = new Map();
-
-
-        // Make 3D scene view and bind it to the map
-        // Center on Houston, Texas
-        const view = new SceneView({
-          container: "viewDiv",
-          map: map,
-          center: [-95.3656, 29.7607],
-          zoom: 10
-        });
-
-        /********************************************************************
-         * Add the TxDOT vector tile layer to the map
-         *
-         *********************************************************************/
-        const tileLayer = new VectorTileLayer({
-          url:
-            "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
-        });
-        map.add(tileLayer);
-
-        view.when(function() {
-          // when the scene and view resolve, display the scene's
-          // title in the DOM
-          const title = "Assignment 5.1: Texas Department of Transportation Vector Tile Layer";
-          titleDiv.innerHTML = title;
-        });
-      });
-    </script>
-
+    <script src="lesson5_i.js"></script>
   </head>
   <body>
     <div style="margin-left: 50px;">
-        <h4><a href="../../../../index.html">[Back to home page]</a></h4>
+        <h5><a href="../../../../index.html">[Back to home page]</a></h5>
     </div>
     <div id="viewDiv"><div id="titleDiv"></div></div>
   </body>
