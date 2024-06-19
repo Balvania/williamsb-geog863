@@ -1,24 +1,50 @@
-html,
-body,
-#viewDiv {
+
+  html,
+  body {
     padding: 0;
     margin: 0;
-    height: 100 % ;
-    width: 100 % ;
-}
+    height: 100%;
+    width: 100%;
+  }
 
-#titleDiv {
-    background - color: lightgray;
-    color: black;
-    padding: 5 px;
+  #viewDiv {
     position: absolute;
-    z - index: 2;
-    top: 0;
     right: 0;
-    font - size: 20 pt;
-    font - weight: bolder;
-    width: 100 % ;
-    height: 30 px;
-    text - align: center;
-    opacity: 0.75;
-}
+    left: 0;
+    top: 0;
+    bottom: 60px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+  }
+
+  .sublayers {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .sublayers-item {
+    flex-grow: 4;
+    background-color: rgba(34, 111, 14, 0.5);
+    color: #fff;
+    margin: 1px;
+    width: 50%;
+    padding: 20px;
+    overflow: auto;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+
+  .visible-layer {
+    color: #fff;
+    background-color: #226f0e;
+  }
