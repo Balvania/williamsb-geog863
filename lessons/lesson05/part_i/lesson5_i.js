@@ -8,7 +8,9 @@ require(["esri/Map", "esri/views/SceneView", "esri/WebScene","esri/layers/Vector
 
 
         // Create a Map
-        const map = new Map();
+        const map = new Map({
+          basemap: "dark-gray-vector"
+        });
 
 
         // Make 3D scene view and bind it to the map
