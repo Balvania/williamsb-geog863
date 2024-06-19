@@ -44,24 +44,16 @@
         VectorTileLayer
       ) => {
 
-        /************************************************************
-         * Create a new WebScene instance referencing
-         * a PortalItem ID that represents a WebScene saved to
-         * arcgis.com
-         *
-         ************************************************************/
-        const scene = new WebScene({
-          portalItem: {
-            // autocasts as new PortalItem()
-            id: "507a9905e7154ce484617c7327ee8bc4"
-          }
-        });
+
+        // Create a Map
+        const map = new Map();
+
 
         // Make map view and bind it to the map
         // Center on Houston, Texas
         const view = new SceneView({
           container: "viewDiv",
-          map: scene,
+          map: map,
           center: [-95.3656, 29.7607],
           zoom: 10
         });
@@ -75,7 +67,7 @@
            /* "https://jsapi.maps.arcgis.com/sharing/rest/content/items/75f4dfdff19e445395653121a95a85db/resources/styles/root.json" */
             "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
         });
-        scene.add(tileLayer);
+        map.add(tileLayer);
 
         view.when(function() {
           // when the scene and view resolve, display the scene's
