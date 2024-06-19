@@ -47,7 +47,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
         /*****************************************************************
          * Wait for Layer to load and update the page to refelect which
          * layers are visible in the Map Service.
-         *****************************************************************/
+         *****************************************************************
         layer.when(() => {
           layer.sublayers.map((sublayer) => {
             const id = sublayer.id;
@@ -62,7 +62,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
         /*****************************************************************
          * Listen for when buttons on the page have been clicked to turn
          * layers on and off in the Map Service.
-         *****************************************************************/
+         *****************************************************************
         const sublayersElement = document.querySelector(".sublayers");
         sublayersElement.addEventListener("click", (event) => {
           const id = event.target.getAttribute("data-id");
@@ -72,5 +72,5 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], (
             sublayer.visible = !sublayer.visible;
             node.classList.toggle("visible-layer");
           }
-        });
+        }); */
       });
