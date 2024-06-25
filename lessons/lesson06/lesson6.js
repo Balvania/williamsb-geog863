@@ -12,10 +12,11 @@ require([
   "esri/layers/FeatureLayer",
   "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/PointSymbol3D",
-  "esri/symbols/IconSymbol3DLayer",
+  "esri/symbols/ObjectSymbol3DLayer",
+  //"esri/symbols/IconSymbol3DLayer",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend"
-], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PointSymbol3D, IconSymbol3DLayer, SimpleLineSymbol, Legend) => {
+], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PointSymbol3D, ObjectSymbol3DLayer, SimpleLineSymbol, Legend) => {
 
   const map = new Map({
     basemap: "dark-gray-vector",
@@ -44,13 +45,18 @@ require([
       minValue: min,
       maxValue: max,
       symbol: new PointSymbol3D({
-        symbolLayers: [new IconSymbol3DLayer({
-          material: {color: clr},
-          outline: {
-            color: "black",
-            size: 1
-          }
-        })]
+        symbolLayers: [
+          new ObjectSymbol3DLayer({
+            material: {color: clr},
+            resource: {primitive: "inverted-cone"},
+            height: 10000,
+            width: 10000, 
+            outline: {
+              color: "black",
+              size: 1
+            }
+          })
+        ]
       }),
       label: lbl
     });
