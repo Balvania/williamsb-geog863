@@ -61,33 +61,6 @@ require([
       label: lbl
     });
   }
-
-/*
-  const countyRenderer = new ClassBreaksRenderer({
-    field: "POP1990",
-    normalizationField: "SQ_MILES",
-    legendOptions: {
-      title: "Pop per Sq Mile"   
-    }
-  });
-
-  const addClass = function(min, max, clr, lbl, renderer) {
-    renderer.addClassBreakInfo({
-      minValue: min,
-      maxValue: max,
-      symbol: new PolygonSymbol3D({
-        symbolLayers: [new FillSymbol3DLayer({
-          material: { color: clr },
-          outline: {   
-            color: "black",
-            size: 1
-          }
-        })]
-      }),
-      label: lbl
-    });      
-  }
-  */
   
   addClass(1.600000, 5.000000, "#f1eef6", "1.600000 - 5.000000", quakeRenderer);
   addClass(5.000001, 5.900000, "#d7b5d8", "5.000001 - 5.900000", quakeRenderer);
@@ -107,7 +80,7 @@ require([
     view: view,
     layerInfos: [{
       layer: quakeLayer,
-      title: "Earthquakes: A Historical View"
+      title: "Earthquakes: A Historical View 1970 - 2009"
     }]
   });
 
