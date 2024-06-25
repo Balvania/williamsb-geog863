@@ -4,6 +4,8 @@
  * Created: 25 June 2024
  ****************************************************************************/
 
+var view;
+
 require([
   "esri/Map",
   "esri/views/SceneView",
