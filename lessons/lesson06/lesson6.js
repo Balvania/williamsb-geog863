@@ -80,7 +80,7 @@ require([
     view: view,
     layerInfos: [{
       layer: quakeLayer,
-      title: "Earthquakes: A Historical View 1970 - 2009"
+      title: "Earthquakes: 1970 - 2009"
     }]
   });
 
