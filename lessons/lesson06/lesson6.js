@@ -43,7 +43,7 @@ require([
       minValue: min,
       maxValue: max,
       symbol: new PointSymbol3D({
-        symbolLayers: [new FillSymbol3DLayer({
+        symbolLayers: [new IconSymbol3DLayer({
           material: {color: clr},
           outline: {
             color: "black",
