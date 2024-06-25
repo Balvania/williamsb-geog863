@@ -49,8 +49,8 @@ require([
           new ObjectSymbol3DLayer({
             material: {color: clr},
             resource: {primitive: "inverted-cone"},
-            height: 10000,
-            width: 10000, 
+            height: 100000,
+            width: 100000, 
             outline: {
               color: "black",
               size: 1
