@@ -42,7 +42,7 @@ require([
       },
       fieldName: "DATE_",
       format: {
-        datePattern:"MMMM d, yyyy"
+        dateFormat:"long-date"
       }
 
     }]
