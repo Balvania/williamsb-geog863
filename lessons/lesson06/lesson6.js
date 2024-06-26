@@ -39,9 +39,7 @@ require([
       fieldName: "MAGNITUDE",
       format: {
         places: 1
-      }
-    },
-    {
+      },
       fieldName: "MN",
       format: {
         places: 2   
