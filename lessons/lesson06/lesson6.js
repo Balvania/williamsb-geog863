@@ -33,8 +33,29 @@ require([
   });
   
   const template = {
-    title: "{NAME}<br/>Magnitude: {MAGNITUDE}",
+    title: "Earthquake magnitude: {MAGNITUDE}<br/>{NAME}",
     content: "{HR}:{MN} on {MO} {DY}, {YEAR_}<br/><br/><br/> tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}"
+    fieldInfos: [{
+      fieldName: "MAGNITUDE",
+      format: {
+        places: 1
+      }
+    },
+    {
+      fieldName: "MN",
+      format: {
+        places: 2   
+      }
+    }]
+  };  
+  
+  const cityLyr = new FeatureLayer({
+    portalItem: { 
+      id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
+    },
+    outFields: ["*"],
+    popupTemplate: template
+  }); 
   };  
 
   const quakeRenderer = new ClassBreaksRenderer({
