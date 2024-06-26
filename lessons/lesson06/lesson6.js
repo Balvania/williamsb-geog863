@@ -34,7 +34,7 @@ require([
   
   const template = {
     title: "{NAME}<br/>Magnitude: {MAGNITUDE}",
-    content: "{HR}:{MN} on {MO} {DY}, {YEAR_}<br/><br/><br/> tsunami: {TSU}<br/> number of houses destroyed: {NUM_HOUSES_DEST}"
+    content: "{HR}:{MN} on {MO} {DY}, {YEAR_}<br/><br/><br/> tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}"
   };  
 
   const quakeRenderer = new ClassBreaksRenderer({
