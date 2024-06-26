@@ -13,7 +13,6 @@ require([
   "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/PointSymbol3D",
   "esri/symbols/ObjectSymbol3DLayer",
-  //"esri/symbols/IconSymbol3DLayer",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend"
 ], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PointSymbol3D, ObjectSymbol3DLayer, SimpleLineSymbol, Legend) => {
@@ -34,19 +33,9 @@ require([
   });
   
   const template = {
-    title: "name: {NAME}",
-    content: "month: {MO}<br />day: {DY}<br />year: {YEAR_}<br/> hour: {HR}<br/> min: {MN}<br/> number of deaths: {NUM_DEATHS}<br/> number injured: {NUM_INJURED}<br/> focal: {FOCAL}<br/> mmi_int: {MMI_INT}<br/> tsu: {TSU}<br/> number of houses destroyed: {NUM_HOUSES_DEST}"
+    title: "{NAME}<br/>Magnitude: {MAGNITUDE}",
+    content: "{HR}:{MN} on {MO} {DY}, {YEAR_}<br/><br/><br/> tsunami: {TSU}<br/> number of houses destroyed: {NUM_HOUSES_DEST}"
   };  
-  
-  /*
-  const cityLyr = new FeatureLayer({
-    portalItem: { 
-      id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
-    },
-    outFields: ["*"],
-    popupTemplate: template
-  }); 
-*/
 
   const quakeRenderer = new ClassBreaksRenderer({
     field: "magnitude",
