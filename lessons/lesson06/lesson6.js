@@ -42,7 +42,7 @@ require([
       },
       fieldName: "DATE_",
       format: {
-        dateFormat: "shortDateShortTime" 
+        dateFormat: "longDateShortTime" 
       }
     }]
   };  
