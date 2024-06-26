@@ -42,7 +42,7 @@ require([
       },
       fieldName: "DATE_",
       format: {
-        dateFormat: "short-date"
+        datePattern:"MMMM d, yyyy"
       }
 
     }]
