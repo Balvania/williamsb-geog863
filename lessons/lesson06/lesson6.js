@@ -39,10 +39,6 @@ require([
       fieldName: "MAGNITUDE",
       format: {
         places: 2
-      },
-      fieldName: "DATE_",
-      format: {
-        dateFormat: "longMonthDayYearShortTime" 
       }
 
     }]
