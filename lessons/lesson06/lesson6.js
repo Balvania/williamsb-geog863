@@ -34,15 +34,15 @@ require([
   
   const template = {
     title: "Earthquake magnitude: {MAGNITUDE}<br/>{NAME}",
-    content: "{HR}:{MN} on {MO} {DY}, {YEAR_}<br/><br/><br/> tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}",
+    content: "{DATE_}<br/><br/><br/> tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}",
     fieldInfos: [{
       fieldName: "MAGNITUDE",
       format: {
         places: 2
       },
-      fieldName: "MN",
+      fieldName: "DATE_",
       format: {
-        places: 2   
+        dateFormat: "shortDateShortTime" 
       }
     }]
   };  
