@@ -13,9 +13,8 @@ require([
   "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/PointSymbol3D",
   "esri/symbols/ObjectSymbol3DLayer",
-  "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend"
-], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PointSymbol3D, ObjectSymbol3DLayer, SimpleLineSymbol, Legend) => {
+], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PointSymbol3D, ObjectSymbol3DLayer, Legend) => {
 
   const map = new Map({
     basemap: "dark-gray-vector",
