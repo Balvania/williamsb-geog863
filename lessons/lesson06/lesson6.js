@@ -78,10 +78,10 @@ require([
     });
   }
   
-  addClass(1.600000, 5.000000, "#d7b5d8", "1.600000 - 5.0", quakeRenderer);
-  addClass(5.000001, 5.900000, "#df65b0", "5.000001 - 5.9", quakeRenderer);
-  addClass(5.900001, 6.900000, "#dd1c77", "5.900001 - 6.9", quakeRenderer);
-  addClass(6.900001, 9.000000, "#980043", "6.900001 - 9.0", quakeRenderer);
+  addClass(1.600000, 5.000000, "#fbb4b9", "1.600000 - 5.0", quakeRenderer);
+  addClass(5.000001, 5.900000, "#f768a1", "5.000001 - 5.9", quakeRenderer);
+  addClass(5.900001, 6.900000, "#c51b8a", "5.900001 - 6.9", quakeRenderer);
+  addClass(6.900001, 9.000000, "#7a0177", "6.900001 - 9.0", quakeRenderer);
    
 
   const quakeLayer = new FeatureLayer({
