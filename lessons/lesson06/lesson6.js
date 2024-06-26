@@ -38,7 +38,7 @@ require([
     fieldInfos: [{
       fieldName: "MAGNITUDE",
       format: {
-        places: 1
+        places: 2
       },
       fieldName: "MN",
       format: {
