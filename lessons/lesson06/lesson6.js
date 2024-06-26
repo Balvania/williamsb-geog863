@@ -47,14 +47,6 @@ require([
     }]
   };  
   
-  const cityLyr = new FeatureLayer({
-    portalItem: { 
-      id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
-    },
-    outFields: ["*"],
-    popupTemplate: template
-  }); 
-  };  
 
   const quakeRenderer = new ClassBreaksRenderer({
     field: "magnitude",
