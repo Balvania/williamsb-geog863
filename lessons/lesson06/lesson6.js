@@ -1,6 +1,6 @@
 /**************************************************************************** 
  * GEOG863 - Lesson 6 - Bernadette Williams
- * Map of Earthquakes, a historical view 
+ * Map of Earthquakes, a historical view from 1970 - 2009
  * Created: 25 June 2024
  ****************************************************************************/
 
@@ -33,8 +33,8 @@ require([
   });
   
   const template = {
-    title: "Earthquake magnitude: {MAGNITUDE}<br/>{NAME}",
-    content: "{DATE_}<br/><br/><br/> tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}",
+    title: "magnitude: {MAGNITUDE}<br/>{NAME}",
+    content: "The earthquake occurred on {DATE_}<br/><br/><br/> triggered tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}",
     fieldInfos: [{
       fieldName: "MAGNITUDE",
       format: {
