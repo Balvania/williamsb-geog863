@@ -78,11 +78,10 @@ require([
     });
   }
   
-  addClass(1.600000, 5.000000, "#fbb4b9", "1.600000 - 5.0", quakeRenderer);
-  addClass(5.000001, 5.900000, "#f768a1", "5.000001 - 5.9", quakeRenderer);
-  addClass(5.900001, 6.900000, "#c51b8a", "5.900001 - 6.9", quakeRenderer);
-  addClass(6.900001, 9.000000, "#7a0177", "6.900001 - 9.0", quakeRenderer);
-   
+  addClass(1.600000, 5.000000, "#ffffb2", "1.600000 - 5.0", quakeRenderer);
+  addClass(5.000001, 5.900000, "#fd8d3c", "5.000001 - 5.9", quakeRenderer);
+  addClass(5.900001, 6.900000, "#f03b20", "5.900001 - 6.9", quakeRenderer);
+  addClass(6.900001, 9.000000, "#bd0026", "6.900001 - 9.0", quakeRenderer);
 
   const quakeLayer = new FeatureLayer({
     portalItem: { 
