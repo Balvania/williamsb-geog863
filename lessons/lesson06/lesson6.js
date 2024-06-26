@@ -34,7 +34,7 @@ require([
   
   const template = {
     title: "Earthquake magnitude: {MAGNITUDE}<br/>{NAME}",
-    content: "{DATE_}<br/>{YYYYMMDDHHMM}<br/><br/> tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}",
+    content: "{DATE_}<br/><br/><br/> tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}",
     fieldInfos: [{
       fieldName: "MAGNITUDE",
       format: {
@@ -42,11 +42,7 @@ require([
       },
       fieldName: "DATE_",
       format: {
-        dateFormat: "longDateShortTime" 
-      },
-      fieldName: "YYYYMMDDHHMM",
-      format: {
-        dateFormat: "longDateShortTime"
+        dateFormat: "longMonthDayYearShortTime" 
       }
 
     }]
