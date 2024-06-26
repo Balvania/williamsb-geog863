@@ -34,20 +34,33 @@ require([
   
   const template = {
     title: "magnitude: {MAGNITUDE}<br/>{NAME}",
-    content: "Earthquake occurred on {DATE_}<br/><br/><br/> triggered tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS} {HIST_DEATHS}<br/>number injured: {NUM_INJURED} {HIST_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST} {HIST_HOUSES_DEST}",
+    content: "Earthquake occurred on {DATE_}<br/><br/><br/> triggered tsunami: {TSU}<br/> number of deaths: {NUM_DEATHS}<br/>number injured: {NUM_INJURED}<br/>number of houses destroyed: {NUM_HOUSES_DEST}",
     fieldInfos: [{
-      fieldName: "MAGNITUDE",
-      format: {
-        places: 2
-      },
       fieldName: "DATE_",
       format: {
         dateFormat:"long-date"
       }
-
+    },
+    {
+      fieldName: "NUM_DEATHS",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "NUM_INJURED",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "NUM_HOUSES_DEST",
+      format: {
+        digitSeparator: true
+      }
     }]
   };  
-  
+
 
   const quakeRenderer = new ClassBreaksRenderer({
     field: "magnitude",
