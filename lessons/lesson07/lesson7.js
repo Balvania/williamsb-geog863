@@ -11,6 +11,19 @@ require([
   "esri/widgets/Search"
 ], (Map, MapView, FeatureLayer, Graphic, SimpleMarkerSymbol, GraphicsLayer, Query, Search) => {
 
+  let text;
+  let stateChoice = prompt("Enter a U.S. State to view Generational demographics: ")
+  switch(stateChoice) {
+  case "Virginia":
+  	text = "Virginia is the best State.";
+  	break;
+  case "Maryland":
+  	text = "Maryland is the best State.";
+  	break;
+  default:
+  	text = "That's not a real State.";
+  }
+  
   const farms = 500;
   const pop = 25000;
   const popdens = 150;
