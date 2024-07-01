@@ -7,8 +7,9 @@ require([
   "esri/Graphic",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/layers/GraphicsLayer",
-  "esri/rest/support/Query"
-], (Map, MapView, FeatureLayer, Graphic, SimpleMarkerSymbol, GraphicsLayer, Query) => {
+  "esri/rest/support/Query",
+  "esri/widgets/Search"
+], (Map, MapView, FeatureLayer, Graphic, SimpleMarkerSymbol, GraphicsLayer, Query, Search) => {
 
   const farms = 500;
   const pop = 25000;
@@ -28,6 +29,15 @@ require([
     map: map,
     zoom: 7,
     center: [-78, 41]
+  });
+
+  const searchWidget = new Search({
+  	view: view
+  });
+
+  //Add the search widget to the top right corner of the view
+  view.ui.add(searchWidget, {
+  	position: "top-right"
   });
   
   const counties = new FeatureLayer({
