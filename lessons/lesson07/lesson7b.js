@@ -58,7 +58,7 @@ require([
   addClass(0.2001, 0.3, "#a8ddb5", "20-30%", countyRenderer);
   addClass(0.3001, 0.4, "#7bccc4", "30-40%", countyRenderer);
   addClass(0.4001, 0.5, "#43a2ca", "40-50%", countyRenderer);
-  addClass(0.5001, 1.0, "#0868ac," "Over 50%", countyRenderer);
+  addClass(0.5001, 1.0, "#0868ac", "Over 50%", countyRenderer);
 
   
   //updated portal ID for GenX census data 
