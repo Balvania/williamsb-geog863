@@ -22,6 +22,53 @@ require([
     zoom: 6
   });
 
+// Create popup template
+  const template = {
+    title: "Gen X population in {NAME}, {ST_ABBREV}: insert % here",
+    content: "Gen X represents % of the population in {NAME} ({GENX_CY} out of the total population {TOTPOP_CY}<br/>Other generations:<br/>Silent & Greatest Generation: {OLDRGENSCY}<br/>Baby Boomer: {BABYBOOMCY}<br/>Millennial: {MILLENN_CY}<br/>Gen Z: {GENZ_CY}<br/>Gen Alpha: {GENALPHACY}",
+    fieldInfos: [{
+      fieldName: "GENX_CY",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "TOTPOP_CY",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "OLDRGENSCY",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "BABYBOOMCY",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "MILLENN_CY",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "GENZ_CY",
+      format: {
+        digitSeparator: true
+      }
+    },
+    {
+      fieldName: "GENALPHACY",
+      format: {
+        digitSeparator: true
+      }
+    }]
+  };  
 
 // Create renderer to display the Gen X % population, normalized by the Total Population field
   const countyRenderer = new ClassBreaksRenderer({
@@ -63,6 +110,7 @@ require([
       id: "959588e62d854f588b3ae97c0c86f890"
     },
     renderer: countyRenderer      
+    popupTemplate: template
   });  
   
   map.add(countyLyr)
