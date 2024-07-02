@@ -150,7 +150,7 @@ require([
     popupTemplate: template
   });  
   
-  popupTemplate.expressionInfos = arcadeExpressionInfos;
+  template.expressionInfos = arcadeExpressionInfos;
 
   map.add(countyLyr)
   
