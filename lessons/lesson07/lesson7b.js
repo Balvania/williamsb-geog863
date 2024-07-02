@@ -10,7 +10,7 @@ require([
   "esri/symbols/FillSymbol3DLayer",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend"
-], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PolygonSymbol3D, FillSymbol3DLayer, SimpleLineSymbol, Legend) => {
+  ], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PolygonSymbol3D, FillSymbol3DLayer, SimpleLineSymbol, Legend) => {
 
   const map = new Map({
     basemap: "dark-gray-vector",
@@ -29,7 +29,7 @@ require([
   
   const countyRenderer = new ClassBreaksRenderer({
     field: "GENX_CY",
-    normalizationType: "percent-of-total"
+    normalizationType: "percent-of-total",
     normalizationTotal: "TOTPOP_CY",
     legendOptions: {
       title: "Gen X % Population per Country"   
