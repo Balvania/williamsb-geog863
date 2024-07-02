@@ -39,8 +39,6 @@ require([
   }
 ];
 
-  template.expressionInfos = arcadeExpressionInfos;
-
 // Create popup template
   const template = {
     title: "{NAME}, {ST_ABBREV}: {expression/%-gen-x-arcade}% Gen X",
@@ -153,6 +151,7 @@ require([
   
 
   map.add(countyLyr)
+  template.expressionInfos = arcadeExpressionInfos;
   
   const legend = new Legend({
     view: view,
