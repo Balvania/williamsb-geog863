@@ -2,29 +2,25 @@
 
 require([
   "esri/Map",
-  "esri/views/SceneView",
-  "esri/Camera",
+  "esri/views/MapView",
   "esri/layers/FeatureLayer",
   "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/PolygonSymbol3D",
   "esri/symbols/FillSymbol3DLayer",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend"
-  ], (Map, SceneView, Camera, FeatureLayer, ClassBreaksRenderer, PolygonSymbol3D, FillSymbol3DLayer, SimpleLineSymbol, Legend) => {
+  ], (Map, MapView, FeatureLayer, ClassBreaksRenderer, PolygonSymbol3D, FillSymbol3DLayer, SimpleLineSymbol, Legend) => {
 
   const map = new Map({
     basemap: "dark-gray-vector",
     ground: "world-elevation"
   });
 
-  const view = new SceneView({
+  const view = new MapView({
     container: "viewDiv",
     map: map,
-    camera: new Camera({
-      position: [-74.5, 36.6, 229000],
-      heading: 328,
-      tilt: 64
-    })
+    center: [-78, 41],
+    zoom: 6
   });
   
   const countyRenderer = new ClassBreaksRenderer({
@@ -57,6 +53,7 @@ require([
   addClass(0.25001, 0.5, "#bdd7e7", "51 - 150", countyRenderer);
   addClass(0.50001, 0.75, "#6baed6", "151 - 250", countyRenderer);
   addClass(0.75001, 1.0, "#3182bd", "251 - 500", countyRenderer);
+
   
   //updated portal ID for GenX census data 
   const countyLyr = new FeatureLayer({
