@@ -109,7 +109,7 @@ require([
     portalItem: { 
       id: "959588e62d854f588b3ae97c0c86f890"
     },
-    renderer: countyRenderer      
+    renderer: countyRenderer,      
     popupTemplate: template
   });  
   
