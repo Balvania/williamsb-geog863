@@ -1,9 +1,4 @@
-     HTML CSS JS 
 
-    Result
-    Skip Results Iframe
-
-EDIT ON
 
 require([
   "esri/Map",
@@ -33,10 +28,11 @@ require([
   });
   
   const countyRenderer = new ClassBreaksRenderer({
-    field: "POP1990",
-    normalizationField: "SQ_MILES",
+    field: "GENX_CY",
+    normalizationType: "percent-of-total"
+    normalizationTotal: "TOTPOP_CY",
     legendOptions: {
-      title: "Pop per Sq Mile"   
+      title: "Gen X % Population per Country"   
     }
   });
 
@@ -57,15 +53,15 @@ require([
     });      
   }
   
-  addClass(0, 50, "#eff3ff", "50 and under", countyRenderer);
-  addClass(51, 150, "#bdd7e7", "51 - 150", countyRenderer);
-  addClass(151, 250, "#6baed6", "151 - 250", countyRenderer);
-  addClass(251, 500, "#3182bd", "251 - 500", countyRenderer);
-  addClass(501, 1000, "#08519c", "over 500", countyRenderer);
-   
+  addClass(0, 0.25, "#eff3ff", "50 and under", countyRenderer);
+  addClass(0.25001, 0.5, "#bdd7e7", "51 - 150", countyRenderer);
+  addClass(0.50001, 0.75, "#6baed6", "151 - 250", countyRenderer);
+  addClass(0.75001, 1.0, "#3182bd", "251 - 500", countyRenderer);
+  
+  //updated portal ID for GenX census data 
   const countyLyr = new FeatureLayer({
     portalItem: { 
-      id: "0875e77a2ff54dd689e169d7798d0905"
+      id: "959588e62d854f588b3ae97c0c86f890"
     },
     renderer: countyRenderer      
   });  
@@ -76,7 +72,7 @@ require([
     view: view,
     layerInfos: [{
       layer: countyLyr,
-      title: "Jen & Barry's World"
+      title: "GenX Populations"
     }]
   });
 
