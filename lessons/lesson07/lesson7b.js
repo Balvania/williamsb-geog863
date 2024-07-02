@@ -24,8 +24,8 @@ require([
 
 // Create popup template
   const template = {
-    title: "Gen X in {NAME}, {ST_ABBREV}: insert % here",
-    content: "Gen X represents % of the population in {NAME}<br/>({GENX_CY} out of the county's total population {TOTPOP_CY}<br/><br/>Other generations:<br/>{OLDRGENSCY} Silent & Greatest Generation (born xxxx-xxxx)<br/>{BABYBOOMCY} Baby Boomer (xxxx-xxxx)<br/>{MILLENN_CY} Millennial (born xxxx-xxxx)<br/>{GENZ_CY} Gen Z (born xxxx-xxxx)<br/> {GENALPHACY} Gen Alpha (born xxxx-xxxx)",
+    title: "{NAME}, {ST_ABBREV}: insert % here Gen X",
+    content: "Gen X represents % of the population in {NAME}, {ST_ABBREV}<br/>({GENX_CY} out of the county's total population {TOTPOP_CY})<br/><br/>Other generations:<br/>{OLDRGENSCY} Silent & Greatest Generation (born 1945 or earlier)<br/>{BABYBOOMCY} Baby Boomer (1946-1964)<br/>{MILLENN_CY} Millennial (born 1981-1998)<br/>{GENZ_CY} Gen Z (born 1999-2016)<br/> {GENALPHACY} Gen Alpha (born 2017 or later)",
     fieldInfos: [{
       fieldName: "GENX_CY",
       format: {
@@ -96,12 +96,12 @@ require([
     })      
   };
   
-  addClass(0, 0.2, "#f0f9e8", "0-20%", countyRenderer);
-//  addClass(0.1001, 0.2, "#ccebc5", "10-20%", countyRenderer);
-  addClass(0.2001, 0.4, "#a8ddb5", "20-40%", countyRenderer);
-//  addClass(0.3001, 0.4, "#7bccc4", "30-40%", countyRenderer);
-  addClass(0.4001, 0.5, "#43a2ca", "40-50%", countyRenderer);
-  addClass(0.5001, 1.0, "#0868ac", "Over 50%", countyRenderer);
+  addClass(0, 0.1, "#a6611a", "0-10%", countyRenderer);
+  addClass(0.1001, 0.2, "#d8b365", "10-20%", countyRenderer);
+  addClass(0.2001, 0.3, "#c7eae5", "20-30%", countyRenderer);
+  addClass(0.3001, 0.4, "#5ab4ac", "30-40%", countyRenderer);
+  addClass(0.4001, 1.0, "#01665e", "Over 40%", countyRenderer);
+
 
   
   //updated portal ID for GenX census data 
