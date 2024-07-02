@@ -133,10 +133,10 @@ require([
   };
   
   addClass(0, 0.1, "#a6611a", "< 10%", countyRenderer);
-  addClass(0.10001, 0.15, "#d8b365", "10-15%", countyRenderer);
-  addClass(0.15001, 0.20, "#c7eae5", "15-20%", countyRenderer);
-  addClass(0.20001, 0.25, "#5ab4ac", "20-25%", countyRenderer);
-  addClass(0.25001, 1.0, "#01665e", "Over 25%", countyRenderer);
+  addClass(0.100001, 0.15, "#d8b365", "10-15%", countyRenderer);
+  addClass(0.150001, 0.20, "#c7eae5", "15-20%", countyRenderer);
+  addClass(0.200001, 0.25, "#5ab4ac", "20-25%", countyRenderer);
+  addClass(0.250001, 1.0, "#01665e", "Over 25%", countyRenderer);
 
 
   
