@@ -39,6 +39,7 @@ require([
   }
 ];
 
+  template.expressionInfos = arcadeExpressionInfos;
 
 // Create popup template
   const template = {
@@ -49,7 +50,7 @@ require([
       text: 
         "Gen X represents {expression/%-gen-x-arcade}% of the population in {NAME}, {ST_ABBREV}.<br/>" +
         "({GENX_CY} of county's total population {TOTPOP_CY})<br/><br/>" +
-        "Other generations:<br/>{OLDRGENSCY} Silent & Greatest Generation (born 1945 or earlier)<br/>" +
+        "Other generational populations:<br/>{OLDRGENSCY} Silent & Greatest Generation (born 1945 or earlier)<br/>" +
         "{BABYBOOMCY} Baby Boomer (1946-1964)<br/>{MILLENN_CY} Millennial (1981-1998)<br/>" +
         "{GENZ_CY} Gen Z (1999-2016)<br/> {GENALPHACY} Gen Alpha (born 2017 or later)",
     }],
@@ -133,11 +134,11 @@ require([
     })      
   };
   
-  addClass(0, 0.05, "#a6611a", "< 5%", countyRenderer);
-  addClass(0.0501, 0.15, "#d8b365", "5-15%", countyRenderer);
-  addClass(0.1501, 0.25, "#c7eae5", "15-25%", countyRenderer);
-  addClass(0.2501, 0.35, "#5ab4ac", "25-35%", countyRenderer);
-  addClass(0.3501, 1.0, "#01665e", "Over 35%", countyRenderer);
+  addClass(0, 0.1, "#a6611a", "< 10%", countyRenderer);
+  addClass(0.1001, 0.15, "#d8b365", "10-15%", countyRenderer);
+  addClass(0.1501, 0.20, "#c7eae5", "15-20%", countyRenderer);
+  addClass(0.2001, 0.25, "#5ab4ac", "20-25%", countyRenderer);
+  addClass(0.2501, 1.0, "#01665e", "Over 25%", countyRenderer);
 
 
   
@@ -150,7 +151,6 @@ require([
     popupTemplate: template
   });  
   
-  template.expressionInfos = arcadeExpressionInfos;
 
   map.add(countyLyr)
   
