@@ -5,11 +5,10 @@ require([
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
   "esri/renderers/ClassBreaksRenderer",
-  "esri/symbols/PolygonSymbol3D",
-  "esri/symbols/FillSymbol3DLayer",
+  "esri/symbols/SimpleFillSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend"
-  ], (Map, MapView, FeatureLayer, ClassBreaksRenderer, PolygonSymbol3D, FillSymbol3DLayer, SimpleLineSymbol, Legend) => {
+  ], (Map, MapView, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend) => {
 
   const map = new Map({
     basemap: "dark-gray-vector",
@@ -23,31 +22,36 @@ require([
     zoom: 6
   });
   
+  const countySym = new SimpleLineSymbol({
+    style: "solid"
+  });
+
+
+  //This doesn't seem to be working
   const countyRenderer = new ClassBreaksRenderer({
-    field: "GENX_CY",
-    normalizationType: "percent-of-total",
-    normalizationTotal: "TOTPOP_CY",
+    field: "GENX_CY", // total Generation X (born 1965 to 1980)
+    normalizationField: "TOTPOP_CY",  // total Population
     legendOptions: {
       title: "Gen X % Population per Country"   
     }
   });
 
+
   const addClass = function(min, max, clr, lbl, renderer) {
     renderer.addClassBreakInfo({
       minValue: min,
       maxValue: max,
-      symbol: new PolygonSymbol3D({
-        symbolLayers: [new FillSymbol3DLayer({
-          material: { color: clr },
+      symbol: new SimpleFillSymbol({
+          color: clr,
           outline: {   
             color: "black",
             size: 1
-          }
-        })]
+          },
+          style: "solid"
       }),
       label: lbl
-    });      
-  }
+    })      
+  };
   
   addClass(0, 0.25, "#eff3ff", "50 and under", countyRenderer);
   addClass(0.25001, 0.5, "#bdd7e7", "51 - 150", countyRenderer);
