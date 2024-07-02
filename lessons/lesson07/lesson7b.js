@@ -24,8 +24,8 @@ require([
 
 // Create popup template
   const template = {
-    title: "Gen X population in {NAME}, {ST_ABBREV}: insert % here",
-    content: "Gen X represents % of the population in {NAME} ({GENX_CY} out of the total population {TOTPOP_CY}<br/>Other generations:<br/>Silent & Greatest Generation: {OLDRGENSCY}<br/>Baby Boomer: {BABYBOOMCY}<br/>Millennial: {MILLENN_CY}<br/>Gen Z: {GENZ_CY}<br/>Gen Alpha: {GENALPHACY}",
+    title: "Gen X in {NAME}, {ST_ABBREV}: insert % here",
+    content: "Gen X represents % of the population in {NAME}<br/>({GENX_CY} out of the county's total population {TOTPOP_CY}<br/><br/>Other generations:<br/>{OLDRGENSCY} Silent & Greatest Generation (born xxxx-xxxx)<br/>{BABYBOOMCY} Baby Boomer (xxxx-xxxx)<br/>{MILLENN_CY} Millennial (born xxxx-xxxx)<br/>{GENZ_CY} Gen Z (born xxxx-xxxx)<br/> {GENALPHACY} Gen Alpha (born xxxx-xxxx)",
     fieldInfos: [{
       fieldName: "GENX_CY",
       format: {
