@@ -12,9 +12,15 @@ require([
   "esri/PopupTemplate"
   ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate) => {
 
-  let state = prompt("Please enter a State abbreviation to view Gen X population by county", "example: AK");
+  //capture user input
+  let state = prompt("Enter a State abbreviation to view Gen X % population by county", "example: AK");
 
+  //verify user input has been captured in state variable
   console.log("The user entered " + state);
+
+  //create query statement
+  //const stateWhere = "ST_ABBREV = " + state;
+
 
   const map = new Map({
     basemap: "dark-gray-vector",
@@ -27,8 +33,6 @@ require([
     center: [-105, 50],  
     zoom: 3
   });
-
-
 
 
 /*Generational data fields:
@@ -144,18 +148,19 @@ require([
   addClass(0.250001, 1.0, "#01665e", "Over 25%", countyRenderer);
 
 
-  
+  //added basic query for state abbreviation
   //updated portal ID for GenX census data 
   const countyLyr = new FeatureLayer({
     portalItem: { 
       id: "959588e62d854f588b3ae97c0c86f890"
     },
+    definitionExpression: "ST_ABBREV = " + state,
     renderer: countyRenderer,      
     popupTemplate: template
   });  
   
 
-  map.add(countyLyr)
+  map.add(countyLyr);
   
   const legend = new Legend({
     view: view,
