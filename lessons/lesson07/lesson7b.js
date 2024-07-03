@@ -19,8 +19,8 @@ require([
   const view = new MapView({
     container: "viewDiv",
     map: map,
-    center: [-78, 41],
-    zoom: 4
+    center: [-105, 50],  
+    zoom: 2
   });
 
 /*Generational data fields:
