@@ -33,7 +33,6 @@ require([
 */
 
 
-// The {expression/genXpercent} value is not displaying on the popup but I left it in to try and figure out why later.
 // Create popup template
   const template = {
     title: "{NAME}, {ST_ABBREV}: {expression/genXpercent}% Gen X",
@@ -42,10 +41,10 @@ require([
       type: "text",
       text: 
         "Gen X represents {expression/genXpercent}% of the population in {NAME}, {ST_ABBREV}.<br/>" +
-        "({GENX_CY} of county's total population {TOTPOP_CY})<br/><br/>" +
-        "Other generational populations:<br/>{OLDRGENSCY} Silent & Greatest Generation (born 1945 or earlier)<br/>" +
-        "{BABYBOOMCY} Baby Boomer (1946-1964)<br/>{MILLENN_CY} Millennial (1981-1998)<br/>" +
-        "{GENZ_CY} Gen Z (1999-2016)<br/> {GENALPHACY} Gen Alpha (born 2017 or later)",
+        "<em>({GENX_CY} out of this county's total population {TOTPOP_CY})</em><br/><br/>" +
+        "<u>Other generational populations:</u><br/>  - {OLDRGENSCY} Silent & Greatest Generation (born 1945 or earlier)<br/>" +
+        "  - {BABYBOOMCY} Baby Boomer (1946-1964)<br/>  - {MILLENN_CY} Millennial (1981-1998)<br/>" +
+        "  - {GENZ_CY} Gen Z (1999-2016)<br/>  - {GENALPHACY} Gen Alpha (born 2017 or later)",
     }],
     expressionInfos: [
     {
