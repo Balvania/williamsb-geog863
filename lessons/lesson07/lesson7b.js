@@ -45,6 +45,11 @@ require([
         "{BABYBOOMCY} Baby Boomer (1946-1964)<br/>{MILLENN_CY} Millennial (1981-1998)<br/>" +
         "{GENZ_CY} Gen Z (1999-2016)<br/> {GENALPHACY} Gen Alpha (born 2017 or later)",
     }],
+    expressionInfos: [
+    {
+      name: "genXpercent",
+      expression: "Round((($feature.GENX_CY/$feature.TOTPOP_CY)*100,2)"
+    }],
     fieldInfos: [
     {
       fieldName: "expression/genXpercent",
@@ -94,12 +99,6 @@ require([
       format: {
         digitSeparator: true
       }
-    }],
-    expressionInfos: [
-    {
-      name: "genXpercent",
-      title: "% Population of Gen X",
-      expression: "Round((($feature.GENX_CY/$feature.TOTPOP_CY)*100,2) + '%'"
     }]
   };  
 
@@ -107,8 +106,6 @@ require([
   const countyRenderer = new ClassBreaksRenderer({
     field: "GENX_CY", // total Generation X (born 1965 to 1980)
     normalizationField: "TOTPOP_CY",  // total Population
-    valueExpression: "$feature.GENX_CY / $feature.TOTPOP_CY",
-    valueExpressionTitle: "where does this show Households per square mile",
     legendOptions: {
       title: "% Population (per 2018 Census)"   
     }
