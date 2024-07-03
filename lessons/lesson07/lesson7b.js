@@ -3,13 +3,18 @@
 require([
   "esri/Map",
   "esri/views/MapView",
+  "esri/widgets/Search",
   "esri/layers/FeatureLayer",
   "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/SimpleFillSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend",
   "esri/PopupTemplate"
-  ], (Map, MapView, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate) => {
+  ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate) => {
+
+  let state = prompt("Please enter a State abbreviation to view Gen X population by county", "example: AK");
+
+  console.log("The user entered " + state);
 
   const map = new Map({
     basemap: "dark-gray-vector",
@@ -22,6 +27,9 @@ require([
     center: [-105, 50],  
     zoom: 3
   });
+
+
+
 
 /*Generational data fields:
   OLDRGENSCY - Silent & Greatest Generations (born 1945 or earlier)
@@ -129,7 +137,7 @@ require([
     })      
   };
   
-  addClass(0, 0.1, "#a6611a", "< 10%", countyRenderer);
+  addClass(0, 0.1, "#a6611a", "Less than 10%", countyRenderer);
   addClass(0.100001, 0.15, "#d8b365", "10-15%", countyRenderer);
   addClass(0.150001, 0.20, "#c7eae5", "15-20%", countyRenderer);
   addClass(0.200001, 0.25, "#5ab4ac", "20-25%", countyRenderer);
