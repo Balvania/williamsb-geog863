@@ -20,7 +20,7 @@ require([
     container: "viewDiv",
     map: map,
     center: [-105, 50],  
-    zoom: 2
+    zoom: 3
   });
 
 /*Generational data fields:
