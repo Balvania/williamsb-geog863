@@ -7,8 +7,9 @@ require([
   "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/SimpleFillSymbol",
   "esri/symbols/SimpleLineSymbol",
-  "esri/widgets/Legend"
-  ], (Map, MapView, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend) => {
+  "esri/widgets/Legend",
+  "esri/PopupTemplate"
+  ], (Map, MapView, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate) => {
 
   const map = new Map({
     basemap: "dark-gray-vector",
