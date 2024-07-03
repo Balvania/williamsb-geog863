@@ -33,6 +33,7 @@ require([
 */
 
 
+// The {expression/genXpercent} value is not displaying on the popup but I left it in to try and figure out why later.
 // Create popup template
   const template = {
     title: "{NAME}, {ST_ABBREV}: {expression/genXpercent}% Gen X",
@@ -49,7 +50,7 @@ require([
     expressionInfos: [
     {
       name: "genXpercent",
-      expression: "Round((($feature.GENX_CY/$feature.TOTPOP_CY)*100,2)"
+      expression: "($feature.GENX_CY/$feature.TOTPOP_CY)*100"
     }],
     fieldInfos: [
     {
