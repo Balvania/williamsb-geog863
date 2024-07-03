@@ -154,7 +154,7 @@ require([
     portalItem: { 
       id: "959588e62d854f588b3ae97c0c86f890"
     },
-    definitionExpression: "ST_ABBREV = " + state,
+    definitionExpression: "ST_ABBREV = '" + state + "'",
     renderer: countyRenderer,      
     popupTemplate: template
   });  
