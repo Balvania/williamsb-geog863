@@ -31,22 +31,15 @@ require([
   GENALPHACY - Generation Alpha (born 2017 or later)
 */
 
-  const arcadeExpressionInfos = [
-  {
-    name: "%-gen-x-arcade",
-    title: "% of Gen X in county",
-    expression: "Round((($feature.GENX_CY/$feature.TOTPOP_CY)*100,2) + '%'"
-  }
-];
 
 // Create popup template
   const template = {
-    title: "{NAME}, {ST_ABBREV}: {expression/%-gen-x-arcade}% Gen X",
+    title: "{NAME}, {ST_ABBREV}: {expression/genXpercent}% Gen X",
     content: [
     {
       type: "text",
       text: 
-        "Gen X represents {expression/%-gen-x-arcade}% of the population in {NAME}, {ST_ABBREV}.<br/>" +
+        "Gen X represents {expression/genXpercent}% of the population in {NAME}, {ST_ABBREV}.<br/>" +
         "({GENX_CY} of county's total population {TOTPOP_CY})<br/><br/>" +
         "Other generational populations:<br/>{OLDRGENSCY} Silent & Greatest Generation (born 1945 or earlier)<br/>" +
         "{BABYBOOMCY} Baby Boomer (1946-1964)<br/>{MILLENN_CY} Millennial (1981-1998)<br/>" +
@@ -54,7 +47,7 @@ require([
     }],
     fieldInfos: [
     {
-      fieldName: "expression/%-gen-x-arcade",
+      fieldName: "expression/genXpercent",
       format: {
         digitSeparator: true,
         places: 0
@@ -101,6 +94,12 @@ require([
       format: {
         digitSeparator: true
       }
+    }],
+    expressionInfos: [
+    {
+      name: "genXpercent",
+      title: "% Population of Gen X",
+      expression: "Round((($feature.GENX_CY/$feature.TOTPOP_CY)*100,2) + '%'"
     }]
   };  
 
