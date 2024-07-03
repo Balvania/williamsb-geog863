@@ -161,6 +161,16 @@ require([
   
 
   map.add(countyLyr);
+
+  //after layer is loaded, add zoom to extent of user's State selection
+  countyLyr.when(() => 
+  {
+    return countyLyr.queryExtent();
+  })
+  .then((response) => 
+  {
+    view.goTo(response.extent);
+  });
   
   const legend = new Legend({
     view: view,
