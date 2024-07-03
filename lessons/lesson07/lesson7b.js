@@ -150,7 +150,6 @@ require([
   
 
   map.add(countyLyr)
-  template.expressionInfos = arcadeExpressionInfos;
   
   const legend = new Legend({
     view: view,
