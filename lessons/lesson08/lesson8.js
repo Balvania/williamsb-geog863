@@ -183,7 +183,7 @@ require([
     view: view,
     layerInfos: [{
       layer: countyLyr,
-      title: "Gen X Population by County<br/>(born 1965 to 1980)"
+      title: "Gen X Population by County (born 1965 to 1980)"
     }]
   });
 
