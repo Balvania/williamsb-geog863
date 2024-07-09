@@ -1,6 +1,6 @@
 
-  require(["esri/views/MapView", "esri/WebMap", "esri/widgets/LayerList"], 
-  	(MapView, WebMap, LayerList) => {
+  require(["esri/views/MapView", "esri/WebMap", "esri/widgets/LayerList", "esri/widgets/BasemapGallery"], 
+  	(MapView, WebMap, LayerList, BasemapGallery) => {
     /************************************************************
      * Creates a new WebMap instance. A WebMap must reference
      * a PortalItem ID that represents a WebMap saved to
@@ -28,6 +28,11 @@
         view: view,
         selectionEnabled: true,
         container: "layers-container"
+    });
+
+    const basemaps = new BasemapGallery({        
+        view: view,        
+        container: "basemaps-container"      
     });
 
     //dynamically set header
@@ -59,6 +64,13 @@
 	    }
 	};
 
+	let actionBarExpanded = false;
+    document.addEventListener("calciteActionBarToggle", event => {
+        actionBarExpanded = !actionBarExpanded;
+        view.padding = {
+          left: actionBarExpanded ? 135 : 50
+        };
+    });
 	document.querySelector("calcite-action-bar").addEventListener("click", handleActionBarClick);
   });
 
