@@ -22,6 +22,11 @@
       map: webmap,
       container: "viewDiv"
     });
+
+    //dynamically set header
+    webmap.when(() => {
+    	const title = webmap.portalItem.title;
+    	document.getElementById("header-title").textContent = title;
+  	});
   });
 
-  
