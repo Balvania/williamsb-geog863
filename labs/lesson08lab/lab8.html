@@ -20,7 +20,11 @@
   		<h2 id="header-title" slot="header">
         	<!-- Populated at runtime -->
     	</h2>
-       <div id=”viewDiv”></div> 
+    	<calcite-shell-panel slot="panel-start" display-mode="float">
+    		<calcite-action-bar slot="action-bar">
+    		</calcite-action-bar>
+    	</calcite-shell-panel>
+       	<div id=”viewDiv”></div> 
     </calcite-shell>
   </body>
 </html>
