@@ -3,6 +3,9 @@
  * GEOG863 - Lesson 8 - Bernadette Williams
  * Generational Demographics of the United States 
  * % Population of Gen X by county
+ * EXPANDED UI
+ * - add collapsing sidebar with state links
+ * 
  * 
  * Created: 3 July 2024
  ****************************************************************************/
@@ -16,17 +19,25 @@ require([
   "esri/symbols/SimpleFillSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend",
-  "esri/PopupTemplate"
-  ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate) => {
+  "esri/PopupTemplate",
+  "esri/rest/support/Query"
+  ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query) => {
 
-  //capture user input
-  let state = prompt("Enter a State abbreviation to view Gen X % population by county", "example: AK");
+  //capture user input - get rid of this
+  //let state = prompt("Enter a State abbreviation to view Gen X % population by county", "example: AK");
 
   //verify user input has been captured in state variable
-  console.log("The user entered " + state);
+  //console.log("The user entered " + state);
+
+  //declare state variable
+  var state; //needed?
+
+  var stateSelect = document.getElementById("list_states");
+
+  var queryStates = document.getElementById("query_states"); //this was a button, needed?
 
   //create query statement
-  //const stateWhere = "ST_ABBREV = " + state;
+  const stateWhere = "ST_ABBREV = " + stateSelect;
 
 
   const map = new Map({
@@ -41,6 +52,8 @@ require([
     zoom: 3
   });
 
+ // const listNode = document.getElementById("list_states");
+
 
 /*Generational data fields:
   OLDRGENSCY - Silent & Greatest Generations (born 1945 or earlier)
@@ -50,7 +63,6 @@ require([
   GENZ_CY - Generation Z (born 1999 to 2016)
   GENALPHACY - Generation Alpha (born 2017 or later)
 */
-
 
 // Create popup template
   const template = {
@@ -122,6 +134,7 @@ require([
     }]
   };  
 
+
 // Create renderer to display the Gen X % population, normalized by the Total Population field
   const countyRenderer = new ClassBreaksRenderer({
     field: "GENX_CY", // total Generation X (born 1965 to 1980)
@@ -161,23 +174,120 @@ require([
     portalItem: { 
       id: "959588e62d854f588b3ae97c0c86f890"
     },
-    definitionExpression: "ST_ABBREV = '" + state + "'",
+    //remove this, no user input  yet
+//    definitionExpression: "ST_ABBREV = '" + state + "'",
     renderer: countyRenderer,      
     popupTemplate: template
   });  
   
 
-  map.add(countyLyr);
+  map.add(countyLyr);  //this should now display the entire country I think
+
+  //query county layer
+  view 
+  	.when(function() {
+	return countyLyr.when(function () {
+		var query = countyLyr.createQuery();
+		return countyLyr.queryFeatures(query);
+	}); 
+  })
+  	.then(getValues)
+  	.then(getUniqueValues)
+  	.then(addToSelect)
+  	.then(createBuffer);
+
+//return an array of all the values in the ST_ABBREV field of the county layer
+function getValues(response) {
+	var features = response.features;
+	var values = features.map(function (feature) {
+		return features.attributes.ST_ABBREV;
+		console.log("The getValues function returned " + features);
+	});
+	return values;
+}
+
+//return an array of unique values in the ST_ABBREV field of the county layer
+function getUniqueValues(values) {
+	var uniqueValues = [];
+
+	values.forEach(function (item, i) {
+		if (
+			(uniqueValues.length < 1 || uniqueValues.indexOf(item) === -1) &&
+			item !== ""
+		) {
+			uniqueValues.push(item);
+		}
+	});
+	return uniqueValues;
+}
+
+// add the unique values to the list of States
+funtion addToSelect(values) {
+	values.sort();
+	values.forEach(function (value) {
+		var option = document.createElement("option");
+		option.text = value;
+		stateSelect.add(option);
+	});
+	return setStateDefinitionExpression(stateSelect.value);
+}
+
+// set the definition expression on the county layer to reflect 
+// the selection of the user
+function setStateDefinitionExpression(newValue) {
+	countyLyr.definitionExpression = "ST_ABBREV = '" + newValue + "'";
+
+	if (!countyLyr.visible) {
+		countyLyr.visible = true;
+	}
+
+	return getStateExtent();
+}
+
+// zoom to extent of user selected state
+function getStateExtent() {
+	var stateQuery = countyLyr.createQuery();
+
+	return countyLyr.queryExtent(stateQuery).then((response) =>
+		{
+			view.goTo(response.extent);
+		});
+}
+
+/*** I don't think I need this
+ *  get all the geometries of the county layer
+// the createQuery() method creates a query
+// object that respects the definitionExpression of the layer
+function queryForStateGeometries() {
+	var stateQuery = countyLyr.createQuery();
+
+	return countyLyr.queryFeatures(stateQuery).then(function (response) {
+		stateGeometries = response.features.map(function (feature) {
+			return feature.geometry;
+		});
+
+		return stateGeometries;
+	});
+}  **/
+
+//set a new definition expression on the county layer
+// and add zoom to extent of user's State selection
+stateSelect.addEventListener("change", function() {
+	var type = event.target.value;
+	setStateDefinitionExpression(type).then()
+})
+
+
 
   //after layer is loaded, add zoom to extent of user's State selection
-  countyLyr.when(() => 
+  /*countyLyr.when(() => 
   {
     return countyLyr.queryExtent();
   })
   .then((response) => 
   {
     view.goTo(response.extent);
-  });
+  }); **/
   
   const legend = new Legend({
     view: view,

@@ -93,19 +93,6 @@ body,
   margin-left: 2.5rem;
 }
 
-/*** I don't think I need this, not sure what it does
-
-@media screen and (min-width: 880px) {
-  .app--header-search.esri-search {
-    width: 340px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .app--header-search.esri-search {
-    width: 640px;
-  }
-}
-**/
 
 .main-map {
   overflow: hidden;
