@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-		<title>Spatial query demo</title>
+		<title>U.S. Generations</title>
 		<link rel="stylesheet" href="lesson8.css"></link>
 		<link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
 		<script src="https://js.arcgis.com/4.28/"></script>
@@ -13,9 +13,51 @@
 	</head>
 
 	<body>
+	  	<!-- display header link to return to home page -->
 	  	<div style="margin-left: 50px;">
 	    	<h5><a href="../../../../index.html">[Back to home page]</a></h5>
 	  	</div>
-	  	<div id="viewDiv"></div> 
+	  	<!-- display title of map -->
+	  	<header class="app--header">
+      		<div class="app--header-title">U.S. Population by Generation</div>
+      		<!-- what does this search do?  -->
+      		<div class="app--header-search" id="searchDiv"></div>
+    	</header>
+	  	<!-- display map -->
+	  	<div class="app--view" id="viewDiv"></div> 
+
+	  	<!-- display slider bar over map -->
+    	<div id="slider" class="calcite-theme-dark">
+	      	<div id="btnExpand" class="light-blue"></div>
+	      	<div id="slider-content">
+		        <calcite-card id="controls" class="calcite-theme-dark">
+		          	<div slot="title">Controls</div>
+		          	<calcite-label>Trail width
+		            	<calcite-slider id="trailWidth" min="0.1" max="10" value="2" step="0.1" label-handles></calcite-slider>
+			        </calcite-label>
+		          	<calcite-label>Trail length
+		            	<calcite-slider id="trailLength" min="0.1" max="200" value="100" label-handles></calcite-slider>
+		          	</calcite-label>
+		          	<calcite-label>Density
+		            	<calcite-slider id="density" min="0.1" max="1" value="1" step="0.1" label-handles></calcite-slider>
+		          	</calcite-label>
+		          	<calcite-label>Flow speed
+		            	<calcite-slider id="flowSpeed" min="0.1" max="40" value="10" step="0.1" label-handles></calcite-slider>
+		          	</calcite-label>
+		          	<calcite-label>Maximum path length
+		            	<calcite-slider id="maxPathLength" min="0.1" max="300" value="200" label-handles></calcite-slider>
+		          	</calcite-label>
+		          	<calcite-label>Flow representation
+		            	<calcite-radio-group id="flowRepresentation">
+		              		<calcite-radio-group-item value="flow-to">To</calcite-radio-group-item>
+		              		<calcite-radio-group-item value="flow-from" checked>From</calcite-radio-group-item>
+		            	</calcite-radio-group>
+		          	</calcite-label>
+		          	<calcite-label>Effects enabled
+		            	<calcite-checkbox id="effectsEnabled" checked></calcite-checkbox>
+		          	</calcite-label>
+		        </calcite-card>
+	      	</div>
+    	</div>
 	</body>
 </html>
