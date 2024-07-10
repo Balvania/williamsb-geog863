@@ -46,6 +46,8 @@ body {
   margin-left: 2.5rem;
 }
 
+/*** I don't think I need this, not sure what it does
+
 @media screen and (min-width: 880px) {
   .app--header-search.esri-search {
     width: 340px;
@@ -56,6 +58,7 @@ body {
     width: 640px;
   }
 }
+**/
 
 .app--view {
   overflow: hidden;
@@ -74,7 +77,7 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
-  padding: 0;
+  padding: 20px;
   margin: 0;
   width: 300px;
   margin-right: 0px;
