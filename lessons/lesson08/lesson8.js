@@ -222,7 +222,7 @@ function getUniqueValues(values) {
 }
 
 // add the unique values to the list of States
-funtion addToSelect(values) {
+function addToSelect(values) {
 	values.sort();
 	values.forEach(function (value) {
 		var option = document.createElement("option");
