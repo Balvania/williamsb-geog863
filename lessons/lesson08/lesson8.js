@@ -338,7 +338,7 @@ require([
 	    if (getState) {
 	    	console.log("made it here - result is true");
 	    	const newStateQuery = new Query({
-	    		where: "ST_ABBREV = '" + getState + "'"
+	    		where: "ST_ABBREV = '" + getState + "'",
 	    		returnGeometry: true
 	    	});
 	 //	  	countyLyr.when(function () {
