@@ -60,7 +60,7 @@ body,
 	background-color: rgba(0, 0, 0, 0.3);
 }
 
-.panel-result: hover,
+.panel-result:hover,
 .panel-result:focus {
 	color: orange;
 	background-color: rgba(0, 0, 0, 0.75);
