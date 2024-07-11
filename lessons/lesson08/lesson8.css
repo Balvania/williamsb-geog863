@@ -62,7 +62,7 @@ body,
 
 .panel-result:hover,
 .panel-result:focus {
-	color: orange;
+	color: dodgerblue;
 	background-color: rgba(0, 0, 0, 0.75);
 }
 
