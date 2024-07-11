@@ -37,7 +37,7 @@ require([
   var queryStates = document.getElementById("query_states"); //this was a button, needed?
 
   //create query statement
-  const stateWhere = "ST_ABBREV = " + stateSelect;
+  //const stateWhere = "ST_ABBREV = " + stateSelect;
 
 
   const map = new Map({
