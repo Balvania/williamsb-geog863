@@ -364,16 +364,6 @@ require([
 	    }
 	};
 
-	  const countyLyr = new FeatureLayer({
-	    portalItem: { 
-	      id: "959588e62d854f588b3ae97c0c86f890"
-	    },
-	    //remove this, no user input  yet
-	//    definitionExpression: "ST_ABBREV = '" + state + "'",
-	    renderer: countyRenderer,      
-	    popupTemplate: template
-	  });  
-
 
 	  //after layer is loaded, add zoom to extent of user's State selection
 	  /*countyLyr.when(() => 
