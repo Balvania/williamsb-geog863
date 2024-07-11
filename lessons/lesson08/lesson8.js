@@ -194,7 +194,6 @@ require([
 	}); 
   })
   	.then(getValues)
-  	console.log("getValues function is complete")
   	.then(getUniqueValues)
   	console.log("getUniqueValues function is complete")
   	.then(displayResults)
@@ -205,6 +204,7 @@ require([
 //return an array of all the values in the ST_ABBREV field of the county layer
 function getValues(response) {
 	var features = response.features;
+	console.log("getValues features = " + features);
 	var values = features.map(function (feature) {
 		return features.attributes.ST_ABBREV;
 	});
