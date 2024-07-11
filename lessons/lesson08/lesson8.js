@@ -21,10 +21,14 @@ require([
   "esri/widgets/Legend",
   "esri/PopupTemplate",
   "esri/rest/support/Query"
-  ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query) => {
+  "esri/widgets/Home"
+  ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query, Home) => {
 
 	  //capture user input - get rid of this
 	  //let state = prompt("Enter a State abbreviation to view Gen X % population by county", "example: AK");
+
+
+
 
 	  //verify user input has been captured in state variable
 	  //console.log("The user entered " + state);
@@ -51,6 +55,14 @@ require([
 	    center: [-105, 50],  
 	    zoom: 3
 	  });
+
+      const homeBtn = new Home({
+          view: view
+      });
+
+      // Add the home button to the top left corner of the view
+      view.ui.add(homeBtn, "top-left");
+
 
 	  const stateSelect = document.getElementById("list_states");
 
@@ -315,19 +327,29 @@ require([
 	function onListClickHandler(event) {   
 	    const target = event.target;
 	    const resultId = target.getAttribute("list_states");
-	    const getName = target.textContent;
+	    const getState = target.textContent;
 	   // const stateChoice = target.getAttribute("ST_ABBREV");
-	    console.log("user selected " + resultId + ": " + getName);
+	    console.log("user selected " + resultId + ": " + getState);
 
+	   	// don't know if I need this
 	   	const result = resultId[parseInt(resultId, 10)];
 	   	console.log("result value is " + result);
 
-	    if (result) {
+	    if (getState) {
 	    	console.log("made it here - result is true");
-	      /*view.popup.open({
-	        features: [result],
-	        location: result.geometry.centroid
-	      }); */
+	    	const newStateQuery = new Query({
+	    		where: "ST_ABBREV = '" + getState + "'",
+	    		returnGeometry: true
+	    	});
+	    	countyLyr.when(function () {
+	    		countyLyr.queryFeatures(newStateQuery).then(displayResults);
+	    	});
+	    	countyLyr.when(() => {
+	    		return countyLyr.queryFeatures(newStateQuery);
+	    	})
+	    	.then((response)) => {
+	    		view.goTo(response.extent);
+	    	};
 	    }
 	};
 
