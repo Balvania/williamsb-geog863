@@ -337,16 +337,26 @@ require([
 
 	    if (getState) {
 	    	console.log("made it here - result is true");
-	    	countyLyr.color("black");
+	    	map.removeAllLayers();
+	    	const newCountyLayer = new FeatureLayer({
+	    		portalItem: { 
+	      			id: "959588e62d854f588b3ae97c0c86f890"
+	    		},
+				definitionExpression: "ST_ABBREV = '" + getState + "'",
+	    		renderer: countyRenderer,      
+	    		popupTemplate: template
+	  		}); 
+
+/*
 	    	const newStateQuery = new Query({
 	    		where: "ST_ABBREV = '" + getState + "'",
 	    		returnGeometry: true
 	    	});
+*/
 
-	    	console.log("query is " + newStateQuery);
 	    	console.log("getState value is " + getState);
-	    	countyLyr.when(() => {
-	    		return countyLyr.queryExtent(newStateQuery);
+	    	newCountyLyr.when(() => {
+	    		return newCountyLyr.queryExtent();
 	    	})
 	    	.then((response) => {
 	    		view.goTo(response.extent);
@@ -354,6 +364,15 @@ require([
 	    }
 	};
 
+	  const countyLyr = new FeatureLayer({
+	    portalItem: { 
+	      id: "959588e62d854f588b3ae97c0c86f890"
+	    },
+	    //remove this, no user input  yet
+	//    definitionExpression: "ST_ABBREV = '" + state + "'",
+	    renderer: countyRenderer,      
+	    popupTemplate: template
+	  });  
 
 
 	  //after layer is loaded, add zoom to extent of user's State selection
