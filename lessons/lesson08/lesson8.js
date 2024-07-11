@@ -341,9 +341,9 @@ require([
 	    		where: "ST_ABBREV = '" + getState + "'",
 	    		returnGeometry: true
 	    	});
-	    	countyLyr.when(function () {
-	    		countyLyr.queryFeatures(newStateQuery).then(displayResults);
-	    	});
+	 //   	countyLyr.when(function () {
+	 //   		countyLyr.queryFeatures(newStateQuery).then(displayResults);
+	 //   	});
 	    	countyLyr.when(() => {
 	    		return countyLyr.queryFeatures(newStateQuery);
 	    	})
