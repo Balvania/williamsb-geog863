@@ -187,7 +187,7 @@ require([
   console.log("the map of the full country should now be displayed.");
 
   //query county layer
-  countyLyr.when(function() {
+  view.when(function() {
   	const stateQuery = new Query({
   		where: "ST_ABBREV is not null",
   		orderByFields: ["ST_ABBREV"],
@@ -195,11 +195,11 @@ require([
   		returnDistinctValues: true,
   		outFields: ["ST_ABBREV"]
   	});
- // 	countyLyr.queryFeatures(stateQuery).then(displayResults);
+  	countyLyr.queryFeatures(stateQuery).then(displayResults);
   })
   //	.then(getValues)
   //	.then(getUniqueValues)
-  		.then(displayResults);
+  //		.then(displayResults);
   //	.then(addToSelect)
   //	.then(createBuffer);
 
