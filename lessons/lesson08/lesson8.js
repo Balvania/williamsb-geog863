@@ -339,15 +339,15 @@ require([
 	    	console.log("made it here - result is true");
 	    	const newStateQuery = new Query({
 	    		where: "ST_ABBREV = '" + getState + "'"
-	    	//	returnGeometry: true
+	    		returnGeometry: true
 	    	});
-	 //   	countyLyr.when(function () {
+	 //	  	countyLyr.when(function () {
 	 //   		countyLyr.queryFeatures(newStateQuery).then(displayResults);
 	 //   	});
 	    	console.log("query is " + newStateQuery);
 	    	console.log("getState value is " + getState);
 	    	countyLyr.when(() => {
-	    		return countyLyr.queryFeatures(newStateQuery);
+	    		return countyLyr.queryExtent(newStateQuery);
 	    	})
 	    	.then((response) => {
 	    		view.goTo(response.extent);
