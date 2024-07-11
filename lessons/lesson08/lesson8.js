@@ -315,7 +315,8 @@ require([
 	function onListClickHandler(event) {   
 	    const target = event.target;
 	    const resultId = target.getAttribute("list_states");
-	    console.log("user selected " + resultId);
+	    const stateChoice = target.getAttribute("ST_ABBREV");
+	    console.log("user selected " + resultId + ": " + ST_ABBREV);
 
 	   // const result = resultId && graphics && graphics[parseInt(resultId,
 	   //   10)];
