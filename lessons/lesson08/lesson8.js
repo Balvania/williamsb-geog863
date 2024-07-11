@@ -187,16 +187,19 @@ require([
   console.log("the map of the full country should now be displayed.");
 
   //query county layer
-  view.when(function() {
+  countyLyr.when(function() {
   	const stateQuery = new Query({
-  		outFields: ["ST_ABBREV"],
+  		where: "ST_ABBREV is not null",
   		orderByFields: ["ST_ABBREV"],
+  		returnGeometry: false,
+  		returnDistinctValues: true,
+  		outFields: ["ST_ABBREV"]
   	});
-  	countyLyr.queryFeatures(stateQuery).then(displayResults);
-  });
+ // 	countyLyr.queryFeatures(stateQuery).then(displayResults);
+  })
   //	.then(getValues)
   //	.then(getUniqueValues)
-  //	.then(displayResults);
+  		.then(displayResults);
   //	.then(addToSelect)
   //	.then(createBuffer);
 
@@ -227,7 +230,7 @@ function getUniqueValues(values) {
 } */
 
 //display a list of states using document fragment
-function displayResults(uniqueValues) {
+function displayResults() {
 	const fragment = document.createDocumentFragment();
 	results.features.forEach(function(state, index) {
 		const attributes = state.attributes;
@@ -238,6 +241,7 @@ function displayResults(uniqueValues) {
 		li.tabIndex = 0;
 		li.setAttribute("list_states", index);
 		li.textContent = name;
+		console.log("name is " + name);
 
 		fragment.appendChild(li);
 
