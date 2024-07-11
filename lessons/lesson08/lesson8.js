@@ -32,7 +32,6 @@ require([
   //declare state variable
   var state; //needed?
 
-  const stateSelect = document.getElementById("list_states");
   //const listNode = document.getElementById("list_states");
 
   var queryStates = document.getElementById("query_states"); //this was a button, needed?
@@ -52,6 +51,8 @@ require([
     center: [-105, 50],  
     zoom: 3
   });
+
+  const stateSelect = document.getElementById("list_states");
 
 
 
@@ -186,20 +187,20 @@ require([
   console.log("the map of the full country should now be displayed.");
 
   //query county layer
-  view 
-  	.when(function() {
-	return countyLyr.when(function () {
-		var query = countyLyr.createQuery();
-		return countyLyr.queryFeatures(query);
-	}); 
-  })
-  	.then(getValues)
-  	.then(getUniqueValues)
-  	.then(displayResults);
+  view.when(function() {
+  	const stateQuery = new Query({
+  		outFields: ["ST_ABBREV"],
+  		orderByFields: ["ST_ABBREV"],
+  	});
+  	countyLyr.queryFeatures(stateQuery).then(displayResults);
+  });
+  //	.then(getValues)
+  //	.then(getUniqueValues)
+  //	.then(displayResults);
   //	.then(addToSelect)
   //	.then(createBuffer);
 
-//return an array of all the values in the ST_ABBREV field of the county layer
+/*/return an array of all the values in the ST_ABBREV field of the county layer
 function getValues(response) {
 	var features = response.features;
 	var values = features.map(function (feature) {
@@ -223,7 +224,7 @@ function getUniqueValues(values) {
 	});
 	console.log("The getUniqueValues function returned " + uniqueValues)
 	return uniqueValues;
-}
+} */
 
 //display a list of states using document fragment
 function displayResults(uniqueValues) {
