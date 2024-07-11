@@ -344,6 +344,8 @@ require([
 	 //   	countyLyr.when(function () {
 	 //   		countyLyr.queryFeatures(newStateQuery).then(displayResults);
 	 //   	});
+	    	console.log("query is " + newStateQuery);
+	    	console.log("getState value is " + getState);
 	    	countyLyr.when(() => {
 	    		return countyLyr.queryFeatures(newStateQuery);
 	    	})
