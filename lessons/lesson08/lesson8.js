@@ -187,7 +187,7 @@ require([
   console.log("the map of the full country should now be displayed.");
 
   //query county layer
-  view.when(function() {
+  countyLyr.when(function() {
   	const stateQuery = new Query({
   		where: "ST_ABBREV is not null",
   		orderByFields: ["ST_ABBREV"],
@@ -230,7 +230,7 @@ function getUniqueValues(values) {
 } */
 
 //display a list of states using document fragment
-function displayResults() {
+function displayResults(results) {
 	const fragment = document.createDocumentFragment();
 	results.features.forEach(function(state, index) {
 		const attributes = state.attributes;
