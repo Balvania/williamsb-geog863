@@ -318,10 +318,9 @@ require([
 	    const stateChoice = target.getAttribute("ST_ABBREV");
 	    console.log("user selected " + resultId + ": " + ST_ABBREV);
 
-	   // const result = resultId && graphics && graphics[parseInt(resultId,
-	   //   10)];
+	   	const result = resultId[parseInt(resultId, 10)];
 
-	    if (resultId) {
+	    if (result) {
 	    	console.log("made it here - result is true");
 	      /*view.popup.open({
 	        features: [result],
