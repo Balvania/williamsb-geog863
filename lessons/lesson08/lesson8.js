@@ -32,7 +32,8 @@ require([
   //declare state variable
   var state; //needed?
 
-  var stateSelect = document.getElementById("list_states");
+  const stateSelect = document.getElementById("list_states");
+  //const listNode = document.getElementById("list_states");
 
   var queryStates = document.getElementById("query_states"); //this was a button, needed?
 
@@ -52,7 +53,7 @@ require([
     zoom: 3
   });
 
- // const listNode = document.getElementById("list_states");
+
 
 
 /*Generational data fields:
@@ -182,6 +183,7 @@ require([
   
 
   map.add(countyLyr);  //this should now display the entire country I think
+  console.log("the map of the full country should now be displayed.");
 
   //query county layer
   view 
@@ -192,17 +194,21 @@ require([
 	}); 
   })
   	.then(getValues)
+  	console.log("getValues function is complete")
   	.then(getUniqueValues)
-  	.then(addToSelect)
-  	.then(createBuffer);
+  	console.log("getUniqueValues function is complete")
+  	.then(displayResults)
+  	console.log("displayResults function is complete");
+  //	.then(addToSelect)
+  //	.then(createBuffer);
 
 //return an array of all the values in the ST_ABBREV field of the county layer
 function getValues(response) {
 	var features = response.features;
 	var values = features.map(function (feature) {
 		return features.attributes.ST_ABBREV;
-		console.log("The getValues function returned " + features);
 	});
+	console.log("The getValues function returned " + values);
 	return values;
 }
 
@@ -218,9 +224,32 @@ function getUniqueValues(values) {
 			uniqueValues.push(item);
 		}
 	});
+	console.log("The getUniqueValues function returned " + uniqueValues)
 	return uniqueValues;
 }
 
+//display a list of states using document fragment
+function displayResults(uniqueValues) {
+	const fragment = document.createDocumentFragment();
+	results.features.forEach(function(state, index) {
+		const attributes = state.attributes;
+		const name = attributes.ST_ABBREV;
+
+		const li = document.createElement("li");
+		li.classList.add("panel-result");
+		li.tabIndex = 0;
+		li.setAttribute("list_states", index);
+		li.textContent = name;
+
+		fragment.appendChild(li);
+
+	});
+
+	stateSelect.innerHTML = "";
+	stateSelect.appendChild(fragment);
+}
+
+/* HOLD ON THIS
 // add the unique values to the list of States
 function addToSelect(values) {
 	values.sort();
@@ -253,6 +282,7 @@ function getStateExtent() {
 			view.goTo(response.extent);
 		});
 }
+*/
 
 /*** I don't think I need this
  *  get all the geometries of the county layer
