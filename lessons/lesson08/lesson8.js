@@ -316,9 +316,10 @@ require([
 	    const target = event.target;
 	    const resultId = target.getAttribute("list_states");
 	   // const stateChoice = target.getAttribute("ST_ABBREV");
-	   // console.log("user selected " + resultId + ": " + ST_ABBREV);
+	    console.log("user selected " + resultId );
 
 	   	const result = resultId[parseInt(resultId, 10)];
+	   	console.log("result value is " + result);
 
 	    if (result) {
 	    	console.log("made it here - result is true");
