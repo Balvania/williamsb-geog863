@@ -347,9 +347,9 @@ require([
 	    	countyLyr.when(() => {
 	    		return countyLyr.queryFeatures(newStateQuery);
 	    	})
-	    	.then((response)) => {
+	    	.then((response) => {
 	    		view.goTo(response.extent);
-	    	};
+	    	});
 	    }
 	};
 
