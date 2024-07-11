@@ -337,13 +337,12 @@ require([
 
 	    if (getState) {
 	    	console.log("made it here - result is true");
+	    	countyLyr.color("black");
 	    	const newStateQuery = new Query({
 	    		where: "ST_ABBREV = '" + getState + "'",
 	    		returnGeometry: true
 	    	});
-	 //	  	countyLyr.when(function () {
-	 //   		countyLyr.queryFeatures(newStateQuery).then(displayResults);
-	 //   	});
+
 	    	console.log("query is " + newStateQuery);
 	    	console.log("getState value is " + getState);
 	    	countyLyr.when(() => {
