@@ -330,14 +330,14 @@ require([
 	    const getState = target.textContent;
 	   // const stateChoice = target.getAttribute("ST_ABBREV");
 	    console.log("user selected " + resultId + ": " + getState);
-
+	    map.removeAllLayers();
 	   	// don't know if I need this
 	   	const result = resultId[parseInt(resultId, 10)];
 	   	console.log("result value is " + result);
 
 	    if (getState) {
 	    	console.log("made it here - result is true");
-	    	map.removeAllLayers();
+	    	view.removeAllLayers();
 	    	const newCountyLayer = new FeatureLayer({
 	    		portalItem: { 
 	      			id: "959588e62d854f588b3ae97c0c86f890"
