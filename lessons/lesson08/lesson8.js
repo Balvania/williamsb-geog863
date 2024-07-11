@@ -20,7 +20,7 @@ require([
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend",
   "esri/PopupTemplate",
-  "esri/rest/support/Query"
+  "esri/rest/support/Query",
   "esri/widgets/Home"
   ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query, Home) => {
 
