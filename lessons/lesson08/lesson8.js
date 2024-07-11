@@ -229,7 +229,7 @@ function getUniqueValues(values) {
 	return uniqueValues;
 } */
 
-//display a list of states using document fragment
+//display a list of states using document fragment - WORKING FINALLY
 function displayResults(results) {
 	const fragment = document.createDocumentFragment();
 	results.features.forEach(function(state, index) {
@@ -241,7 +241,6 @@ function displayResults(results) {
 		li.tabIndex = 0;
 		li.setAttribute("list_states", index);
 		li.textContent = name;
-		console.log("name is " + name);
 
 		fragment.appendChild(li);
 
@@ -250,6 +249,8 @@ function displayResults(results) {
 	stateSelect.innerHTML = "";
 	stateSelect.appendChild(fragment);
 }
+
+
 
 /* HOLD ON THIS
 // add the unique values to the list of States
@@ -309,6 +310,25 @@ stateSelect.addEventListener("change", function() {
 	setStateDefinitionExpression(type).then()
 })
 
+stateSelect.addEventListener("click", onListClickHandler);
+
+function onListClickHandler(event) {   
+    const target = event.target;
+    const resultId = target.getAttribute("list_states");
+    console.log("user selected " + resultId);
+
+   // const result = resultId && graphics && graphics[parseInt(resultId,
+   //   10)];
+
+    if (resultId) {
+    	console.log("made it here - result is true");
+      /*view.popup.open({
+        features: [result],
+        location: result.geometry.centroid
+      }); */
+    }
+  }
+});
 
 
   //after layer is loaded, add zoom to extent of user's State selection
