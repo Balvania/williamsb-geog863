@@ -30,7 +30,6 @@ require([
 		//declare state variable
 		var state; 
 
-		//var queryStates = document.getElementById("query_states"); 
 
 		const map = new Map({
 			basemap: "dark-gray-vector",
@@ -56,14 +55,15 @@ require([
 		const stateSelect = document.getElementById("list_states");
 
 
-		/*Generational data fields:
-		OLDRGENSCY - Silent & Greatest Generations (born 1945 or earlier)
-		BABYBOOMCY - Baby Boomer (born 1946 to 1964)
-		GENX_CY - Generation X (born 1965 to 1980)
-		MILLENN_CY - Millennial (born 1981 to 1998)
-		GENZ_CY - Generation Z (born 1999 to 2016)
-		GENALPHACY - Generation Alpha (born 2017 or later)
-		*/
+		/*********************************
+		 * Generational data fields:
+			OLDRGENSCY - Silent & Greatest Generations (born 1945 or earlier)
+			BABYBOOMCY - Baby Boomer (born 1946 to 1964)
+			GENX_CY - Generation X (born 1965 to 1980)
+			MILLENN_CY - Millennial (born 1981 to 1998)
+			GENZ_CY - Generation Z (born 1999 to 2016)
+			GENALPHACY - Generation Alpha (born 2017 or later)
+		**********************************/
 
 		// Create popup template for county layer
 		const template = {
@@ -180,7 +180,11 @@ require([
 
 		map.add(countyLyr);  //displays full country
 
-		//query county layer to generate a list of unique state values in the data set
+		/****************************************
+		 * Pull list of unique state values from feature layer
+		 * then display in sidebar panel
+		 ****************************************/
+
 		countyLyr.when(function() {
 			const stateQuery = new Query({
 				where: "ST_ABBREV is not null",
@@ -192,8 +196,6 @@ require([
 			countyLyr.queryFeatures(stateQuery).then(displayResults);
 		})
 
-
-		//display the unique state list using document fragment 
 		function displayResults(results) {
 			const fragment = document.createDocumentFragment();
 			results.features.forEach(function(state, index) {
@@ -212,6 +214,10 @@ require([
 			stateSelect.appendChild(fragment);
 		}
 
+		/****************************************
+		 * Event Listener for click on State list
+		 * Zoom to extent of chosen State
+		 ****************************************/
 
 		stateSelect.addEventListener("click", onListClickHandler);
 
@@ -219,80 +225,34 @@ require([
 			const target = event.target;
 			const resultId = target.getAttribute("list_states");
 			const getState = target.textContent;
-			// const stateChoice = target.getAttribute("ST_ABBREV");
 			console.log("user selected " + resultId + ": " + getState);
-			//   map.removeAllLayers();
-			// don't know if I need this
-			//const result = resultId[parseInt(resultId, 10)];
-			//console.log("result value is " + result);
 
 			if (getState) {
-			console.log("made it here - result is true");
-			const newStateQuery = new Query({
-			where: "ST_ABBREV = '" + getState + "'",
-			returnGeometry: true
-			});
-
-			console.log("query is " + newStateQuery);
-			console.log("getState value is " + getState);
-			countyLyr.when(() => {
-			return countyLyr.queryExtent(newStateQuery);
-			})
-			.then((response) => {
-			view.goTo(response.extent);
-			});
+				const newStateQuery = new Query({
+					where: "ST_ABBREV = '" + getState + "'",
+					returnGeometry: true
+				});
+				countyLyr.when(() => {
+					return countyLyr.queryExtent(newStateQuery);
+				})
+				.then((response) => {
+					view.goTo(response.extent);
+				});
 			}
 		};
 
-/*
-	    if (getState) {
-	    	console.log("made it here - result is true");
-	    	view.removeAllLayers();
-	    	const newCountyLayer = new FeatureLayer({
-	    		portalItem: { 
-	      			id: "959588e62d854f588b3ae97c0c86f890"
-	    		},
-				definitionExpression: "ST_ABBREV = '" + getState + "'",
-	    		renderer: countyRenderer,      
-	    		popupTemplate: template
-	  		}); 
 
+		/****************************************
+		 * Add legend
+		 ****************************************/
+		const legend = new Legend({
+			view: view,
+			layerInfos: [{
+				layer: countyLyr,
+				title: "Gen X Population by County (born 1965 to 1980)"
+			}]
+		});
 
-	    	const newStateQuery = new Query({
-	    		where: "ST_ABBREV = '" + getState + "'",
-	    		returnGeometry: true
-	    	});
-
-
-	    	console.log("getState value is " + getState);
-	    	newCountyLyr.when(() => {
-	    		return newCountyLyr.queryExtent();
-	    	})
-	    	.then((response) => {
-	    		view.goTo(response.extent);
-	    	});
-	    }
-	};
-
-
-	  //after layer is loaded, add zoom to extent of user's State selection
-	  /*countyLyr.when(() => 
-	  {
-	    return countyLyr.queryExtent();
-	  })
-	  .then((response) => 
-	  {
-	    view.goTo(response.extent);
-	  }); **/
-	  
-	  const legend = new Legend({
-	    view: view,
-	    layerInfos: [{
-	      layer: countyLyr,
-	      title: "Gen X Population by County (born 1965 to 1980)"
-	    }]
-	  });
-
-	  view.ui.add(legend, "bottom-left");  
+		view.ui.add(legend, "bottom-left");  
   
 });
