@@ -94,8 +94,9 @@
 		
 		#demographics th {
 		  padding-top: 12px;
-		  text-align: right;
-		  font-weight: normal;
+		  text-align: center;
+		  font-size: 14px;
+		  font-weight: bold;
 		  color: black;
 		  vertical-align: bottom;
 		}
@@ -140,16 +141,16 @@
 				<td style="color:rebeccapurple;font-weight:bold;"><a href="https://experience.arcgis.com/experience/28f240d0c0534e408f9e98725e686d5f/">Lesson 1</a></td>
 			</tr>
 			<tr>
-				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lesson 2 </td>
+				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;Lesson 2 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">Create a Collection Bin Field Map</td>
 				<td style="color:rebeccapurple;font-weight:bold;">Lesson 2 - TBD</td>
 			</tr>
 			<tr>
-				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lesson 3 </td>
+				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;Lesson 3 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">Recreate Text Document - Census.gov</td>
 				<td style="color:rebeccapurple;font-weight:bold;"><a href="/lessons/lesson03/lesson3.html">Lesson 3</a></td>
 			<tr>
-				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lesson 4 </td>
+				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;Lesson 4 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">
 					Part I: Create an online map centered on my hometown<br/><br/>
 					Part II: Display a popup window when user clicks hometowm marker<br/><br/>
@@ -162,7 +163,7 @@
 					<a href="https://codepen.io/Balvania/pen/XWwemXX">Lesson 4 Part III</a></td>
 			</tr>
 			<tr>
-				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lesson 6 </td>
+				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;Lesson 6 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">
 					A historical view of earthquakes 1970-2009<br/>
 					Display an ArcGIS Server data service using ClassBreaksRenderer<br/><br/>
@@ -175,13 +176,22 @@
 					<a href="/lessons/lesson06/lesson6.html">Lesson 6</a></td>
 			</tr>
 			<tr>
-				<td style="color:rebeccapurple;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lesson 7 </td>
+				<td style="color:rebeccapurple;font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;Lesson 7 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">
 					Generational Demographics by U.S. County<br/><br/>
 					<em>Lesson 7 Reflection:  This map of U.S. County demographics presents the % population of generation Gen X. Before the map displays, the user is prompted to enter a State abbreviation. The map then zooms to the extent of the user-selected State and displays the % population of Gen X by county using a diverging color ramp. When the user clicks on a county, a popup window displays the name of the country with the Gen X % population, as well as the quantities of other generations within the county. Refreshing the map allows the user to enter another State to view. <br/>To calculate the population percentage, I set the primary field in the renderer to GENX_CY (Gen X population) and set TOTPOP_CY (total population) as the normalization field which accurately produced the result I needed. Using normalization to generate this value seemed more succinct than valueExpression and I’m curious to know which is the preferred method. I wanted to display the % population result in the popup window and tried searching for ways to capture the normalization result within the renderer but I wasn’t able to find a solution. Instead, I set the expressionInfo property to an Arcade expression within the popup template to recalculate the % population. Initially this did not work for me because I was trying to use a Round(), when I removed the Round() it calculated the % population accurately and I could then validate that the county data against the legend categories. This was the most difficult aspect of the assignment for me. Displaying the % population in the popup was not a requirement, but I felt it added useful information for the user, in addition to helping me test my results. Finally, I used the simplest form of query, a definitionExpression, to put the user’s State selection in a SQL statement within FeatureLayer. <br/>This was a challenging assignment and I really enjoyed working on it. I am getting much more comfortable with the process of using the ArcGIS REST Services Directory and generating the portal ID. I did not include any error handling, if I were continuing to work on this assignment I would validate the user’s entry and redisplay the prompt() window allowing them to immediately re-enter versus refreshing the page. I would also like to figure out a way to display the other generational population data within the popup window to dynamically sort from highest population to lowest.   </em> 
 				</td>
 				<td style="color:rebeccapurple;font-weight:bold;">
 					<a href="/lessons/lesson07/lesson7.html">Lesson 7</a></td>
+			</tr>
+			<tr>
+				<td style="color:rebeccapurple;font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;Lesson 8 </td>
+				<td style="color:rebeccapurple;font-weight:normal;">
+					Generational Demographics by U.S. County<br/><br/>
+					<em>Lesson 8 adds multiple UI features to the map content from lesson 7.</em> 
+				</td>
+				<td style="color:rebeccapurple;font-weight:bold;">
+					<a href="/lessons/lesson08/lesson8.html">Lesson 8</a></td>
 			</tr>
 		</table>
 		<div style="margin-left:50px;">
