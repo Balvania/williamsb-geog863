@@ -86,7 +86,10 @@
 		  padding: 2px;
 		}
 
-		#demographics tr td:first-child {text-align:left}
+		#demographics tr td:first-child {
+			padding-bottom: 2px;
+			text-align:left;
+		}
 		    
 		#demographics tr:nth-child(even){background-color: #f2f2f2;}
 		
@@ -131,24 +134,24 @@
 	
 		<table id="demographics">
 			<tr>
-				<th style="text-align:center;">Lesson</th>
+				<th style="text-align:center;">Lessons</th>
 				<th>Description</th>
-				<th>Link</th>
+				<th>Links</th>
 			</tr>
 			<tr>
 				<td style="color:rebeccapurple;font-size:14px;text-align: center;column-width: 200px;">Lesson 1 </td>
 				<td style="color:rebeccapurple;font-weight:normal;width: 1000px">University Explorer App for Virginia (created in ESRI Experience Builder)<br/></td>
-				<td style="color:rebeccapurple;font-size:14px;text-align: center;width: 200px"><a href="https://experience.arcgis.com/experience/28f240d0c0534e408f9e98725e686d5f/">Lesson 1</a></td>
+				<td style="color:rebeccapurple;font-size:14px;text-align: center;width: 200px"><a href="https://experience.arcgis.com/experience/28f240d0c0534e408f9e98725e686d5f/"><em>Lesson 1</em></a></td>
 			</tr>
 			<tr>
 				<td style="color:rebeccapurple;font-size:14px;text-align: center">Lesson 2 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">Create a Collection Bin Field Map<br/></td>
-				<td style="color:rebeccapurple;font-size:14px;text-align: center;font-weight:bold;">Lesson 2 - TBD</td>
+				<td style="color:rebeccapurple;font-size:14px;text-align: center;"><em>Lesson 2 - TBD</em></td>
 			</tr>
 			<tr>
 				<td style="color:rebeccapurple;font-size:14px;text-align: center">Lesson 3 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">Recreate Text Document - Census.gov<br/></td>
-				<td style="color:rebeccapurple;font-size:14px;text-align: center;font-weight:bold;"><a href="/lessons/lesson03/lesson3.html">Lesson 3</a></td>
+				<td style="color:rebeccapurple;font-size:14px;text-align: center;"><a href="/lessons/lesson03/lesson3.html"><em>Lesson 3</em></a></td>
 			<tr>
 				<td style="color:rebeccapurple;font-size:14px;text-align: center">Lesson 4 </td>
 				<td style="color:rebeccapurple;font-weight:normal;">
@@ -157,10 +160,10 @@
 					Part III: Replicate the code from Part II in CodePen<br/><br/>
 					<em>Lesson 4 Reflection: I started the week a bit behind the curve because I ran into issues setting up my website in lesson 3.  So this week I learned a lot about GitHub and the DigitalOcean App Platform and how to develop a workflow for pushing code changes to my website. Within lesson 4, I initially struggled deciding on the best way to set up my file structure within GitHub. I created a folder for lesson 4 with subfolders for Part I and Part II containing html, css, and js files. I renamed my html files as ‘lesson4_part_i.html’ and ‘lesson4_part_ii.html’ instead of index.html. I also renamed my css and js files but it caused an error running the code which was resolved when I went back to the original names of main.css and main.js. I was a bit confused why renaming these files didn’t work, I thought it was a standard practice to do this but I must have been missing something in the code.  I was also initially very confused with Part II and creating the popup window.  I tried creating a new PopupTemplate object but wasn’t able to get that to work so I rewatched the end of this week’s lecture and realized I was vastly overthinking the assignment - adding a popupTemplate property to the Graphic object was all that needed to be done. I am working on reformatting my e-portfolio page, I'm not thrilled with how it looks especially the layout of the table columns. <br/></em> 
 				</td>
-				<td style="color:rebeccapurple;font-size:14px;text-align: center;font-weight:bold;">
-					<a href="/lessons/lesson04/part_i/lesson4_part_i.html">Lesson 4 Part I</a><br/><br/>
-					<a href="/lessons/lesson04/part_ii/lesson4_part_ii.html">Lesson 4 Part II</a><br/><br/>
-					<a href="https://codepen.io/Balvania/pen/XWwemXX">Lesson 4 Part III</a></td>
+				<td style="color:rebeccapurple;font-size:14px;text-align: center;">
+					<a href="/lessons/lesson04/part_i/lesson4_part_i.html"><em>Lesson 4 Part I</em></a><br/><br/>
+					<a href="/lessons/lesson04/part_ii/lesson4_part_ii.html"><em>Lesson 4 Part II</em></a><br/><br/>
+					<a href="https://codepen.io/Balvania/pen/XWwemXX"><em>Lesson 4 Part III</em></a></td>
 			</tr>
 			<tr>
 				<td style="color:rebeccapurple;font-size:14px;text-align: center">Lesson 6 </td>
@@ -172,8 +175,8 @@
 					The popupTemplate was easy to set up with a title displayed but I ran into some difficulty the content data.  I choose to display the date the earthquake occurred, whether the earthquake triggered a tsunami,  number of deaths, number injured, and number of houses destroyed. I initially wanted to display the time the earthquake occurred but when I displayed the {DATE_} field, every location showed as occurring at 2AM. I went back to the ESRI server to view the data in ArcGIS Online Map Viewer to investigate and the DATE_ field for the dataset does incorrectly show 02:00 for every data point.  There are other date/time fields that showed the accurate times but it would involve more complex string manipulation to extract the values, they weren’t responding to the dateFormat command. So I kept the DATE_ field but used the dateFormat “long-date” which displayed a date with the corresponding day of the week but dropped the timestamp. 
 					Some of the magnitude values showed only as “4” rather than “4.0” and I wasn’t able to force the decimal value to show. The tsunami field just shows “Tsu” if a tsunami occurred, I would like to learn how to reformat that to show a yes or no value. I would also be interested to know if it is possible to not display a field in the popup window if the value is null, or perhaps to display a “0” or “none” instead of the value showing as blank. <br/></em> 
 				</td>
-				<td style="color:rebeccapurple;font-size:14px;text-align: center;font-weight:bold;">
-					<a href="/lessons/lesson06/lesson6.html">Lesson 6</a></td>
+				<td style="color:rebeccapurple;font-size:14px;text-align: center;">
+					<a href="/lessons/lesson06/lesson6.html"><em>Lesson 6</em></a></td>
 			</tr>
 			<tr>
 				<td style="color:rebeccapurple;font-size:14px;text-align: center">Lesson 7 </td>
@@ -181,8 +184,8 @@
 					Generational Demographics by U.S. County<br/><br/>
 					<em>Lesson 7 Reflection:  This map of U.S. County demographics presents the % population of generation Gen X. Before the map displays, the user is prompted to enter a State abbreviation. The map then zooms to the extent of the user-selected State and displays the % population of Gen X by county using a diverging color ramp. When the user clicks on a county, a popup window displays the name of the country with the Gen X % population, as well as the quantities of other generations within the county. Refreshing the map allows the user to enter another State to view. <br/>To calculate the population percentage, I set the primary field in the renderer to GENX_CY (Gen X population) and set TOTPOP_CY (total population) as the normalization field which accurately produced the result I needed. Using normalization to generate this value seemed more succinct than valueExpression and I’m curious to know which is the preferred method. I wanted to display the % population result in the popup window and tried searching for ways to capture the normalization result within the renderer but I wasn’t able to find a solution. Instead, I set the expressionInfo property to an Arcade expression within the popup template to recalculate the % population. Initially this did not work for me because I was trying to use a Round(), when I removed the Round() it calculated the % population accurately and I could then validate that the county data against the legend categories. This was the most difficult aspect of the assignment for me. Displaying the % population in the popup was not a requirement, but I felt it added useful information for the user, in addition to helping me test my results. Finally, I used the simplest form of query, a definitionExpression, to put the user’s State selection in a SQL statement within FeatureLayer. <br/>This was a challenging assignment and I really enjoyed working on it. I am getting much more comfortable with the process of using the ArcGIS REST Services Directory and generating the portal ID. I did not include any error handling, if I were continuing to work on this assignment I would validate the user’s entry and redisplay the prompt() window allowing them to immediately re-enter versus refreshing the page. I would also like to figure out a way to display the other generational population data within the popup window to dynamically sort from highest population to lowest.<br/> </em> 
 				</td>
-				<td style="color:rebeccapurple;font-size:14px;text-align: center;font-weight:bold;">
-					<a href="/lessons/lesson07/lesson7.html">Lesson 7</a></td>
+				<td style="color:rebeccapurple;font-size:14px;text-align: center;">
+					<a href="/lessons/lesson07/lesson7.html"><em>Lesson 7</em></a></td>
 			</tr>
 			<tr>
 				<td style="color:rebeccapurple;font-size:14px;text-align: center">Lesson 8 </td>
@@ -190,8 +193,8 @@
 					Generational Demographics by U.S. County<br/><br/>
 					<em>Lesson 8 adds multiple UI features to the map content from lesson 7.<br/></em> 
 				</td>
-				<td style="color:rebeccapurple;font-size:14px;text-align: center;font-weight:bold;">
-					<a href="/lessons/lesson08/lesson8.html">Lesson 8</a></td>
+				<td style="color:rebeccapurple;font-size:14px;text-align: center;">
+					<a href="/lessons/lesson08/lesson8.html"><em>Lesson 8</em></a></td>
 			</tr>
 		</table>
 		<div style="margin-left:50px;">
