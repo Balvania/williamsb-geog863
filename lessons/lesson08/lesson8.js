@@ -348,7 +348,7 @@ require([
 		    	console.log("query is " + newStateQuery);
 		    	console.log("getState value is " + getState);
 		    	countyLyr.when(() => {
-	    			return countyLyr.queryExtent();
+	    			return countyLyr.queryExtent(newStateQuery);
 		    	})
 		    	.then((response) => {
 		    		view.goTo(response.extent);
