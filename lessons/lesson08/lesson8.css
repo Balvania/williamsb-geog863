@@ -16,7 +16,8 @@ body,
 
 .app--header {
   font-size: 2em;
-  padding: 20px;
+  padding: 10px;
+  margin-left: 20px;
 }
 
 .panel-container {
