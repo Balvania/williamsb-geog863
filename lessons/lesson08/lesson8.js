@@ -330,11 +330,33 @@ require([
 	    const getState = target.textContent;
 	   // const stateChoice = target.getAttribute("ST_ABBREV");
 	    console.log("user selected " + resultId + ": " + getState);
-	    map.removeAllLayers();
+	 //   map.removeAllLayers();
 	   	// don't know if I need this
 	   	const result = resultId[parseInt(resultId, 10)];
 	   	console.log("result value is " + result);
 
+	    if (getState) {
+		    	console.log("made it here - result is true");
+		    	const newStateQuery = new Query({
+		    		where: "ST_ABBREV = '" + getState + "'",
+		    		returnGeometry: true
+		    	});
+		 //	  	countyLyr.when(function () {
+		 //   		countyLyr.queryFeatures(newStateQuery).then(displayResults);
+		 //   	});
+
+		    	console.log("query is " + newStateQuery);
+		    	console.log("getState value is " + getState);
+		    	countyLyr.when(() => {
+	    			return countyLyr.queryExtent();
+		    	})
+		    	.then((response) => {
+		    		view.goTo(response.extent);
+		    	});
+	    }
+	};
+
+/*
 	    if (getState) {
 	    	console.log("made it here - result is true");
 	    	view.removeAllLayers();
@@ -347,12 +369,12 @@ require([
 	    		popupTemplate: template
 	  		}); 
 
-/*
+
 	    	const newStateQuery = new Query({
 	    		where: "ST_ABBREV = '" + getState + "'",
 	    		returnGeometry: true
 	    	});
-*/
+
 
 	    	console.log("getState value is " + getState);
 	    	newCountyLyr.when(() => {
