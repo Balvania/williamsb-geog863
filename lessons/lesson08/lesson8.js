@@ -5,8 +5,10 @@
  * % Population of Gen X by county
  * EXPANDED UI
  * - add sidebar with state links
- * - state links are dynamically generated using distinct query on ST_ABBREV
+ * - state list is programmatically generated using distinct query on ST_ABBREV field
  * - clicking a state link zooms and refocuses map on state extent
+ * - clicking on a county displays an informational popup window
+ * - home button widget returns user to initial map extent
  * 
  * 
  * Created: 10 July 2024
@@ -30,6 +32,7 @@ require([
 		//declare state variable
 		var state; 
 
+		const stateSelect = document.getElementById("list_states");
 
 		const map = new Map({
 			basemap: "dark-gray-vector",
@@ -39,20 +42,23 @@ require([
 		const view = new MapView({
 			container: "viewDiv",
 			map: map,
-			center: [-105, 50],  //centered on continental U.S.
+			center: [-105, 50],  //map display centered on continental U.S.
 			zoom: 3
 		});
 
-		//did this show up? Does it work?
+		/*********************************
+		 * Add home button widget
+		 *********************************/
+
 		const homeBtn = new Home({
 		  	view: view
 		});
 
-		// Add the home button to the top left corner of the view
 		view.ui.add(homeBtn, "top-left");
 
 
-		const stateSelect = document.getElementById("list_states");
+
+		//const stateSelect = document.getElementById("list_states");
 
 
 		/*********************************
