@@ -212,13 +212,6 @@ require([
 			stateSelect.appendChild(fragment);
 		}
 
-		// am I using this?
-		//set a new definition expression on the county layer
-		// and add zoom to extent of user's State selection
-		//stateSelect.addEventListener("change", function() {
-		//	var type = event.target.value;
-		//	setStateDefinitionExpression(type).then()
-		//})
 
 		stateSelect.addEventListener("click", onListClickHandler);
 
@@ -230,8 +223,8 @@ require([
 			console.log("user selected " + resultId + ": " + getState);
 			//   map.removeAllLayers();
 			// don't know if I need this
-			const result = resultId[parseInt(resultId, 10)];
-			console.log("result value is " + result);
+			//const result = resultId[parseInt(resultId, 10)];
+			//console.log("result value is " + result);
 
 			if (getState) {
 			console.log("made it here - result is true");
