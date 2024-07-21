@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>U.S. Generations</title>
+		<link rel="stylesheet" href="finalProj.css"></link>
+		<link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+		<script src="https://js.arcgis.com/4.28/"></script>
+		<script src="finalProj.js"></script>
+	</head>
+
+	<body>
+	  	<!-- display header link to return to home page -->
+	  	<div style="margin-left: 50px;">
+	    	<h5><a href="../../index.html">[Back to home page]</a></h5>
+	  	</div>
+	  	<!-- display title of map -->
+	  	<header class="app--header">
+      		<div class="app--header-title">Elephants in Zambia: Post-Release Tracking</div>
+      		<!-- what does this search do?  -->
+      		<div class="app--header-search" id="searchDiv"></div>
+    	</header>
+
+		<!-- display sidebar panel -->
+		<div class="panel-container">
+			<div class="panel-side">
+				<h2>Select an Elephant</h2>
+				<ul id="list_states">
+					<li>Loading&hellip;</li>
+				</ul>
+			</div>
+			<!-- display map -->
+			<div class="main-map" id="viewDiv"></div> 
+		</div>
+
+	</body>
+</html>
