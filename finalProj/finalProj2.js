@@ -31,7 +31,7 @@
 			portalItem: { 
 				id: "546638e0edb84d5c9cdde04686dddb89"
 			},    
-			popupTemplate: ele_template
+			//popupTemplate: ele_template
 		});  
 
 		map.add(elephantLyr);  //displays full country
