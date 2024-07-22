@@ -35,7 +35,7 @@ require([
 		//declare state variable
 		var state; 
 
-		const stateSelect = document.getElementById("list_states");
+		const stateSelect = document.getElementById("list_elephants");
 
 		const map = new Map({
 			basemap: "dark-gray-vector",
@@ -61,7 +61,7 @@ require([
 
 
 
-		//const stateSelect = document.getElementById("list_states");
+		//const stateSelect = document.getElementById("list_elephants");
 
 
 		/*********************************
@@ -214,7 +214,7 @@ require([
 				const li = document.createElement("li");
 				li.classList.add("panel-result");
 				li.tabIndex = 0;
-				li.setAttribute("list_states", index);
+				li.setAttribute("list_elephants", index);
 				li.textContent = name;
 
 				fragment.appendChild(li);
@@ -232,7 +232,7 @@ require([
 
 		function onListClickHandler(event) {   
 			const target = event.target;
-			const resultId = target.getAttribute("list_states");
+			const resultId = target.getAttribute("list_elephants");
 			const getState = target.textContent;
 			console.log("user selected " + resultId + ": " + getState);
 
