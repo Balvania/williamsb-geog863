@@ -38,7 +38,7 @@
 		const map = new Map({
 			basemap: "dark-gray-vector",
 			ground: "world-elevation",
-			layers: [layer]
+		//	layers: [layer]
 		});
 
 		const view = new MapView({
