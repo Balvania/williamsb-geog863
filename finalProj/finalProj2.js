@@ -29,7 +29,7 @@
     	// portal ID for elephant dataset
 		const elephantLyr = new FeatureLayer({
 			portalItem: { 
-				id: "546638e0edb84d5c9cdde04686dddb89"
+				id: "4e1b261719ca421b9555ee6eb99bab8c"
 			},    
 			//popupTemplate: ele_template
 		});  
