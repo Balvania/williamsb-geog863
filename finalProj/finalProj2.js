@@ -34,8 +34,6 @@
 			//popupTemplate: ele_template
 		});  
 
-		map.add(elephantLyr);  //displays full country
-
 
 		const map = new Map({
 			basemap: "dark-gray-vector",
@@ -49,6 +47,8 @@
 			zoom: 4,
 			center: [-100, 30]
 		});
+
+		map.add(elephantLyr);  //displays full country
 
 		// time slider widget initialization
 		const timeSlider = new TimeSlider({
