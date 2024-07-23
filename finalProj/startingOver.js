@@ -159,7 +159,7 @@ require([
   
 	  const elephantLyr = new FeatureLayer({
 	    portalItem: { 
-	      id: "4e1b261719ca421b9555ee6eb99bab8c"
+	      id: "789d3d55be9d4ffca4abbbc59397670f"
 	    },
 	    renderer: elephantRenderer
 	  });
