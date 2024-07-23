@@ -13,19 +13,24 @@
  * 
  * Created: 10 July 2024
  ****************************************************************************/
+  
+
+  
+
 
 require([
   "esri/Map",
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
-  "esri/renderers/ClassBreaksRenderer",
+  "esri/renderers/SimpleRenderer",
+  "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/SimpleFillSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend",
   "esri/PopupTemplate",
   "esri/rest/support/Query",
   "esri/widgets/Home"
-  ], (Map, MapView, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query, Home) => {
+  ], (Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query, Home) => {
 
 
 		//declare state variable
@@ -56,8 +61,6 @@ require([
 		view.ui.add(homeBtn, "top-left");
 
 
-
-		//const stateSelect = document.getElementById("list_states");
 
 
 		/*********************************
@@ -141,55 +144,33 @@ require([
 		};  
 
 
-		// Create renderer to display the Gen X % population, normalized by the Total Population field
-		const countyRenderer = new ClassBreaksRenderer({
-			field: "GENX_CY", // total Generation X (born 1965 to 1980)
-			normalizationField: "TOTPOP_CY",  // total Population
-			legendOptions: {
-			  title: "% Population (per 2018 Census)"   
-			}
-		});
 
+	  // *** Adding elephant layer *** //
+	  const elephantSym = new SimpleMarkerSymbol({
+	    color: "yellow",
+	    style: "square",
+	    size: 12    
+	  });
+  
+  
+	  const elephantRenderer = new SimpleRenderer({
+	    symbol: elephantSym  // uses a SimpleMarkerSymbol
+	  });
+  
+	  const elephantLyr = new FeatureLayer({
+	    portalItem: { 
+	      id: "4e1b261719ca421b9555ee6eb99bab8c"
+	    },
+	    renderer: elephantRenderer
+	  });
 
-		const addClass = function(min, max, clr, lbl, renderer) {
-			renderer.addClassBreakInfo({
-				minValue: min,
-				maxValue: max,
-				symbol: new SimpleFillSymbol({
-					color: clr,
-					outline: {   
-						color: "black",
-						size: 1
-					},
-					style: "solid"
-				}),
-				label: lbl
-			})      
-		};
-
-		addClass(0, 0.1, "#a6611a", "Less than 10%", countyRenderer);
-		addClass(0.100001, 0.15, "#d8b365", "10-15%", countyRenderer);
-		addClass(0.150001, 0.20, "#c7eae5", "15-20%", countyRenderer);
-		addClass(0.200001, 0.25, "#5ab4ac", "20-25%", countyRenderer);
-		addClass(0.250001, 1.0, "#01665e", "Over 25%", countyRenderer);
-
-
-		// portal ID for GenX census data 
-		const countyLyr = new FeatureLayer({
-			portalItem: { 
-				id: "959588e62d854f588b3ae97c0c86f890"
-			},
-			renderer: countyRenderer,      
-			popupTemplate: template
-		});  
-
-		map.add(countyLyr);  //displays full country
+		map.add(elephantLyr);  //displays full elephant dataset
 
 		/****************************************
 		 * Pull list of unique state values from feature layer
 		 * then display in sidebar panel
 		 ****************************************/
-
+/*
 		countyLyr.when(function() {
 			const stateQuery = new Query({
 				where: "ST_ABBREV is not null",
@@ -224,6 +205,8 @@ require([
 		 * Zoom to extent of chosen State
 		 ****************************************/
 
+		/*
+
 		stateSelect.addEventListener("click", onListClickHandler);
 
 		function onListClickHandler(event) {   
@@ -253,8 +236,8 @@ require([
 		const legend = new Legend({
 			view: view,
 			layerInfos: [{
-				layer: countyLyr,
-				title: "Gen X Population by County (born 1965 to 1980)"
+				layer: elephantLyr,
+				title: "Elephants"
 			}]
 		});
 
