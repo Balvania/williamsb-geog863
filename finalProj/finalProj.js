@@ -231,7 +231,7 @@ require([
 		function onListClickHandler(event) {   
 			const target = event.target;
 			const resultId = target.getAttribute("list_elephants");
-			const getState = target.textContent;
+			const getElephant = target.textContent;
 			console.log("user selected " + resultId + ": " + getElephant);
 
 			if (getElephant) {
