@@ -35,7 +35,9 @@ require([
   
   const cityLyr = new FeatureLayer({
     portalItem: { 
-      id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
+      //id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
+      //change to elephant layer
+      id: "4e1b261719ca421b9555ee6eb99bab8c"
     },
     renderer: cityRenderer
   });
