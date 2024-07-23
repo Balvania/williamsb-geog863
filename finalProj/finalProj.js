@@ -17,25 +17,51 @@
  * Created: 25 July 2024
  ****************************************************************************/
 
+
+
+      require(["esri/views/MapView", "esri/WebMap"], (MapView, WebMap) => {
+        /************************************************************
+         * Creates a new WebMap instance. A WebMap must reference
+         * a PortalItem ID that represents a WebMap saved to
+         * arcgis.com or an on-premise portal.
+         *
+         * To load a WebMap from an on-premise portal, set the portal
+         * url with esriConfig.portalUrl.
+         ************************************************************/
+        const webmap = new WebMap({
+          portalItem: {
+            // autocasts as new PortalItem()
+            id: "308ffdb179d8436cbea544eed95b6d46"
+          }
+        });
+
+        /************************************************************
+         * Set the WebMap instance to the map property in a MapView.
+         ************************************************************/
+        const view = new MapView({
+          map: webmap,
+          container: "viewDiv"
+        });
+      });
+
+
 require([
   "esri/Map",
   "esri/views/MapView",
-  "esri/widgets/Search",
   "esri/layers/FeatureLayer",
-  "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/SimpleFillSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/widgets/Legend",
   "esri/PopupTemplate",
   "esri/rest/support/Query",
   "esri/widgets/Home"
-  ], (Map, MapView, Search, FeatureLayer, ClassBreaksRenderer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query, Home) => {
+  ], (Map, MapView, FeatureLayer, SimpleFillSymbol, SimpleLineSymbol, Legend, PopupTemplate, Query, Home) => {
 
 
-		//declare state variable
-		var state; 
+		//declare elephant variable
+		var elephant; 
 
-		const stateSelect = document.getElementById("list_elephants");
+		const elephantSelect = document.getElementById("list_elephants");
 
 		const map = new Map({
 			basemap: "dark-gray-vector",
@@ -74,7 +100,7 @@ require([
 			GENALPHACY - Generation Alpha (born 2017 or later)
 		**********************************/
 
-		// Create popup template for county layer
+		/* Create popup template for county layer
 		const template = {
 			title: "{NAME}, {ST_ABBREV}: {expression/genXpercent}% Gen X",
 			content: [
@@ -176,40 +202,40 @@ require([
 		addClass(0.150001, 0.20, "#c7eae5", "15-20%", countyRenderer);
 		addClass(0.200001, 0.25, "#5ab4ac", "20-25%", countyRenderer);
 		addClass(0.250001, 1.0, "#01665e", "Over 25%", countyRenderer);
-
+*/
 
 		// portal ID for GenX census data 
-		const countyLyr = new FeatureLayer({
+		const elephantLyr = new FeatureLayer({
 			portalItem: { 
-				id: "959588e62d854f588b3ae97c0c86f890"
-			},
-			renderer: countyRenderer,      
-			popupTemplate: template
+				id: "4e1b261719ca421b9555ee6eb99bab8c"
+			}
+			//renderer: countyRenderer,      
+			//popupTemplate: template
 		});  
 
-		map.add(countyLyr);  //displays full country
+		map.add(elephantLyr);  //displays full country
 
 		/****************************************
 		 * Pull list of unique state values from feature layer
 		 * then display in sidebar panel
 		 ****************************************/
 
-		countyLyr.when(function() {
-			const stateQuery = new Query({
-				where: "ST_ABBREV is not null",
-				orderByFields: ["ST_ABBREV"],
+		elephantLyr.when(function() {
+			const elephantQry = new Query({
+				where: "ElephantName is not null",
+				orderByFields: ["ElephantName"],
 				returnGeometry: false,
 				returnDistinctValues: true,
-				outFields: ["ST_ABBREV"]
+				outFields: ["ElephantName"]
 			});
-			countyLyr.queryFeatures(stateQuery).then(displayResults);
+			elephantLyr.queryFeatures(elephantQry).then(displayResults);
 		})
 
 		function displayResults(results) {
 			const fragment = document.createDocumentFragment();
-			results.features.forEach(function(state, index) {
-				const attributes = state.attributes;
-				const name = attributes.ST_ABBREV;
+			results.features.forEach(function(elephant, index) {
+				const attributes = elephant.attributes;
+				const name = attributes.elephantName;
 
 				const li = document.createElement("li");
 				li.classList.add("panel-result");
@@ -219,8 +245,8 @@ require([
 
 				fragment.appendChild(li);
 			});
-			stateSelect.innerHTML = "";
-			stateSelect.appendChild(fragment);
+			elephantSelect.innerHTML = "";
+			elephantSelect.appendChild(fragment);
 		}
 
 		/****************************************
@@ -228,21 +254,21 @@ require([
 		 * Zoom to extent of chosen State
 		 ****************************************/
 
-		stateSelect.addEventListener("click", onListClickHandler);
+		elephantSelect.addEventListener("click", onListClickHandler);
 
 		function onListClickHandler(event) {   
 			const target = event.target;
 			const resultId = target.getAttribute("list_elephants");
 			const getState = target.textContent;
-			console.log("user selected " + resultId + ": " + getState);
+			console.log("user selected " + resultId + ": " + getElephant);
 
-			if (getState) {
-				const newStateQuery = new Query({
-					where: "ST_ABBREV = '" + getState + "'",
+			if (getElephant) {
+				const newElephantQuery = new Query({
+					where: "elephantName = '" + getElephant + "'",
 					returnGeometry: true
 				});
-				countyLyr.when(() => {
-					return countyLyr.queryExtent(newStateQuery);
+				elephantLyr.when(() => {
+					return elephantLyr.queryExtent(newElephantQuery);
 				})
 				.then((response) => {
 					view.goTo(response.extent);
@@ -257,8 +283,8 @@ require([
 		const legend = new Legend({
 			view: view,
 			layerInfos: [{
-				layer: countyLyr,
-				title: "Gen X Population by County (born 1965 to 1980)"
+				layer: elephantLyr,
+				title: "Elephants"
 			}]
 		});
 
