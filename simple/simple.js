@@ -18,7 +18,7 @@ require([
     container: "viewDiv",
     map: map,
     zoom: 8,
-    center: [-15.6, 28.28]
+    center: [28.28,-15.6]
   });
   
   // *** Adding cities layer *** //
