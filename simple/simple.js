@@ -11,14 +11,14 @@ require([
 ], (Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol) => {
 
   const map = new Map({
-    basemap: "satellite"
+    basemap: "dark-gray-vector"
   });
 
   const view = new MapView({
     container: "viewDiv",
     map: map,
     zoom: 8,
-    center: [-77.5, 40.5]
+    center: [-15.6, 28.28]
   });
   
   // *** Adding cities layer *** //
@@ -43,49 +43,8 @@ require([
   });
 
   
-  // *** Adding interstates layer *** //
-  const hwySym = new SimpleLineSymbol({
-    color: "linen",
-    style: "solid",
-    width: 2,
-    opacity: 0.5    
-  });
-  
-  const hwyRenderer = new SimpleRenderer({
-    symbol: hwySym    
-  });
-  
-  const hwyLyr = new FeatureLayer({
-    portalItem: { 
-      id: "b2b9d6856d0742eba55a636c32c94201"
-    },
-    renderer: hwyRenderer      
-  });
   
   
-  // *** Adding counties layer *** //
-  const countyOlSym = new SimpleLineSymbol({
-    style: "dash"    
-  });
-  
-  const countySym = new SimpleFillSymbol({
-    color: "gray",
-    style: "solid",
-    outline: countyOlSym
-  });
-  
-  const countyRenderer = new SimpleRenderer({
-    symbol: countySym    
-  });
-  
-  const countyLyr = new FeatureLayer({
-    portalItem: { 
-      id: "0875e77a2ff54dd689e169d7798d0905"
-    },
-    renderer: countyRenderer,
-    opacity: 0.5
-  });  
-  
-  map.addMany([countyLyr, hwyLyr, cityLyr]);
+  map.add(cityLyr);
   
 });
