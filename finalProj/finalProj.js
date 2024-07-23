@@ -17,34 +17,6 @@
  * Created: 25 July 2024
  ****************************************************************************/
 
-
-
-      require(["esri/views/MapView", "esri/WebMap"], (MapView, WebMap) => {
-        /************************************************************
-         * Creates a new WebMap instance. A WebMap must reference
-         * a PortalItem ID that represents a WebMap saved to
-         * arcgis.com or an on-premise portal.
-         *
-         * To load a WebMap from an on-premise portal, set the portal
-         * url with esriConfig.portalUrl.
-         ************************************************************/
-        const webmap = new WebMap({
-          portalItem: {
-            // autocasts as new PortalItem()
-            id: "308ffdb179d8436cbea544eed95b6d46"
-          }
-        });
-
-        /************************************************************
-         * Set the WebMap instance to the map property in a MapView.
-         ************************************************************/
-        const view = new MapView({
-          map: webmap,
-          container: "viewDiv"
-        });
-      });
-
-
 require([
   "esri/Map",
   "esri/views/MapView",
@@ -70,9 +42,9 @@ require([
 
 		const view = new MapView({
 			container: "viewDiv",
-			map: map,
-			center: [-105, 50],  //map display centered on continental U.S.
-			zoom: 3
+			map: map
+			//center: [-105, 50],  //map display centered on continental U.S.
+			//zoom: 3
 		});
 
 		/*********************************
