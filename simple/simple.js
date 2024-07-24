@@ -11,7 +11,7 @@ require([
   "esri/symbols/SimpleFillSymbol"
 ], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol) => {
 
-  esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOrQjYVHt-Q-X36zFGJpK-F7M6lOtbAUffWRWqjBUjaGO88DXhX8wk5HC-qqzmWwGbuDRSHA33WEZDJZwcD7dZClo6RJ7EfmwLRkvLxeduV5d1Ix9YB2JJKcvSR1pLp8T7ofAJK9Cl0-uHgqrz-u8HQ0W-xnHLKaZ-yhuPNdcw40dxQnL-fy7jSE0zBA133MQGioKVBUySA8mfcgacykgEU4AT1_0iCT7va8";
+ // esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOrQjYVHt-Q-X36zFGJpK-F7M6lOtbAUffWRWqjBUjaGO88DXhX8wk5HC-qqzmWwGbuDRSHA33WEZDJZwcD7dZClo6RJ7EfmwLRkvLxeduV5d1Ix9YB2JJKcvSR1pLp8T7ofAJK9Cl0-uHgqrz-u8HQ0W-xnHLKaZ-yhuPNdcw40dxQnL-fy7jSE0zBA133MQGioKVBUySA8mfcgacykgEU4AT1_0iCT7va8";
 
   const map = new Map({
     basemap: "dark-gray-vector"
