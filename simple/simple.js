@@ -248,6 +248,7 @@ require([
 		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
 		},
 		renderer: elephantRenderer,
+		effect: "bloom(2.5 0 0.5)",
 		popupTemplate: template
 	});
   
