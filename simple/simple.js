@@ -135,17 +135,6 @@ require([
 
 
 
-/*
-	const elephantLyr = new FeatureLayer({
-		portalItem: { 
-		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
-		},
-		renderer: elephantRenderer,
-		popupTemplate: template
-	});
-
-	*/
-
 	const map = new Map({
 		basemap: "dark-gray-vector"
 	});
@@ -242,6 +231,7 @@ require([
         }]
     });
 
+/*
   const elephantLyr = new FeatureLayer({
       portalItem: {
         id: "d43cea74de224770a8bedbd58b770cb2"
@@ -251,7 +241,15 @@ require([
       renderer: elephantRenderer,
       effect: "bloom(2.5 0 0.5)"
     });
+*/
 
+	const elephantLyr = new FeatureLayer({
+		portalItem: { 
+		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
+		},
+		renderer: elephantRenderer,
+		popupTemplate: template
+	});
   
 	map.add(elephantLyr);
 
