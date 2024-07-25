@@ -126,8 +126,9 @@ require([
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
   "esri/widgets/Legend",
+  "esri/widgets/Home",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PopupTemplate) => {
+], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, Home, PopupTemplate) => {
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 	const map = new Map({
@@ -141,6 +142,18 @@ require([
 		center: [25.89,-15.73]  //-15.733302, 25.894230
 	});
   
+
+	/*********************************
+	* Add home button widget
+	*********************************/
+
+	const homeBtn = new Home({
+		view: view
+	});
+
+	view.ui.add(homeBtn, "top-left");
+
+
 	// Create popup template for elephant layer
 	const template = {
 		title: "{ElephantName} - {TimeStamp_orig}",
@@ -166,7 +179,6 @@ require([
 		size: 12    
 	});
 
-
 	//Renders each elephant data point using two visual variables:
 	//  Color - indicates a unique elephant 
 	//  Size - indicates speed 
@@ -180,7 +192,7 @@ require([
 			type: "size",
 			field: "Speed_km_h",
 			minDataValue: 1,
-			maxDataValue: 5,
+			maxDataValue: 7,
 			minSize: {
 				type: "size",
 				valueExpression: "$view.scale",
