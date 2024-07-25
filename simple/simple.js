@@ -28,18 +28,18 @@ require([
   
 	// Create popup template for elephant layer
 	const template = {
-		title: "{ElephantName}: {TimeStamp_orig}",
+		title: "{ElephantName} - {TimeStamp_orig}",
 		content: [
 		{
 		  type: "text",
 		  text: 
-		    "day vs night: {Day_Night_ind}<br/>" +
-		    "ID: {Tag}<br/>" +
+		    "{Tag}<br/><br/>" +
+		    "day/night indicator: {Day_Night_ind}<br/>" +
 		    "speed: {Speed}<br/>" +
 		    "temp: {Temperature}<br/>" +
-		    "accelerometer: {Accelerometer}<br/>" +
-		    "coverage (retries): {Coverage} ({Retries})<br/>" +
-		    "tracker: {Type}, sw ver. {SWVer}",
+		    "accelerometer: {Accelerometer}<br/><br/>" +
+		    "tracker: {Type}, sw ver. {SWVer}" +
+		    "coverage (retries): {Coverage} ({Retries})<br/>",
 		}]
 	};  
 
@@ -77,7 +77,7 @@ require([
 		view: view,
 		layerInfos: [{
 			layer: elephantLyr,
-			title: "Post-Release Data Tracking (May-Sept 2023))"
+			title: "GRI Post-Release Data (May-Sept 202))"
 		}]
 	});
 
