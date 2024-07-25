@@ -9,8 +9,9 @@ require([
   "esri/symbols/PictureMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
+  "esri/widgets/Legend",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, PopupTemplate) => {
+], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PopupTemplate) => {
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOrQjYVHt-Q-X36zFGJpK-F7M6lOtbAUffWRWqjBUjaGO88DXhX8wk5HC-qqzmWwGbuDRSHA33WEZDJZwcD7dZClo6RJ7EfmwLRkvLxeduV5d1Ix9YB2JJKcvSR1pLp8T7ofAJK9Cl0-uHgqrz-u8HQ0W-xnHLKaZ-yhuPNdcw40dxQnL-fy7jSE0zBA133MQGioKVBUySA8mfcgacykgEU4AT1_0iCT7va8";
 
@@ -43,30 +44,43 @@ require([
 	};  
 
 
-  // *** Adding elephant layer *** //
-  const elephantSym = new SimpleMarkerSymbol({
-    color: "yellow",
-    style: "square",
-    size: 12    
-  });
+	// *** Adding elephant layer *** //
+	const elephantSym = new SimpleMarkerSymbol({
+		color: "yellow",
+		style: "square",
+		size: 12    
+	});
+
+
+	const elephantRenderer = new SimpleRenderer({
+		symbol: elephantSym  // uses a SimpleMarkerSymbol
+	});
   
+	const elephantLyr = new FeatureLayer({
+		portalItem: { 
+		  //id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
+		  //change to elephant layer
+		  //id: "4e1b261719ca421b9555ee6eb99bab8c"
+		  //id: "63256713fc3e4e26aefd2f21d342f64a" //using the updated layer ID of [0]
+		  id: "e0e2d4f92fbd47e3bf6db3b4ee6ec002"//ID at sapfira.maps.arcgis.com
+		},
+		renderer: elephantRenderer,
+		popupTemplate: template
+	});
   
-  const elephantRenderer = new SimpleRenderer({
-    symbol: elephantSym  // uses a SimpleMarkerSymbol
-  });
-  
-  const elephantLyr = new FeatureLayer({
-    portalItem: { 
-      //id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
-      //change to elephant layer
-      //id: "4e1b261719ca421b9555ee6eb99bab8c"
-      //id: "63256713fc3e4e26aefd2f21d342f64a" //using the updated layer ID of [0]
-      id: "e0e2d4f92fbd47e3bf6db3b4ee6ec002"//ID at sapfira.maps.arcgis.com
-    },
-    renderer: elephantRenderer,
-    PopupTemplate: template
-  });
-  
-  map.add(elephantLyr);
+	map.add(elephantLyr);
+
+	/****************************************
+	* Add legend
+	****************************************/
+	const legend = new Legend({
+		view: view,
+		layerInfos: [{
+			layer: elephantLyr,
+			title: "Post-Release Data Tracking (May-Sept 2023))"
+		}]
+	});
+
+	view.ui.add(legend, "bottom-left");  
   
 });
