@@ -129,8 +129,7 @@ require([
   "esri/PopupTemplate"
 ], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PopupTemplate) => {
 
- 	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOrQjYVHt-Q-X36zFGJpK-F7M6lOtbAUffWRWqjBUjaGO88DXhX8wk5HC-qqzmWwGbuDRSHA33WEZDJZwcD7dZClo6RJ7EfmwLRkvLxeduV5d1Ix9YB2JJKcvSR1pLp8T7ofAJK9Cl0-uHgqrz-u8HQ0W-xnHLKaZ-yhuPNdcw40dxQnL-fy7jSE0zBA133MQGioKVBUySA8mfcgacykgEU4AT1_0iCT7va8";
-
+ 	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 	const map = new Map({
 		basemap: "dark-gray-vector"
 	});
@@ -179,9 +178,9 @@ require([
 		visualVariables: [
 		{
 			type: "size",
-			field: "Speed",
+			field: "Speed_km_h",
 			minDataValue: 0,
-			maxDataValue: 7,
+			maxDataValue: 5,
 			minSize: {
 				type: "size",
 				valueExpression: "$view.scale",
@@ -223,7 +222,7 @@ require([
 		  //change to elephant layer
 		  //id: "4e1b261719ca421b9555ee6eb99bab8c"
 		  //id: "63256713fc3e4e26aefd2f21d342f64a" //using the updated layer ID of [0]
-		  id: "e0e2d4f92fbd47e3bf6db3b4ee6ec002"//ID at sapfira.maps.arcgis.com
+		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
 		},
 		renderer: elephantRenderer,
 		popupTemplate: template
@@ -238,7 +237,7 @@ require([
 		view: view,
 		layerInfos: [{
 			layer: elephantLyr,
-			title: "GRI Post-Release Data (May-Sept 202))"
+			title: "GRI Post-Release Data (May-Sept 2023)"
 		}]
 	});
 
