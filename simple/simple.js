@@ -8,22 +8,41 @@ require([
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/PictureMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
-  "esri/symbols/SimpleFillSymbol"
-], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol) => {
+  "esri/symbols/SimpleFillSymbol",
+  "esri/PopupTemplate"
+], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, PopupTemplate) => {
 
  // esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOrQjYVHt-Q-X36zFGJpK-F7M6lOtbAUffWRWqjBUjaGO88DXhX8wk5HC-qqzmWwGbuDRSHA33WEZDJZwcD7dZClo6RJ7EfmwLRkvLxeduV5d1Ix9YB2JJKcvSR1pLp8T7ofAJK9Cl0-uHgqrz-u8HQ0W-xnHLKaZ-yhuPNdcw40dxQnL-fy7jSE0zBA133MQGioKVBUySA8mfcgacykgEU4AT1_0iCT7va8";
 
-  const map = new Map({
-    basemap: "dark-gray-vector"
-  });
+	const map = new Map({
+		basemap: "dark-gray-vector"
+	});
 
-  const view = new MapView({
-    container: "viewDiv",
-    map: map,
-    zoom: 9,
-    center: [25.89,-15.73]  //-15.733302, 25.894230
-  });
+	const view = new MapView({
+		container: "viewDiv",
+		map: map,
+		zoom: 9,
+		center: [25.89,-15.73]  //-15.733302, 25.894230
+	});
   
+	// Create popup template for elephant layer
+	const template = {
+		title: "{ElephantName}: {TimeStamp_orig}",
+		content: [
+		{
+		  type: "text",
+		  text: 
+		    "day vs night: {Day_Night_ind}<br/>" +
+		    "ID: {Tag}<br/>" +
+		    "speed: {Speed}<br/>" +
+		    "temp: {Temperature}<br/>" +
+		    "accelerometer: {Accelerometer}<br/>" +
+		    "coverage (retries): {Coverage} ({Retries})<br/>" +
+		    "tracker: {Type}, sw ver. {SWVer}",
+		}]
+	};  
+
+
   // *** Adding elephant layer *** //
   const elephantSym = new SimpleMarkerSymbol({
     color: "yellow",
@@ -44,7 +63,8 @@ require([
       //id: "63256713fc3e4e26aefd2f21d342f64a" //using the updated layer ID of [0]
       id: "e0e2d4f92fbd47e3bf6db3b4ee6ec002"//ID at sapfira.maps.arcgis.com
     },
-    renderer: elephantRenderer
+    renderer: elephantRenderer,
+    PopupTemplate: template
   });
   
   map.add(elephantLyr);
