@@ -139,7 +139,7 @@ require([
           },
           title: "Elephant Data",
           minScale: 72223.819286,
-          renderer: elephantRenderer,
+         // renderer: elephantRenderer,
           effect: "bloom(2.5 0 0.5)"
         });
 
