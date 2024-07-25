@@ -211,9 +211,10 @@ require([
             stops: [
                 { value: 20, color: "#2b83ba" },
                 { value: 35, color: "#abdda4" },
-                { value: 50, color: "#ffffbf" },
-		}  
-	});
+                { value: 50, color: "#ffffbf" }
+            ]
+        }]
+    });
 
   
 	const elephantLyr = new FeatureLayer({
