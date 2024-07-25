@@ -251,7 +251,7 @@ require([
     });
 
   
-
+	elephantLyr.renderer = elephantRenderer;
   
 	map.add(elephantLyr);
 
