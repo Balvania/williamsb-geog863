@@ -192,7 +192,7 @@ require([
 					{value: referenceScale*4, size: 4},
 					{value: referenceScale*8, size: 2}
 				]
-			}
+			},
 			maxSize: {
 				type: "size",
 				valueExpression: "$view.scale",
