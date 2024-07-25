@@ -179,7 +179,7 @@ require([
 		{
 			type: "size",
 			field: "Speed_km_h",
-			minDataValue: 0,
+			minDataValue: 1,
 			maxDataValue: 5,
 			minSize: {
 				type: "size",
