@@ -127,10 +127,33 @@ require([
   "esri/symbols/SimpleFillSymbol",
   "esri/widgets/Legend",
   "esri/widgets/Home",
+  "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, Home, PopupTemplate) => {
+], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, Home, Slider, PopupTemplate) => {
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
+
+    const elephantLyr = new FeatureLayer({
+          portalItem: {
+            id: "d43cea74de224770a8bedbd58b770cb2"
+          },
+          title: "Elephant Data",
+          minScale: 72223.819286,
+          renderer: elephantRenderer,
+          effect: "bloom(2.5 0 0.5)"
+        });
+
+/*
+	const elephantLyr = new FeatureLayer({
+		portalItem: { 
+		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
+		},
+		renderer: elephantRenderer,
+		popupTemplate: template
+	});
+
+	*/
+
 	const map = new Map({
 		basemap: "dark-gray-vector"
 	});
@@ -141,7 +164,7 @@ require([
 		zoom: 9,
 		center: [25.89,-15.73]  //-15.733302, 25.894230
 	});
-  
+
 
 	/*********************************
 	* Add home button widget
@@ -228,17 +251,7 @@ require([
     });
 
   
-	const elephantLyr = new FeatureLayer({
-		portalItem: { 
-		  //id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
-		  //change to elephant layer
-		  //id: "4e1b261719ca421b9555ee6eb99bab8c"
-		  //id: "63256713fc3e4e26aefd2f21d342f64a" //using the updated layer ID of [0]
-		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
-		},
-		renderer: elephantRenderer,
-		popupTemplate: template
-	});
+
   
 	map.add(elephantLyr);
 
