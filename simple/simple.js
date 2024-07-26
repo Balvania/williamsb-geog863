@@ -147,12 +147,34 @@ require([
 		center: [25.89,-15.73]  //-15.733302, 25.894230 Kafue National Park release facility
 	});
 
+
+
+
+
+	// Create a time slider to update layerView filter
+	const timeSlider = new TimeSlider({
+		container: "timeSlider",
+		mode: "instant",
+		timeVisible: true, // show the time stamps on the timeslider
+		loop: true
+	});
+	view.ui.add(timeSlider, "manual");
+
+
+
+
+
+
+
+
 	/*********************************
 	* Initialize time slider widget
-	*********************************/
+	*********************************
     const timeSlider = new TimeSlider({
         container: "timeSlider",
         view: view,
+        mode: "instant",
+
         timeVisible: true, // show the time stamps on the timeslider
         loop: true
     });
@@ -264,7 +286,35 @@ require([
   
 	map.add(elephantLyr);
 
-	view.whenLayerView(elephantLyr).then((lv) => {
+		// wait until the layer view is loaded
+	let timeLayerView;
+	view.whenLayerView(elephantLyr).then((layerView) => {
+		timeLayerView = layerView;
+		const fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
+		const end = fullTimeExtent.start;
+
+		// set up time slider properties based on layer timeInfo
+		timeSlider.fullTimeExtent = fullTimeExtent;
+		timeSlider.timeExtent = {
+			start: null,
+			end: end
+		};
+		timeSlider.stops = {
+			interval: elephantLyr.timeInfo.interval
+		};
+	});
+
+	reactiveUtils.watch(
+	  () => timeSlider.timeExtent,
+	  (value) => {
+	    // update layer view filter to reflect current timeExtent
+	    timeLayerView.filter = {
+	      timeExtent: value
+	    };
+	  }
+	);
+
+	/*view.whenLayerView(elephantLyr).then((lv) => {
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
         timeSlider.stops = {
