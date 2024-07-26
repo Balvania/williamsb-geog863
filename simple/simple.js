@@ -180,7 +180,7 @@ require([
 	const elephantSym = new SimpleMarkerSymbol({
 		color: "white",
 		style: "circle",
-		size: 7    
+		size: 2    
 	});
 
 	//Renders each elephant data point using two visual variables:
