@@ -125,11 +125,12 @@ require([
   "esri/symbols/PictureMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
+  "esri/widgets/TimeSlider",
   "esri/widgets/Legend",
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, Legend, Home, Slider, PopupTemplate) => {
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 
@@ -143,14 +144,22 @@ require([
 		container: "viewDiv",
 		map: map,
 		zoom: 9,
-		center: [25.89,-15.73]  //-15.733302, 25.894230
+		center: [25.89,-15.73]  //-15.733302, 25.894230 Kafue National Park release facility
 	});
 
+	/*********************************
+	* Initialize time slider widget
+	*********************************/
+    const timeSlider = new TimeSlider({
+        container: "timeSlider",
+        view: view,
+        timeVisible: true, // show the time stamps on the timeslider
+        loop: true
+    });
 
 	/*********************************
 	* Add home button widget
 	*********************************/
-
 	const homeBtn = new Home({
 		view: view
 	});
@@ -254,6 +263,14 @@ require([
 	});
   
 	map.add(elephantLyr);
+
+	view.whenLayerView(elephantLyr).then((lv) => {
+        // around up the full time extent to full hour
+        timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
+        timeSlider.stops = {
+          interval: elephantLyr.timeInfo.interval
+        };
+    });
 
 	/****************************************
 	* Add legend
