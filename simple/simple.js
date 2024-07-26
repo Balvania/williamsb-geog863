@@ -180,7 +180,7 @@ require([
 	const elephantSym = new SimpleMarkerSymbol({
 		color: "white",
 		style: "circle",
-		size: 12    
+		size: 7    
 	});
 
 	//Renders each elephant data point using two visual variables:
@@ -224,9 +224,9 @@ require([
 			type: "color",
             field: "ElephantName",
             stops: [
-                { value: 20, color: "#2b83ba" },
-                { value: 35, color: "#abdda4" },
-                { value: 50, color: "#ffffbf" }
+                { value: "Batoka", color: "#2b83ba" },
+                { value: "Chamma", color: "#abdda4" },
+                { value: "Tafika", color: "#ffffbf" }
             ]
         }]
     });
@@ -247,6 +247,7 @@ require([
 		portalItem: { 
 		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
 		},
+		title: "Elephant Data",
 		renderer: elephantRenderer,
 		effect: "bloom(2.5 0 0.5)",
 		popupTemplate: template
