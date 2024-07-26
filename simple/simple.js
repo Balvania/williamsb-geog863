@@ -187,7 +187,7 @@ require([
 	//  Color - indicates a unique elephant 
 	//  Size - indicates speed 
 
-	const referenceScale = 9244650;
+	const referenceScale = 1244650;
 
 	const elephantRenderer = new SimpleRenderer({
 		symbol: elephantSym,   // uses a SimpleMarkerSymbol
