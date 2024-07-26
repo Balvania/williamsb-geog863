@@ -213,9 +213,9 @@ require([
 				valueExpression: "$view.scale",
 				// adjust the max size by scale
 				stops: [
-					{value: referenceScale, size: 40},
-					{value: referenceScale*2, size: 30},
-					{value: referenceScale*4, size: 20},
+					{value: referenceScale, size: 25},
+					{value: referenceScale*2, size: 20},
+					{value: referenceScale*4, size: 15},
 					{value: referenceScale*8, size: 10}
 				]
 			}
