@@ -49,12 +49,12 @@
         container: "timeSlider",
      //   view: view,		//this shows only points included in time view
         mode: "time-window",
-        //timeExtent: {
+        timeExtent: {
 		  //  start: new Date(2023, 5, 24),
 		  //  end: new Date(2023, 5, 25)
-		  //  start: new Date("5/24/2023"),
-		  //  end: new Date("5/25/2023")
-		//},
+		    start: new Date("5/24/2023"),
+		    end: new Date("5/25/2023")
+		},
         timeVisible: true, // show the time stamps on the timeslider
         playRate: 1000,
         loop: true,
@@ -85,12 +85,12 @@
       view.whenLayerView(elephantLyr).then((lv) => {
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
-        timeSlider.timeExtent = {
+        //timeSlider.timeExtent = {
         //	start: timeSlider.fullTimeExtent.start,
         //	end: timeSlider.fullTimeExtent.start
-        	start: new Day("05/24/2023"),
-        	end: new Day("05/25/2023")
-        };
+        //	start: new Day("05/24/2023"),
+        //	end: new Day("05/25/2023")
+        //};
         timeSlider.stops = {
 	        interval: {
 	          	value: 1,
