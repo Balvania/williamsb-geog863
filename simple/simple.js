@@ -128,11 +128,12 @@ require([
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
   "esri/widgets/TimeSlider",
+  "esri/TimeInterval"
   "esri/widgets/Legend",
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, promiseUtils, reactiveUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, Map, MapView, FeatureLayer, promiseUtils, reactiveUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 
@@ -296,6 +297,9 @@ require([
 	});
   
 	map.add(elephantLyr);
+
+	const interval = elephantLyr.timeInfo.interval;
+	console.log("The layer's time interval is ", interval.value, " ", interval.unit);
 
 	/****************************************
 	* Add legend
