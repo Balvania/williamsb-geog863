@@ -305,7 +305,7 @@ require([
 		}]
 	});
 
-	view.ui.add(legend, "top");  
+	view.ui.add(legend, "top-left");  
 
 	// wait until the layer view is loaded
 	let timeLayerView;
