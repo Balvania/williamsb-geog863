@@ -162,7 +162,7 @@
 
       timeSlider.set({
 		  loop: true,
-		  playRate: 50
+		  playRate: 2000
 	  });
 	  timeSlider.play();
 
