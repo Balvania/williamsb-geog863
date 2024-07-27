@@ -1,4 +1,5 @@
     require([
+      "esri/config",
       "esri/Map",
       "esri/views/MapView",
       "esri/layers/FeatureLayer",
@@ -7,6 +8,7 @@
       "esri/widgets/Legend",
       "esri/widgets/TimeZoneLabel"
     ], (
+        esriConfig,
         Map,
         MapView,
         FeatureLayer,
