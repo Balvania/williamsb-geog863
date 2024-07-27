@@ -75,7 +75,7 @@
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
         timeSlider.timeExtent = {
-        	start: null,
+        	start: timeSlider.fullTimeExtent.start,
         	end: timeSlider.fullTimeExtent.start
         };
         timeSlider.stops = {
