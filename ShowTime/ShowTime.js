@@ -87,8 +87,8 @@
         };
         timeSlider.stops = {
 		    interval: {
-	          	value: 1,
-	          	unit: "days"
+	          	value: 4,
+	          	unit: "hours"
 	      	} 
       	};
       });
