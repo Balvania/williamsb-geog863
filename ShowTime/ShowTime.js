@@ -48,7 +48,7 @@
         timeVisible: true, // show the time stamps on the timeslider
         loop: true
       });
-    //  view.ui.add(timeSlider);
+      view.ui.add(timeSlider);
 
 
       	/*********************************
