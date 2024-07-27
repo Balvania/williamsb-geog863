@@ -120,6 +120,7 @@ require([
   "esri/Map",
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
+  "esri/core/promiseUtils",
   "esri/renderers/SimpleRenderer",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/PictureMarkerSymbol",
@@ -130,11 +131,13 @@ require([
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, Legend, Home, Slider, PopupTemplate) => {
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 
-
+	/*********************************
+	* Setup Map 
+	*********************************/
 
 	const map = new Map({
 		basemap: "dark-gray-vector"
@@ -150,6 +153,9 @@ require([
 
 
 
+	/*********************************
+	* Initialize time slider widget
+	*********************************/
 
 	// Create a time slider to update layerView filter
 	const timeSlider = new TimeSlider({
@@ -158,11 +164,7 @@ require([
 		timeVisible: true, // show the time stamps on the timeslider
 		loop: true
 	});
-	view.ui.add(timeSlider, "manual");
-
-
-
-
+	view.ui.add(timeSlider, "manual"); //what does the manual do?
 
 
 
@@ -182,6 +184,7 @@ require([
 	/*********************************
 	* Add home button widget
 	*********************************/
+
 	const homeBtn = new Home({
 		view: view
 	});
@@ -189,7 +192,10 @@ require([
 	view.ui.add(homeBtn, "top-left");
 
 
-	// Create popup template for elephant layer
+	/*********************************
+	* Create popup template for elephant layer
+	*********************************/
+
 	const template = {
 		title: "{ElephantName} - {TimeStamp_orig}",
 		content: [
@@ -206,8 +212,10 @@ require([
 		}]
 	};  
 
+	/*********************************
+	* Add elephant layer 
+	*********************************/
 
-	// *** Adding elephant layer *** //
 	const elephantSym = new SimpleMarkerSymbol({
 		color: "white",
 		style: "circle",
@@ -286,7 +294,7 @@ require([
   
 	map.add(elephantLyr);
 
-		// wait until the layer view is loaded
+	// wait until the layer view is loaded
 	let timeLayerView;
 	view.whenLayerView(elephantLyr).then((layerView) => {
 		timeLayerView = layerView;
@@ -314,7 +322,8 @@ require([
 	  }
 	);
 
-	/*view.whenLayerView(elephantLyr).then((lv) => {
+	/*
+	view.whenLayerView(elephantLyr).then((lv) => {
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
         timeSlider.stops = {
@@ -333,6 +342,6 @@ require([
 		}]
 	});
 
-	view.ui.add(legend, "bottom-left");  
+	view.ui.add(legend, "left");  
   
 });
