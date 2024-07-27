@@ -294,6 +294,19 @@ require([
   
 	map.add(elephantLyr);
 
+	/****************************************
+	* Add legend
+	****************************************/
+	const legend = new Legend({
+		view: view,
+		layerInfos: [{
+			layer: elephantLyr,
+			title: "GRI Post-Release Data (May-Sept 2023)"
+		}]
+	});
+
+	view.ui.add(legend, "top-right");  
+
 	// wait until the layer view is loaded
 	let timeLayerView;
 	view.whenLayerView(elephantLyr).then((layerView) => {
@@ -331,17 +344,6 @@ require([
         };
     });
 
-	/****************************************
-	* Add legend
-	****************************************/
-	const legend = new Legend({
-		view: view,
-		layerInfos: [{
-			layer: elephantLyr,
-			title: "GRI Post-Release Data (May-Sept 2023)"
-		}]
-	});
 
-	view.ui.add(legend, "left");  
   
 });
