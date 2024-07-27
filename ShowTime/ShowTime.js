@@ -42,7 +42,7 @@
         map: map,
         container: "viewDiv",
         zoom: 11,
-        center: [25.89,-15.73]
+        center: [25.97,-15.89]
       });
 
 
