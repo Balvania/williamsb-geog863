@@ -330,7 +330,7 @@ require([
 	view.ui.add(legend, "top-left");  
 
 
-
+/*
 	reactiveUtils.watch(
 	  () => timeSlider.timeExtent,
 	  (value) => {
@@ -340,6 +340,7 @@ require([
 	    };
 	  }
 	);
+	*/
 	
 
 	//console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
