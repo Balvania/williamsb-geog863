@@ -167,7 +167,7 @@ require([
 		timeVisible: true, // show the time stamps on the timeslider
 		loop: true
 	});
-	view.ui.add(timeSlider, "manual"); //what does the manual do?
+	view.ui.add(timeSlider); //what does the manual do?
 
 
 
