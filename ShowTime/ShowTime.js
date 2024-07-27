@@ -83,12 +83,14 @@
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
         timeSlider.timeExtent = {
-        	start: timeSlider.fullTimeExtent.start,
-        	end: timeSlider.fullTimeExtent.start
+        //	start: timeSlider.fullTimeExtent.start,
+        //	end: timeSlider.fullTimeExtent.start
+        	start: new Day("05/24/2023 00:01:00"),
+        	end: new Day("05/25/2023 00:00:59")
         };
-       // timeSlider.stops = {
-       //   interval: elephantLyr.timeInfo.interval
-       // };
+        timeSlider.stops = {
+          interval: elephantLyr.timeInfo.interval
+        };
       });
 
 
