@@ -54,6 +54,7 @@
 		    //end: new Date("5/25/2023")
 		//},
         timeVisible: true, // show the time stamps on the timeslider
+        playRate: 2000,
         loop: true
       });
       view.ui.add(timeSlider);
@@ -90,7 +91,7 @@
         };
         timeSlider.stops = {
           interval: 1,
-          units: "esriTimeUnitsHours"
+          units: "hours"
         };
       });
 
@@ -162,7 +163,6 @@
 
       timeSlider.set({
 		  loop: true,
-		  stops: 1,
 		  playRate: 2000
 	  });
 	  timeSlider.play();
