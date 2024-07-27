@@ -319,7 +319,7 @@ require([
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
         timeSlider.timeExtent = {
         	start: null,
-        	end: fullTimeExtent.start
+        	end: timeSlider.fullTimeExtent.start
         }
         //timeSlider.stops = {
         //  interval: elephantLyr.timeInfo.interval
