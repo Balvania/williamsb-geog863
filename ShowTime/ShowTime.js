@@ -52,7 +52,7 @@
         view: view,		//this shows only points included in time view
         mode: "time-window",
         timeVisible: true, // show the time stamps on the timeslider
-        playRate: 1000,
+        playRate: 500,
         loop: true,
       });
       view.ui.add(timeSlider);
@@ -87,7 +87,7 @@
         };
         timeSlider.stops = {
 		    interval: {
-	          	value: 4,
+	          	value: 1,
 	          	unit: "hours"
 	      	} 
       	};
