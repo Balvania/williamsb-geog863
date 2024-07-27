@@ -298,8 +298,6 @@ require([
   
 	map.add(elephantLyr);
 
-	const interval = elephantLyr.timeInfo.interval;
-	console.log("The layer's time interval is ", interval.value, " ", interval.unit);
 
 	/****************************************
 	* Add legend
@@ -330,6 +328,7 @@ require([
         	interval: {
         		value: 1,
         		unit: "days"
+				console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
         	}
         };
       });
