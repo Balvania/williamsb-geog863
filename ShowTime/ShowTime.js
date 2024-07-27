@@ -35,9 +35,10 @@
       const view = new MapView({
         map: map,
         container: "viewDiv",
-        zoom: 4,
-        center: [-100, 30]
+        zoom: 9,
+        center: [25.89,-15.73]
       });
+
 
       // time slider widget initialization
       const timeSlider = new TimeSlider({
