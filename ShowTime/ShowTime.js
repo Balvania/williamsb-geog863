@@ -89,7 +89,8 @@
         	end: new Day("05/25/2023 00:00:59")
         };
         timeSlider.stops = {
-          interval: elephantLyr.timeInfo.interval
+          interval: 1,
+          units: "esriTimeUnitsDays"
         };
       });
 
