@@ -90,7 +90,7 @@
         };
         timeSlider.stops = {
           interval: 1,
-          units: "esriTimeUnitsDays"
+          units: "esriTimeUnitsHours"
         };
       });
 
