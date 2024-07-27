@@ -312,8 +312,10 @@ require([
 
 
 	//try this instead
-	 view.whenLayerView(elephantLyr).then((lv) => {
+	let timeLayerView;
+	 view.whenLayerView(elephantLyr).then((layerView) => {
         // around up the full time extent to full hour
+        timeLayerView = layerView;
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
         timeSlider.stops = {
           interval: elephantLyr.timeInfo.interval
