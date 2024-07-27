@@ -330,6 +330,14 @@ require([
 	view.ui.add(legend, "top-left");  
 
 
+	timeSlider.play();
+
+	reactiveUtils.watch(
+	  () => timeSlider.timeExtent,
+	  (timeExtent) => {
+	    console.log("Time extent now starts at", timeExtent.start, "and finishes at:", timeExtent.end);
+	  }
+	);
 /*
 	reactiveUtils.watch(
 	  () => timeSlider.timeExtent,
