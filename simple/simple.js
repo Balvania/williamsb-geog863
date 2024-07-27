@@ -327,6 +327,19 @@ require([
 		};
 	});
 
+	// Display the current state of the view model.
+	switch (timeSlider.viewModel.state) {
+	  case "disabled":
+	    console.log("The view is not ready or some property are not set.");
+	    break;
+	  case "ready":
+	    console.log("The time slider is ready for use.");
+	    break;
+	  case "playing":
+	    console.log("The time slider is currently animating.");
+	    break;
+	}
+
 /*
 	reactiveUtils.watch(
 	  () => timeSlider.timeExtent,
