@@ -128,7 +128,7 @@ require([
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
   "esri/widgets/TimeSlider",
-  "esri/TimeInterval"
+  "esri/TimeInterval",
   "esri/widgets/Legend",
   "esri/widgets/Home",
   "esri/widgets/Slider",
