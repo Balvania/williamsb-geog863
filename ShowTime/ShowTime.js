@@ -1,5 +1,6 @@
     require([
       "esri/config",
+      "esri/core/reactiveUtils",
       "esri/Map",
       "esri/views/MapView",
       "esri/layers/FeatureLayer",
@@ -9,6 +10,7 @@
       "esri/widgets/TimeZoneLabel"
     ], (
         esriConfig,
+        reactiveUtils,
         Map,
         MapView,
         FeatureLayer,
@@ -44,7 +46,11 @@
       const timeSlider = new TimeSlider({
         container: "timeSlider",
         view: view,
-        //mode: "instant",
+        mode: "time-window",
+        timeExtent: {
+		    start: new Date(2023, 5, 24),
+		    end: new Date(2023, 5, 25)
+		}
         timeVisible: true, // show the time stamps on the timeslider
         loop: true
       });
@@ -78,10 +84,11 @@
         	start: timeSlider.fullTimeExtent.start,
         	end: timeSlider.fullTimeExtent.start
         };
-        timeSlider.stops = {
-          interval: elephantLyr.timeInfo.interval
-        };
+       // timeSlider.stops = {
+       //   interval: elephantLyr.timeInfo.interval
+       // };
       });
+
 
 /*
       	//try this instead
@@ -118,19 +125,6 @@
 
 	//console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
 
-	// Display the current state of the view model.
-	switch (timeSlider.viewModel.state) {
-	  case "disabled":
-	    console.log("The view is not ready or some property are not set.");
-	    break;
-	  case "ready":
-	    console.log("The time slider is ready for use.");
-	    break;
-	  case "playing":
-	    console.log("The time slider is currently animating.");
-	    break;
-	};
-
 
 
       // calcite input time zone component allows users to pick from one of the IANA
@@ -159,4 +153,20 @@
         expanded: false
       });
       view.ui.add(legendExpand, "top-left");
+
+
+      timeSlider.set({
+		  loop: true,
+		  playRate: 100
+	  });
+	  timeSlider.play();
+
+	  reactiveUtils.watch(
+		  () => timeSlider.timeExtent,
+		  (timeExtent) => {
+		    console.log("Time extent now starts at", timeExtent.start, "and finishes at:", timeExtent.end);
+		  }
+	  );
+
     });
+
