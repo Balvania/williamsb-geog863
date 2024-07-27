@@ -165,6 +165,16 @@
       view.ui.add(legendExpand, "top-left");
 
 
+      timeSlider.timeExtent = {
+    	start: new Day("05/24/2023"),
+    	end: new Day("05/25/2023")
+      };
+      timeSlider.stops = {
+	    interval: {
+          	value: 1,
+          	unit: "days"
+      	} 
+      };
 	  timeSlider.play();
 
 	  reactiveUtils.watch(
