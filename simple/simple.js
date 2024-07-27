@@ -321,9 +321,9 @@ require([
         	start: null,
         	end: fullTimeExtent.start
         }
-        timeSlider.stops = {
-          interval: elephantLyr.timeInfo.interval
-        };
+        //timeSlider.stops = {
+        //  interval: elephantLyr.timeInfo.interval
+        //};
       });
 
 
