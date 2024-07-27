@@ -56,7 +56,7 @@
         timeVisible: true, // show the time stamps on the timeslider
         playRate: 2000,
         loop: true,
-        stops = null
+        stops: null
       });
       view.ui.add(timeSlider);
 
