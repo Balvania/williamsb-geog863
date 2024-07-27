@@ -44,9 +44,28 @@
       const timeSlider = new TimeSlider({
         container: "timeSlider",
         view: view,
+        mode: "instant",
         timeVisible: true, // show the time stamps on the timeslider
         loop: true
       });
+      view.ui.add(timeSlider);
+
+
+      	/*********************************
+		* Initialize time slider widget
+		*********************************
+
+		// Create a time slider to update layerView filter
+		const timeSlider = new TimeSlider({
+			container: "timeSlider",
+			view: view,
+			mode: "instant",
+			timeVisible: true, // show the time stamps on the timeslider
+			loop: true
+		});
+		//view.ui.add(timeSlider); //what does the manual do?
+
+		*/
 
       // add the UI for a title
       view.ui.add("titleDiv", "top-right");
