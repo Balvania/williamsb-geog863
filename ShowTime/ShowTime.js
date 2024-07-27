@@ -58,9 +58,6 @@
         timeVisible: true, // show the time stamps on the timeslider
         playRate: 2000,
         loop: true,
-        stops: {
-        	count: 1
-        }
       });
       view.ui.add(timeSlider);
 
@@ -165,7 +162,12 @@
       });
       view.ui.add(legendExpand, "top-left");
 
-
+      timeSlider.stops = {
+      	interval: {
+      		value: 1,
+      		unit: "days"
+      	}
+      };
 	  timeSlider.play();
 
 	  reactiveUtils.watch(
