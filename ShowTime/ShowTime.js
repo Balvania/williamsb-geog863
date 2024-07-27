@@ -55,7 +55,8 @@
 		//},
         timeVisible: true, // show the time stamps on the timeslider
         playRate: 2000,
-        loop: true
+        loop: true,
+        stops = null
       });
       view.ui.add(timeSlider);
 
@@ -89,10 +90,10 @@
         //	start: new Day("05/24/2023"),
         //	end: new Day("05/25/2023")
        // };
-        timeSlider.stops = {
-          interval: 1,
-          units: "hours"
-        };
+       // timeSlider.stops = {
+       //   interval: 1,
+       //   units: "hours"
+       // };
       });
 
 
