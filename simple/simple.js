@@ -161,7 +161,7 @@ require([
 	const view = new MapView({
 		container: "viewDiv",
 		map: map,
-		zoom: 12,
+		zoom: 11,
 		center: [25.97,-15.89]  // Kafue National Park release area
 	});
 
@@ -227,7 +227,7 @@ require([
 	//  Color - indicates a unique elephant 
 	//  Size - indicates speed 
 
-	const referenceScale = 1244650;
+//	const referenceScale = 1244650;
 
 	const elephantRenderer = new SimpleRenderer({
 		symbol: elephantSym,   // uses a SimpleMarkerSymbol
@@ -289,7 +289,7 @@ require([
 		},
 		title: "Elephant Data",
 		renderer: elephantRenderer,
-		effect: "bloom(1 0 0)",
+		//effect: "bloom(1 0 0)",
 		popupTemplate: template
 	});
   
