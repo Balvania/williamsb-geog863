@@ -50,7 +50,7 @@
         timeExtent: {
 		    start: new Date(2023, 5, 24),
 		    end: new Date(2023, 5, 25)
-		}
+		},
         timeVisible: true, // show the time stamps on the timeslider
         loop: true
       });
