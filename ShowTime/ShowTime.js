@@ -21,7 +21,7 @@
 
       esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 
-      const layer = new FeatureLayer({
+      const elephantLyr = new FeatureLayer({
       	portalItem: { 
 		  id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
 		},
@@ -29,13 +29,13 @@
 
       const map = new Map({
         basemap: "hybrid",
-        layers: [layer]
+        layers: [elephantLyr]
       });
 
       const view = new MapView({
         map: map,
         container: "viewDiv",
-        zoom: 9,
+        zoom: 10,
         center: [25.89,-15.73]
       });
 
@@ -71,11 +71,11 @@
       view.ui.add("titleDiv", "top-right");
 
 /*
-      view.whenLayerView(layer).then((lv) => {
+      view.whenLayerView(elephantLyr).then((lv) => {
         // around up the full time extent to full hour
-        timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent.expandTo("hours");
+        timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
         timeSlider.stops = {
-          interval: layer.timeInfo.interval
+          interval: elephantLyr.timeInfo.interval
         };
       });
 */
