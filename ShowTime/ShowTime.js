@@ -162,7 +162,7 @@
 
       timeSlider.set({
 		  loop: true,
-		  stops: null,
+		  stops: 1,
 		  playRate: 2000
 	  });
 	  timeSlider.play();
