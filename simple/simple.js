@@ -163,7 +163,7 @@ require([
 	const timeSlider = new TimeSlider({
 		container: "timeSlider",
 		view: view,
-		mode: "instant",
+		//mode: "instant",
 		timeVisible: true, // show the time stamps on the timeslider
 		loop: true
 	});
