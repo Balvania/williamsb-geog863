@@ -89,7 +89,7 @@
         timeSlider.timeExtent = {
         	start: null,
         	end: timeSlider.fullTimeExtent.start
-        },
+        };
         timeSlider.stops = {
         //  interval: elephantLyr.timeInfo.interval
         	interval: {
@@ -125,6 +125,7 @@
 	  case "playing":
 	    console.log("The time slider is currently animating.");
 	    break;
+	};
 
 
 
