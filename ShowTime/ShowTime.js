@@ -89,7 +89,7 @@
         timeSlider.timeExtent = {
         	start: null,
         	end: timeSlider.fullTimeExtent.start
-        }
+        },
         timeSlider.stops = {
         //  interval: elephantLyr.timeInfo.interval
         	interval: {
