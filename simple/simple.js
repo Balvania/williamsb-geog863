@@ -327,8 +327,8 @@ require([
         //  interval: elephantLyr.timeInfo.interval
         	interval: {
         		value: 1,
-        		unit: "days"
-				console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
+        		unit: "days",
+				console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit)
         	}
         };
       });
