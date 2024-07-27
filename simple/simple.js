@@ -327,6 +327,7 @@ require([
 		};
 	});
 
+/*
 	reactiveUtils.watch(
 	  () => timeSlider.timeExtent,
 	  (value) => {
