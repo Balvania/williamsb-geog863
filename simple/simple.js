@@ -117,72 +117,69 @@
 
 require([
   "esri/config",
+  "esri/core/reactiveUtils",
   "esri/Map",
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
   "esri/core/promiseUtils",
-  "esri/core/reactiveUtils",
   "esri/renderers/SimpleRenderer",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/PictureMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
   "esri/widgets/TimeSlider",
+  "esri/widgets/TimeSlider/TimeSliderViewModel",
   "esri/TimeInterval",
   "esri/widgets/Legend",
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, promiseUtils, reactiveUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
+
+
+	/*********************************
+	* API Key token  
+	*********************************/
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 
 	/*********************************
 	* Setup Map 
 	*********************************/
+/*
+	const elephantLyr = new FeatureLayer({
+		portalItem: { 
+			id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
+		},
+	});
+	*/
 
 	const map = new Map({
-		basemap: "dark-gray-vector"
+		basemap: "dark-gray-vector"		//hybrid for day
 	});
 
 	const view = new MapView({
 		container: "viewDiv",
 		map: map,
-		zoom: 9,
-		center: [25.89,-15.73]  //-15.733302, 25.894230 Kafue National Park release facility
+		zoom: 12,
+		center: [25.97,-15.89]  // Kafue National Park release area
 	});
-
-
 
 
 	/*********************************
 	* Initialize time slider widget
 	*********************************/
 
-	// Create a time slider to update layerView filter
 	const timeSlider = new TimeSlider({
 		container: "timeSlider",
-		view: view,
-		//mode: "instant",
+		view: view,		//this shows only points included in time view
+		mode: "time-window",
 		timeVisible: true, // show the time stamps on the timeslider
-		loop: true
+		playRate: 200,
+		loop: true,
 	});
-	//view.ui.add(timeSlider); //what does the manual do?
+	view.ui.add(timeSlider);
 
-
-
-
-	/*********************************
-	* Initialize time slider widget
-	*********************************
-    const timeSlider = new TimeSlider({
-        container: "timeSlider",
-        view: view,
-        mode: "instant",
-
-        timeVisible: true, // show the time stamps on the timeslider
-        loop: true
-    });
 
 	/*********************************
 	* Add home button widget
@@ -217,7 +214,7 @@ require([
 	};  
 
 	/*********************************
-	* Add elephant layer 
+	* Add symbology for elephant layer 
 	*********************************/
 
 	const elephantSym = new SimpleMarkerSymbol({
@@ -299,6 +296,26 @@ require([
 	map.add(elephantLyr);
 
 
+
+	/****************************************
+	* Add TimeSlider displaying elephant tracking data by day
+	****************************************/
+
+	view.whenLayerView(elephantLyr).then((lv) => {
+		timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
+		timeSlider.timeExtent = {
+			start: new Date("5/24/2023"),
+			end: new Date("5/25/2023")
+		};
+		timeSlider.stops = {
+		    interval: {
+		      	value: 1,
+		      	unit: "hours"
+		  	} 
+		};
+	});
+
+
 	/****************************************
 	* Add legend
 	****************************************/
@@ -312,46 +329,6 @@ require([
 
 	view.ui.add(legend, "top-left");  
 
-
-	//try this instead
-	let timeLayerView;
-	 view.whenLayerView(elephantLyr).then((layerView) => {
-        // around up the full time extent to full hour
-        timeLayerView = layerView;
-        timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
-        timeSlider.timeExtent = {
-        	start: null,
-        	end: timeSlider.fullTimeExtent.start
-        }
-        timeSlider.stops = {
-        //  interval: elephantLyr.timeInfo.interval
-        	interval: {
-        		value: 1,
-        		unit: "days",
-        	}
-        };
-      });
-
-
-	/*/ wait until the layer view is loaded
-	let timeLayerView;
-	view.whenLayerView(elephantLyr).then((layerView) => {
-		timeLayerView = layerView;
-		const fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
-		const end = fullTimeExtent.start;
-
-		// set up time slider properties based on layer timeInfo
-		timeSlider.fullTimeExtent = fullTimeExtent;
-		timeSlider.timeExtent = {
-			start: null,
-			end: end
-		};
-		timeSlider.stops = {
-			interval: elephantLyr.timeInfo.interval
-		};
-	});
-
-	*/
 
 
 	reactiveUtils.watch(
@@ -379,14 +356,6 @@ require([
 	    console.log("The time slider is currently animating.");
 	    break;
 	}
-	/*
-	view.whenLayerView(elephantLyr).then((lv) => {
-        // around up the full time extent to full hour
-        timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
-        timeSlider.stops = {
-          interval: elephantLyr.timeInfo.interval
-        };
-    });
-    */
+
   
 });
