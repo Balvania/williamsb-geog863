@@ -49,7 +49,7 @@
         container: "timeSlider",
      //   view: view,		//this shows only points included in time view
         mode: "time-window",
-        timeExtent: {
+        //timeExtent: {
 		  //  start: new Date(2023, 5, 24),
 		  //  end: new Date(2023, 5, 25)
 		  //  start: new Date("5/24/2023"),
