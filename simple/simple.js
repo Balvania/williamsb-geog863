@@ -310,7 +310,18 @@ require([
 
 	view.ui.add(legend, "top-left");  
 
-	// wait until the layer view is loaded
+
+	//try this instead
+	 view.whenLayerView(layer).then((lv) => {
+        // around up the full time extent to full hour
+        timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
+        timeSlider.stops = {
+          interval: elephantLyr.timeInfo.interval
+        };
+      });
+
+
+	/*/ wait until the layer view is loaded
 	let timeLayerView;
 	view.whenLayerView(elephantLyr).then((layerView) => {
 		timeLayerView = layerView;
@@ -327,6 +338,8 @@ require([
 			interval: elephantLyr.timeInfo.interval
 		};
 	});
+
+	*/
 
 
 	reactiveUtils.watch(
