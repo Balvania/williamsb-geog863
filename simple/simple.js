@@ -121,6 +121,7 @@ require([
   "esri/views/MapView",
   "esri/layers/FeatureLayer",
   "esri/core/promiseUtils",
+  "esri/core/reactiveUtils",
   "esri/renderers/SimpleRenderer",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/PictureMarkerSymbol",
@@ -131,7 +132,7 @@ require([
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, Map, MapView, FeatureLayer, promiseUtils, reactiveUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, Legend, Home, Slider, PopupTemplate) => {
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 
@@ -327,6 +328,17 @@ require([
 		};
 	});
 
+
+	reactiveUtils.watch(
+	  () => timeSlider.timeExtent,
+	  (value) => {
+	    // update layer view filter to reflect current timeExtent
+	    timeLayerView.filter = {
+	      timeExtent: value
+	    };
+	  }
+	);
+
 	// Display the current state of the view model.
 	switch (timeSlider.viewModel.state) {
 	  case "disabled":
@@ -339,18 +351,6 @@ require([
 	    console.log("The time slider is currently animating.");
 	    break;
 	}
-
-/*
-	reactiveUtils.watch(
-	  () => timeSlider.timeExtent,
-	  (value) => {
-	    // update layer view filter to reflect current timeExtent
-	    timeLayerView.filter = {
-	      timeExtent: value
-	    };
-	  }
-	);
-
 	/*
 	view.whenLayerView(elephantLyr).then((lv) => {
         // around up the full time extent to full hour
