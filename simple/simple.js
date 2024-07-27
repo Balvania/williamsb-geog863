@@ -351,7 +351,7 @@ require([
 		};
 	});
 
-
+	*/
 
 
 	reactiveUtils.watch(
@@ -363,9 +363,9 @@ require([
 	    };
 	  }
 	);
-	*/
+	
 
-	console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
+	//console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
 
 	// Display the current state of the view model.
 	switch (timeSlider.viewModel.state) {
