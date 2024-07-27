@@ -70,16 +70,20 @@
       // add the UI for a title
       view.ui.add("titleDiv", "top-right");
 
-/*
+
       view.whenLayerView(elephantLyr).then((lv) => {
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
+        timeSlider.timeExtent = {
+        	start: null,
+        	end: timeSlider.fullTimeExtent.start
+        };
         timeSlider.stops = {
           interval: elephantLyr.timeInfo.interval
         };
       });
-*/
 
+/*
       	//try this instead
 	let timeLayerView;
 	 view.whenLayerView(elephantLyr).then((layerView) => {
