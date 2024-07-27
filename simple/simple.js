@@ -343,7 +343,6 @@ require([
           interval: elephantLyr.timeInfo.interval
         };
     });
-
-
+    */
   
 });
