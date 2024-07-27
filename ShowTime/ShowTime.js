@@ -5,6 +5,7 @@
       "esri/views/MapView",
       "esri/layers/FeatureLayer",
       "esri/widgets/TimeSlider",
+      "esri/widgets/TimeSlider/TimeSliderViewModel",
       "esri/TimeInterval",
       "esri/widgets/Expand",
       "esri/widgets/Legend",
@@ -16,6 +17,7 @@
         MapView,
         FeatureLayer,
         TimeSlider,
+        TimeSliderVM,
         TimeInterval,
         Expand,
         Legend,
@@ -85,12 +87,10 @@
       view.whenLayerView(elephantLyr).then((lv) => {
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent.expandTo("hours");
-        //timeSlider.timeExtent = {
-        //	start: timeSlider.fullTimeExtent.start,
-        //	end: timeSlider.fullTimeExtent.start
-        //	start: new Day("05/24/2023"),
-        //	end: new Day("05/25/2023")
-        //};
+        timeSlider.timeExtent = {
+        	start: new Day("05/24/2023"),
+        	end: new Day("05/25/2023")
+        };
         timeSlider.stops = {
 	        interval: {
 	          	value: 1,
