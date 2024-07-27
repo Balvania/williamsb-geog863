@@ -45,7 +45,7 @@
       // time slider widget initialization
       const timeSlider = new TimeSlider({
         container: "timeSlider",
-     //   view: view,
+     //   view: view,		//this shows only points included in time view
         mode: "time-window",
        // timeExtent: {
 		  //  start: new Date(2023, 5, 24),
@@ -55,7 +55,10 @@
 		//},
         timeVisible: true, // show the time stamps on the timeslider
         playRate: 2000,
-        loop: true
+        loop: true,
+        stops: {
+        	count: 1
+        }
       });
       view.ui.add(timeSlider);
 
