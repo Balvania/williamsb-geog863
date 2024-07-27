@@ -317,6 +317,10 @@ require([
         // around up the full time extent to full hour
         timeLayerView = layerView;
         timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
+        timeSlider.timeExtent = {
+        	start: null,
+        	end: fullTimeExtent.start
+        }
         timeSlider.stops = {
           interval: elephantLyr.timeInfo.interval
         };
