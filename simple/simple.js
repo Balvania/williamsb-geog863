@@ -321,9 +321,13 @@ require([
         	start: null,
         	end: timeSlider.fullTimeExtent.start
         }
-        //timeSlider.stops = {
+        timeSlider.stops = {
         //  interval: elephantLyr.timeInfo.interval
-        //};
+        	interval: {
+        		value: 1,
+        		unit: "days"
+        	}
+        };
       });
 
 
