@@ -70,7 +70,7 @@
       // add the UI for a title
       view.ui.add("titleDiv", "top-right");
 
-
+/*
       view.whenLayerView(layer).then((lv) => {
         // around up the full time extent to full hour
         timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent.expandTo("hours");
@@ -78,6 +78,53 @@
           interval: layer.timeInfo.interval
         };
       });
+*/
+
+      	//try this instead
+	let timeLayerView;
+	 view.whenLayerView(elephantLyr).then((layerView) => {
+        // around up the full time extent to full hour
+        timeLayerView = layerView;
+        timeSlider.fullTimeExtent = elephantLyr.timeInfo.fullTimeExtent;
+        timeSlider.timeExtent = {
+        	start: null,
+        	end: timeSlider.fullTimeExtent.start
+        }
+        timeSlider.stops = {
+        //  interval: elephantLyr.timeInfo.interval
+        	interval: {
+        		value: 1,
+        		unit: "days",
+        	}
+        };
+      });
+
+
+/*
+	reactiveUtils.watch(
+	  () => timeSlider.timeExtent,
+	  (value) => {
+	    // update layer view filter to reflect current timeExtent
+	    timeLayerView.filter = {
+	      timeExtent: value
+	    };
+	  }
+	);
+	*/
+
+	//console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
+
+	// Display the current state of the view model.
+	switch (timeSlider.viewModel.state) {
+	  case "disabled":
+	    console.log("The view is not ready or some property are not set.");
+	    break;
+	  case "ready":
+	    console.log("The time slider is ready for use.");
+	    break;
+	  case "playing":
+	    console.log("The time slider is currently animating.");
+	    break;
 
 
 
