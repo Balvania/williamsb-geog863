@@ -345,7 +345,7 @@ require([
 		};
 	});
 
-	*/
+
 
 
 	reactiveUtils.watch(
@@ -357,6 +357,7 @@ require([
 	    };
 	  }
 	);
+	*/
 
 	// Display the current state of the view model.
 	switch (timeSlider.viewModel.state) {
