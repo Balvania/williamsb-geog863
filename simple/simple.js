@@ -175,7 +175,7 @@ require([
 		view: view,		//this shows only points included in time view
 		mode: "time-window",
 		timeVisible: true, // show the time stamps on the timeslider
-		playRate: 200,
+		playRate: 100,
 		loop: true,
 	});
 	view.ui.add(timeSlider);
@@ -523,6 +523,7 @@ require([
 		  	} 
 		};
 	});
+
 
 
 	/****************************************
