@@ -116,12 +116,12 @@ require([
 		type: "size",
 		field: "Speed_km_h",
 		legendOptions: {
-			title: "Rate of Speed (km/h)<br/><em>increased speed is an indicator of fear</em>"
+			title: "Rate of Speed (km/h) - increased speed can be an indicator of fear"
 		},
 		minDataValue: 1,
 		maxDataValue: 8,
 		minSize: 10,
-		maxSize: 70
+		maxSize: 60
 	};
 
 /*
