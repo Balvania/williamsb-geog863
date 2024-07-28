@@ -218,8 +218,7 @@ require([
 	* This is getting crazy, just model after the earthquake code
 	*********************************/
 
-	const elephantRenderer = {
-		type: "unique-value", 	//autocasts as new UniqueValueRenderer()
+	const elephantRenderer = new UniqueValueRenderer({
 		field: "ElephantName",
 		legendOptions: {
 			title: "Elephants"
