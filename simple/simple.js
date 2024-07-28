@@ -498,7 +498,7 @@ require([
 		},
 		title: "Elephant Data",
 		renderer: elephantRenderer,
-		effect: "bloom(1 0 0)",
+		effect: "bloom(.5 0 0)",
 		popupTemplate: template
 	});
   
