@@ -10,9 +10,9 @@ body,
 
 
 #timeSlider {
-  position: relative;
+  position: absolute;
   left: 5%;
-  right: 25%;
+  right: 5%;
   bottom: 20px;
 }
 
