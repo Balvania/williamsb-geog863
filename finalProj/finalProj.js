@@ -48,7 +48,7 @@ require([
 	const view = new MapView({
 		container: "viewDiv",
 		map: map,
-		zoom: 10,
+		zoom: 11,
 		center: [25.97,-15.89]  // Kafue National Park release area
 	});
 
