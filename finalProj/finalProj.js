@@ -24,9 +24,9 @@ require([
 ], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SizeVariable, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Expand, Home, Slider, PopupTemplate) => {
 
 
-	/*********************************
-	* API Key token to access private 
-	*********************************/
+	/**************************************************
+	* API Key token to access private feature service
+	***************************************************/
 
  	esriConfig.apiKey= "AAPTxy8BH1VEsoebNVZXo8HurGXJlgk9xdfpa0TTnBcauOpVrTqXVoKQed7vZaZ5IDakouaJ3hhnz89sQuIMIe9WpsS-EJpM8e0nKXDZceXTZBg51XBG6XQ9vr4TevgRt1GEbcSHL3X-YE5Ye2UwjKZEjXvQkJyFAkQgOWvuZRqyLL7Gw4GQkYJ770XIcpKgeQ2zCpR-TX55qbg0B_ryGnOkrIfIFAkD0RUbcXedsoGFq74enAXq90mf08FNUZPiryiHAT1_0iCT7va8";
 
@@ -49,7 +49,7 @@ require([
 		container: "viewDiv",
 		map: map,
 		zoom: 11,
-		center: [25.97,-15.87]  // Kafue National Park release area
+		center: [25.97,-15.88]  // Kafue National Park release area
 	});
 
 
