@@ -289,7 +289,7 @@ require([
 
 
 	addClass("Batoka", [102,194,165,0.5]);	//RGB color values, transparent
-	addClass("Chamma", [141,160,203,0.5]);
+	addClass("Chamma", [141,160,203,0.75]);
 	addClass("Tafika", [166,216,84,0.5]);
 
 /*
