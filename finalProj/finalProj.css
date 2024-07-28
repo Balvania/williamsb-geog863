@@ -10,7 +10,7 @@ body,
 
 
 #timeSlider {
-  position: absolute;
+  position: relative;
   left: 5%;
   right: 25%;
   bottom: 20px;
