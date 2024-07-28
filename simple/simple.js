@@ -125,7 +125,6 @@ require([
   "esri/renderers/SimpleRenderer",
   "esri/renderers/UniqueValueRenderer",
   "esri/symbols/SimpleMarkerSymbol",
-  "esri/symbols/PictureMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
   "esri/widgets/TimeSlider",
@@ -135,7 +134,7 @@ require([
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
 
 
 	/*********************************
@@ -227,7 +226,7 @@ require([
 		}
 	};
 
-	const addClass = function(val, [colr], renderer) {  //passing in an array
+	const addClass = function(val, colr, renderer) {  //passing in an array
 		renderer.addUniqueValueInfo({
 			value: val,
 			symbol: new SimpleMarkerSymbol({
