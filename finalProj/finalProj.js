@@ -1,4 +1,35 @@
 
+/**************************************************************************** 
+ * GEOG863 - Final Project - Bernadette Williams
+ * Game Rangers International (GRI) Post-Release Elephant Tracking
+ * Kafue National Park, Zambia
+ * 
+ * The GRI Elephant Tracking web app displays GPS collar data for three orphan
+ * elephants (Batoka, Chamma, and Tafika) captured during the period from May to September 2023. 
+ *  
+ * - My final research topic was on Secured Content & Authentication where I
+ *   set up my own Esri hosting platform to create an API key token. I used that 
+ *   API token to provide secure access to this private feature service of GPS data.
+ * - The map initializes with a timeSlider showing a 24 hour window of data points
+ *   and is animated to loop through the full data set, then repeat.   
+ * - The user can click the pause button to stop the animation, use the forward and
+ *   back navigation buttons to step through the data.
+ * - The user can adjust the thumbs on the timeSlider to expand the time window or 
+ *   view the full data set. 
+ * - The map uses multivariate symbology to display data points in a unique color 
+ *   for each elephant and continuous size ramp representing the speed captured
+ *   by the GPS collar. Speed is an important indicator to GRI animal behaviorists
+ *   because it is indicative of a fear response rather than casual foraging behavior.
+ * - The user can expand and collapse the legend using the Legend widget
+ * - The user can click the home button widget to return to the original map extent
+ *   with  state list is programmatically generated using distinct query on ST_ABBREV field
+ * - Clicking on a data point displays an informational popup window
+ * - This web app was developed using Sublime Text editor, GitHub Desktop, and the 
+ *   Digital Ocean web hosting platform.
+ * 
+ * 
+ * Created: 28 July 2024
+ ****************************************************************************/
 
 require([
   "esri/config",
@@ -33,23 +64,16 @@ require([
 	/*********************************
 	* Setup Map 
 	*********************************/
-/*
-	const elephantLyr = new FeatureLayer({
-		portalItem: { 
-			id: "d43cea74de224770a8bedbd58b770cb2"//ID at sapfira.maps.arcgis.com
-		},
-	});
-	*/
 
 	const map = new Map({
-		basemap: "dark-gray-vector"		//hybrid for day
+		basemap: "dark-gray-vector"		
 	});
 
 	const view = new MapView({
 		container: "viewDiv",
 		map: map,
 		zoom: 11,
-		center: [25.97,-15.889]  // Kafue National Park release area
+ 		center: [25.97,-15.889]  // Kafue National Park release area
 	});
 
 
@@ -59,9 +83,9 @@ require([
 
 	const timeSlider = new TimeSlider({
 		container: "timeSlider",
-		view: view,		//this shows only points included in time view
-		mode: "time-window",
-		timeVisible: true, // show the time stamps on the timeslider
+		view: view,						// show only points included in time view
+		mode: "time-window",	// provides two thumbs to adjust window
+		timeVisible: true, 		// show the time stamps on the timeslider
 		playRate: 100,
 		loop: true,
 	});
@@ -102,7 +126,6 @@ require([
 
 	/*********************************
 	* Add symbology for elephant layer 
-	* This is getting crazy, just model after the earthquake code
 	*********************************/
 
 	const elephantRenderer = new UniqueValueRenderer({
@@ -124,37 +147,6 @@ require([
 		maxSize: 60
 	};
 
-/*
-	const addClass = function(val, colr, renderer) {  //passing in an array
-		renderer.addUniqueValueInfo({
-			value: val,
-			symbol: new SimpleMarkerSymbol({
-				style: "circle",
-				color: colr,			//does this need to be in an array too?
-				outline: {			// autocasts as new SimpleLineSymbol()
-					color: [128,128,128,0.5],
-					width: "0.5px"
-				},
-				visualVariables: [{
-					type: "size",			// size visual variable
-					field: "Speed_km_h",	// speed estimated by GPS collar
-					stops: [{
-						value: 1,		// features where speed < 1 km/h
-						size: 4,		// assigned a marker with this size in pts
-						label: "less than 1 km/h"	// label to display in legend
-					},
-					{
-						value: 5,		// features where speed > 5 km/h
-						size: 24,		// assigned a marker with this size in pts
-						label: "more than 5 km/h"
-					}]
-				}]
-			})
-		})
-	};
-
-*/
-
 	const addClass = function(val, colr) {
 		var sym = new SimpleMarkerSymbol({
 			style: "circle",
@@ -167,219 +159,17 @@ require([
 		elephantRenderer.addUniqueValueInfo({
 			value: val,
 			symbol: sym,
-
 		})
 
 	};
 
 
-	addClass("Batoka", [102,194,165,.5]);	//RGB color values, transparent
+	addClass("Batoka", [102,194,165,.5]);	//RGB color values, transparency
 	addClass("Chamma", [231,138,195,.5]);
 	addClass("Tafika", [166,216,84,.5]);
 
 	elephantRenderer.visualVariables = [sizeVisualVariable];
 
-
-
-/*
-  const quakeRenderer = new ClassBreaksRenderer({
-    field: "magnitude",
-    legendOptions: {
-      title: "Magnitude"
-    }
-  });
-
-  const addClass = function(min, max, clr, lbl, renderer) {
-    renderer.addClassBreakInfo({
-      minValue: min,
-      maxValue: max,
-      symbol: new PointSymbol3D({
-        symbolLayers: [
-          new ObjectSymbol3DLayer({
-            material: {color: clr},
-            resource: {primitive: "inverted-cone"},
-            height: 100000,
-            width: 100000, 
-            outline: {
-              color: "black",
-              size: 1
-            }
-          })
-        ]
-      }),
-      label: lbl
-    });
-  }
-  
-  addClass(1.600000, 5.000000, "#ffffb2", "1.600000 - 5.0", quakeRenderer);
-  addClass(5.000001, 5.900000, "#fd8d3c", "5.000001 - 5.9", quakeRenderer);
-  addClass(5.900001, 6.900000, "#f03b20", "5.900001 - 6.9", quakeRenderer);
-  addClass(6.900001, 9.000000, "#bd0026", "6.900001 - 9.0", quakeRenderer);
-
-
-
-
-	const elephantRenderer = {
-		type: "unique-value", 	// autocasts as new UniqueValueRenderer()
-		field: "ElephantName",
-		legendOptions: {
-		  title: "Elephants"   
-		},
-		uniqueValueInfos: [
-			{
-				value: "Batoka",
-				symbol: createSymbol("#00c3ff"),
-				label: "Batoka"
-			},
-			{
-				value: "Chamma",
-				symbol: createSymbol("#ff002e"),
-				label: "Chamma"
-			},
-			{
-				value: "Tafika",
-				symbol: createSymbol("#faff00"),
-				label: "Tafika"
-			}
-		]
-	};
-
-	elephantLyr.addUniqueValueInfo({
-
-	})
-
-  const addClass = function(val, renderer) {
-    var sym;
-    if (val == "Batoka") {
-      sym = new PointSymbol2D({
-        symbolLayers: [
-          new IconSymbol3DLayer({
-            material: { color: [235, 244, 66, 0.7] },
-            resource: { primitive: "circle" },
-            size: 12,
-            outline: {
-              color: "black",
-              size: 0.5
-            }
-          }),
-          new IconSymbol3DLayer({
-            resource: { primitive: "cross" },
-            size: 8,
-            outline: {
-              color: "black",
-              size: 0.5
-            }
-          })
-        ]
-      });
-    } else {
-      lbl = "No";
-      sym = new PointSymbol3D({
-        symbolLayers: [new IconSymbol3DLayer({
-          material: { color: "gray" },
-          resource: { primitive: "circle" },
-          size: 12
-        })]
-      })
-    }
-    renderer.addUniqueValueInfo({
-      value: val,
-      symbol: sym,
-      label: lbl
-    });      
-  }
-  
-  addClass(1, cityRenderer);
-  addClass(0, cityRenderer);
-   
-  const cityLyr = new FeatureLayer({
-    portalItem: { 
-      id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
-    },
-    renderer: cityRenderer     
-  });  
-  
-  map.add(cityLyr)
-
-	function createSymbol(color) {
-		return {
-			type: "simple-fill", // autocasts as new SimpleFillSymbol()
-			color: color,
-			outline: {
-				width: 0.2,
-				color: [0, 0, 0, 0.1]
-			}
-		};
-	};
-
-
-
-
-	const elephantSym = new SimpleMarkerSymbol({
-		color: "white",
-		style: "circle",
-		size: 2    
-	});
-
-	//Renders each elephant data point using two visual variables:
-	//  Color - indicates a unique elephant 
-	//  Size - indicates speed 
-
-	const referenceScale = 1244650;
-
-	const elephantRenderer = new SimpleRenderer({
-		symbol: elephantSym,   // uses a SimpleMarkerSymbol
-		visualVariables: [
-		{
-			type: "size",
-			field: "Speed_km_h",
-			minDataValue: 1,
-			maxDataValue: 7,
-			minSize: {
-				type: "size",
-				valueExpression: "$view.scale",
-				// adjust the min size by scale`
-				stops: [
-					{value: referenceScale, size: 8},
-					{value: referenceScale*2, size: 6},
-					{value: referenceScale*4, size: 4},
-					{value: referenceScale*8, size: 2}
-				]
-			},
-			maxSize: {
-				type: "size",
-				valueExpression: "$view.scale",
-				// adjust the max size by scale
-				stops: [
-					{value: referenceScale, size: 25},
-					{value: referenceScale*2, size: 20},
-					{value: referenceScale*4, size: 15},
-					{value: referenceScale*8, size: 10}
-				]
-			}
-		},
-		{
-			type: "color",
-            field: "ElephantName",
-            stops: [
-                { value: "Batoka", color: "#2b83ba" },
-                { value: "Chamma", color: "#abdda4" },
-                { value: "Tafika", color: "#ffffbf" }
-            ]
-        }]
-    });
-
-/*
-  const elephantLyr = new FeatureLayer({
-      portalItem: {
-        id: "d43cea74de224770a8bedbd58b770cb2"
-      },
-      title: "Elephant Data",
-      minScale: 72223.819286,
-      renderer: elephantRenderer,
-      effect: "bloom(2.5 0 0.5)"
-    });
-*/
 
 	const elephantLyr = new FeatureLayer({
 		portalItem: { 
@@ -396,7 +186,8 @@ require([
 
 
 	/****************************************
-	* Add TimeSlider displaying elephant tracking data by day
+	* Once elephant layer loads, add TimeSlider 
+	* initialized to display elephant GPS data points within a 24-hour window
 	****************************************/
 
 	view.whenLayerView(elephantLyr).then((lv) => {
@@ -416,8 +207,9 @@ require([
 
 
 	/****************************************
-	* Add legend
+	* Add expandable legend
 	****************************************/
+
 	const legend = new Legend({
 		view: view,
 		layerInfos: [{
@@ -444,33 +236,6 @@ require([
 	    console.log("Time extent now starts at", timeExtent.start, "and finishes at:", timeExtent.end);
 	  }
 	);
-/*
-	reactiveUtils.watch(
-	  () => timeSlider.timeExtent,
-	  (value) => {
-	    // update layer view filter to reflect current timeExtent
-	    timeLayerView.filter = {
-	      timeExtent: value
-	    };
-	  }
-	);
-	*/
-	
-
-	//console.log("The layer's time interval is ", elephantLyr.timeInfo.interval.value, " ", elephantLyr.timeInfointerval.unit);
-
-	// Display the current state of the view model.
-	switch (timeSlider.viewModel.state) {
-	  case "disabled":
-	    console.log("The view is not ready or some property are not set.");
-	    break;
-	  case "ready":
-	    console.log("The time slider is ready for use.");
-	    break;
-	  case "playing":
-	    console.log("The time slider is currently animating.");
-	    break;
-	}
 
   
 });
