@@ -257,7 +257,7 @@ require([
 
 */
 
-	const addClass = function(val, colr, renderer) {
+	const addClass = function(val, colr) {
 		var sym = new SimpleMarkerSymbol({
 			style: "circle",
 			color: colr,
@@ -280,7 +280,7 @@ require([
 				}]
 			}]
 		})
-		renderer.addUniqueValueInfo({
+		elephantRenderer.addUniqueValueInfo({
 			value: val,
 			symbol: sym,
 
@@ -288,9 +288,9 @@ require([
 	};
 
 
-	addClass("Batoka", [141,211,199,0.5], elephantRenderer);	//RGB color values, transparent
-	addClass("Chamma", [255,255,179,0.5], elephantRenderer);
-	addClass("Tafika", [190,186,218,0.5], elephantRenderer);
+	addClass("Batoka", [141,211,199,0.5]);	//RGB color values, transparent
+	addClass("Chamma", [255,255,179,0.5]);
+	addClass("Tafika", [190,186,218,0.5]);
 
 /*
   const quakeRenderer = new ClassBreaksRenderer({
