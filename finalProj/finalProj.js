@@ -25,7 +25,7 @@
  *   with  state list is programmatically generated using distinct query on ST_ABBREV field
  * - Clicking on a data point displays an informational popup window
  * - This web app was developed using Sublime Text editor, GitHub Desktop, and the 
- *   Digital Ocean web hosting platform.
+ *   Digital Ocean web hosting & deployment App Platform.
  * 
  * 
  * Created: 28 July 2024
