@@ -116,7 +116,7 @@ require([
 		type: "size",
 		field: "Speed_km_h",
 		legendOptions: {
-			title: "Rate of Speed (km/h)"
+			title: "Rate of Speed (km/h)<br/><em>increased speed is an indicator of fear</em>"
 		},
 		minDataValue: 1,
 		maxDataValue: 8,
