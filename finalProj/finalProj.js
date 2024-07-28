@@ -49,7 +49,7 @@ require([
 		container: "viewDiv",
 		map: map,
 		zoom: 11,
-		center: [25.97,-15.91]  // Kafue National Park release area
+		center: [25.97,-15.87]  // Kafue National Park release area
 	});
 
 
