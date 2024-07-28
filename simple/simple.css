@@ -7,6 +7,7 @@
         margin: 0;
       }
 
+      /*
       #applicationDiv {
         position: absolute;
         width: 100%;
@@ -15,6 +16,7 @@
         flex-direction: column;
         overflow: hidden;
       }
+      */
 
       #viewDiv {
         width: 100%;
@@ -37,6 +39,7 @@
         padding: 10px;
       }
 
+/*
       #sliderContainer {
         flex: 0 0 80px;
         order: 2;
@@ -69,19 +72,6 @@
         padding: 0 20px;
       }
 
-      #slider {
-        width: 100%;
-      }
-      /**
-    * Play/Stop toggle button
-    */
-
-      #playButton {
-        flex: 0 0 100px;
-        order: 3;
-
-        margin: 20px 0;
-      }
 
       .toggle-button {
         display: flex;
@@ -108,7 +98,7 @@
       }
       /**
       * Hover tooltip
-      */
+      *
 
       .tooltip {
         position: absolute;
