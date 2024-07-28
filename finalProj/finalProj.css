@@ -47,14 +47,14 @@
 
       .panel-container {
         position: relative;
-        width: 20%;
+        width: 100%;
         height: 80%;
       }
 
       .panel-side {
         padding: 2px;
         box-sizing: border-box;
-        width: 15%;
+        width: 80%;
         height: 100%;
         position: absolute;
         display: flex;
