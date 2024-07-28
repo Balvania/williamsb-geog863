@@ -124,6 +124,7 @@ require([
   "esri/core/promiseUtils",
   "esri/renderers/SimpleRenderer",
   "esri/renderers/UniqueValueRenderer",
+  "esri/renderers/visualVariables/SizeVariable",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
@@ -134,7 +135,7 @@ require([
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SizeVariable, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
 
 
 	/*********************************
