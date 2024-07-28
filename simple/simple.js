@@ -123,6 +123,7 @@ require([
   "esri/layers/FeatureLayer",
   "esri/core/promiseUtils",
   "esri/renderers/SimpleRenderer",
+  "esri/renderers/UniqueValueRenderer",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/PictureMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
@@ -134,7 +135,7 @@ require([
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
 
 
 	/*********************************
@@ -161,7 +162,7 @@ require([
 	const view = new MapView({
 		container: "viewDiv",
 		map: map,
-		zoom: 11,
+		zoom: 10,
 		center: [25.97,-15.89]  // Kafue National Park release area
 	});
 
@@ -215,7 +216,182 @@ require([
 
 	/*********************************
 	* Add symbology for elephant layer 
+	* This is getting crazy, just model after the earthquake code
 	*********************************/
+
+	const elephantRenderer = {
+		type: "unique-value", 	//autocasts as new UniqueValueRenderer()
+		field: "ElephantName",
+		legendOptions: {
+			title: "Elephants"
+		}
+	};
+
+	const addClass = function(val, [colr], renderer) {  //passing in an array
+		renderer.addUniqueValueInfo({
+			value: val,
+			symbol: new SimpleMarkerSymbol({
+				style: "circle",
+				color: colr,			//does this need to be in an array too?
+				outline: {			// autocasts as new SimpleLineSymbol()
+					color: [128,128,128,0.5],
+					width: "0.5px"
+				},
+				visualVariables: [{
+					type: "size",			// size visual variable
+					field: "Speed_km_h",	// speed estimated by GPS collar
+					stops: [{
+						value: 1,		// features where speed < 1 km/h
+						size: 4,		// assigned a marker with this size in pts
+						label: "less than 1 km/h"	// label to display in legend
+					},
+					{
+						value: 5,		// features where speed > 5 km/h
+						size: 24,		// assigned a marker with this size in pts
+						label: "more than 5 km/h"
+					}]
+				}]
+			})
+		})
+	};
+
+	addClass("Batoka", [141,211,199,0.5], elephantRenderer);	//RGB color values, transparent
+	addClass("Chamma", [255,255,179,0.5], elephantRenderer);
+	addClass("Tafika", [190,186,218,0.5], elephantRenderer);
+
+/*
+  const quakeRenderer = new ClassBreaksRenderer({
+    field: "magnitude",
+    legendOptions: {
+      title: "Magnitude"
+    }
+  });
+
+  const addClass = function(min, max, clr, lbl, renderer) {
+    renderer.addClassBreakInfo({
+      minValue: min,
+      maxValue: max,
+      symbol: new PointSymbol3D({
+        symbolLayers: [
+          new ObjectSymbol3DLayer({
+            material: {color: clr},
+            resource: {primitive: "inverted-cone"},
+            height: 100000,
+            width: 100000, 
+            outline: {
+              color: "black",
+              size: 1
+            }
+          })
+        ]
+      }),
+      label: lbl
+    });
+  }
+  
+  addClass(1.600000, 5.000000, "#ffffb2", "1.600000 - 5.0", quakeRenderer);
+  addClass(5.000001, 5.900000, "#fd8d3c", "5.000001 - 5.9", quakeRenderer);
+  addClass(5.900001, 6.900000, "#f03b20", "5.900001 - 6.9", quakeRenderer);
+  addClass(6.900001, 9.000000, "#bd0026", "6.900001 - 9.0", quakeRenderer);
+
+
+
+
+	const elephantRenderer = {
+		type: "unique-value", 	// autocasts as new UniqueValueRenderer()
+		field: "ElephantName",
+		legendOptions: {
+		  title: "Elephants"   
+		},
+		uniqueValueInfos: [
+			{
+				value: "Batoka",
+				symbol: createSymbol("#00c3ff"),
+				label: "Batoka"
+			},
+			{
+				value: "Chamma",
+				symbol: createSymbol("#ff002e"),
+				label: "Chamma"
+			},
+			{
+				value: "Tafika",
+				symbol: createSymbol("#faff00"),
+				label: "Tafika"
+			}
+		]
+	};
+
+	elephantLyr.addUniqueValueInfo({
+
+	})
+
+  const addClass = function(val, renderer) {
+    var sym;
+    if (val == "Batoka") {
+      sym = new PointSymbol2D({
+        symbolLayers: [
+          new IconSymbol3DLayer({
+            material: { color: [235, 244, 66, 0.7] },
+            resource: { primitive: "circle" },
+            size: 12,
+            outline: {
+              color: "black",
+              size: 0.5
+            }
+          }),
+          new IconSymbol3DLayer({
+            resource: { primitive: "cross" },
+            size: 8,
+            outline: {
+              color: "black",
+              size: 0.5
+            }
+          })
+        ]
+      });
+    } else {
+      lbl = "No";
+      sym = new PointSymbol3D({
+        symbolLayers: [new IconSymbol3DLayer({
+          material: { color: "gray" },
+          resource: { primitive: "circle" },
+          size: 12
+        })]
+      })
+    }
+    renderer.addUniqueValueInfo({
+      value: val,
+      symbol: sym,
+      label: lbl
+    });      
+  }
+  
+  addClass(1, cityRenderer);
+  addClass(0, cityRenderer);
+   
+  const cityLyr = new FeatureLayer({
+    portalItem: { 
+      id: "5af96a04ef4c4d8a9bb2a9dd2c883e36"
+    },
+    renderer: cityRenderer     
+  });  
+  
+  map.add(cityLyr)
+
+	function createSymbol(color) {
+		return {
+			type: "simple-fill", // autocasts as new SimpleFillSymbol()
+			color: color,
+			outline: {
+				width: 0.2,
+				color: [0, 0, 0, 0.1]
+			}
+		};
+	};
+
+
+
 
 	const elephantSym = new SimpleMarkerSymbol({
 		color: "white",
