@@ -121,7 +121,7 @@ require([
 		minDataValue: 1,
 		maxDataValue: 8,
 		minSize: 10,
-		maxSize: 80
+		maxSize: 70
 	};
 
 /*
