@@ -288,9 +288,9 @@ require([
 	};
 
 
-	addClass("Batoka", [102,194,165,.3]);	//RGB color values, transparent
-	addClass("Chamma", [231,138,195,.3]);
-	addClass("Tafika", [166,216,84,.3]);
+	addClass("Batoka", [102,194,165,.5]);	//RGB color values, transparent
+	addClass("Chamma", [231,138,195,.5]);
+	addClass("Tafika", [166,216,84,.5]);
 
 /*
   const quakeRenderer = new ClassBreaksRenderer({
