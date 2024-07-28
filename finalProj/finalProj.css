@@ -4,10 +4,9 @@ body,
 #viewDiv {
   padding: 0;
   margin: 0;
-  height: 99%;
+  height: 98%;
   width: 100%;
 }
-
 
 #timeSlider {
   position: absolute;
