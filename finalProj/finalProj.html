@@ -13,11 +13,30 @@
   </head>
 
   <body>
+	<!-- display header link to return to home page -->
+	<div style="margin-left: 50px;">
+	<h5><a href="../../../../index.html">[Back to home page]</a></h5>
+	</div>
+	<!-- display title of map -->
+  	<header class="app--header">
+  		<div class="app--header-title">GRI Post-Release Elephant Tracking in Kafue National Park, Zambia</div>
+	</header>
   	<div id="viewDiv"></div>
     <div id="timeSlider"></div>
     <div id="titleDiv" class="esri-widget">
       <div id="titleText">GRI Post-Release Elephant Tracking</div>
     </div>
+	<!-- display sidebar panel -->
+	<div class="panel-container">
+		<div class="panel-side">
+			<h2>Select a State</h2>
+			<ul id="list_states">
+				<li>Loading&hellip;</li>
+			</ul>
+		</div>
+		<!-- display map -->
+		<div class="main-map" id="viewDiv"></div> 
+	</div>
 <!--    <div id="applicationDiv">
       <div id="viewDiv">
         <div id="titleDiv" class="esri-widget">GRI Post-Release Elephant Tracking</div>
@@ -30,4 +49,7 @@
     </div> -->
   </body>
 </html>
+
+
+
 
