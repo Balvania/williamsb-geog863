@@ -132,10 +132,11 @@ require([
   "esri/widgets/TimeSlider/TimeSliderViewModel",
   "esri/TimeInterval",
   "esri/widgets/Legend",
+  "esri/widgets/Expand",
   "esri/widgets/Home",
   "esri/widgets/Slider",
   "esri/PopupTemplate"
-], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SizeVariable, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Home, Slider, PopupTemplate) => {
+], (esriConfig, reactiveUtils, Map, MapView, FeatureLayer, promiseUtils, SimpleRenderer, UniqueValueRenderer, SizeVariable, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, TimeSlider, TimeSliderVM, TimeInterval, Legend, Expand, Home, Slider, PopupTemplate) => {
 
 
 	/*********************************
@@ -540,7 +541,14 @@ require([
 		}]
 	});
 
-	view.ui.add(legend, "top-left");  
+	const legendExpand = new Expand({
+		expandIcon: "legend",
+		expandTooltip: "Legend",
+		view: view,
+		content: legend,
+		expanded: false
+	});
+	view.ui.add(legendExpand, "top-left");
 
 
 	timeSlider.play();
