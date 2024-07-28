@@ -223,7 +223,7 @@ require([
 		legendOptions: {
 			title: "Elephants"
 		}
-	};
+	});
 
 /*
 	const addClass = function(val, colr, renderer) {  //passing in an array
