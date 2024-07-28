@@ -233,9 +233,9 @@ require([
 			title: "Rate of Speed"
 		},
 		minDataValue: 1,
-		maxDataValue: 7,
-		minSize: 5,
-		maxSize: 30
+		maxDataValue: 8,
+		minSize: 10,
+		maxSize: 80
 	};
 
 /*
