@@ -226,6 +226,18 @@ require([
 		}
 	});
 
+	const sizeVisualVariable = {
+		type: "size",
+		field: "Speed_km_h",
+		legendOptions: {
+			title: "Rate of Speed"
+		},
+		minDataValue: 0,
+		maxDataValue: 7,
+		minSize: 4,
+		maxSize: 20
+	};
+
 /*
 	const addClass = function(val, colr, renderer) {  //passing in an array
 		renderer.addUniqueValueInfo({
@@ -264,7 +276,8 @@ require([
 			outline: {
 				color: [128,128,128,0.5],
 				width: "0.5px"
-			},
+			}
+			/*
 			visualVariables: [{
 				type: "size",
 				field: "Speed_km_h",
@@ -278,7 +291,7 @@ require([
 					size: 24,
 					label: "more than 5 km/hr"
 				}]
-			}]
+			}] */
 		})
 		elephantRenderer.addUniqueValueInfo({
 			value: val,
@@ -292,6 +305,10 @@ require([
 	addClass("Batoka", [102,194,165,.5]);	//RGB color values, transparent
 	addClass("Chamma", [231,138,195,.5]);
 	addClass("Tafika", [166,216,84,.5]);
+
+	elephantRenderer.visualVariables = [sizeVisualVariable];
+
+
 
 /*
   const quakeRenderer = new ClassBreaksRenderer({
