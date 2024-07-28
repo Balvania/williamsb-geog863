@@ -2,39 +2,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-		<title>Elephant Tracker: 2023</title>
-		<link rel="stylesheet" href="finalProj.css"></link>
-		<link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
-		<script src="https://js.arcgis.com/4.28/"></script>
-		<script src="startingOver.js"></script>
-	</head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Elephant Tracks</title>
+  <link rel="stylesheet" href="simple.css"></link>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
+  <script src="https://js.arcgis.com/4.30/"></script>
+  <script src="simple.js"></script>
+  </head>
 
-	<body>
-	  	<!-- display header link to return to home page -->
-	  	<div style="margin-left: 50px;">
-	    	<h5><a href="../../index.html">[Back to home page]</a></h5>
-	  	</div>
-	  	<!-- display title of map -->
-	  	<header class="app--header">
-      		<div class="app--header-title">Elephant Post-Release Tracker: Zambia (May-Sept 2023)</div>
-    	</header>
-
-		<!-- display sidebar panel -->
-		<div class="panel-container">
-			<div class="panel-side">
-				<h2>Select an Elephant</h2>
-				<ul id="list_states">
-					<li>Loading&hellip;</li>
-				</ul>
-			</div>
-			<!-- display map -->
-			<div class="main-map" id="viewDiv"></div> 
-			<div id="timeSlider"></div>
-		</div>
-
-	</body>
+  <body>
+  	<div id="viewDiv"></div>
+    <div id="timeSlider"></div>
+    <div id="titleDiv" class="esri-widget">
+      <div id="titleText">GRI Post-Release Elephant Tracking</div>
+    </div>
+<!--    <div id="applicationDiv">
+      <div id="viewDiv">
+        <div id="titleDiv" class="esri-widget">GRI Post-Release Elephant Tracking</div>
+      </div>
+      <div id="sliderContainer" class="esri-widget">
+        <div id="sliderInnerContainer">
+          <div id="timeSlider"></div>
+        </div>
+      </div>
+    </div> -->
+  </body>
 </html>
 
