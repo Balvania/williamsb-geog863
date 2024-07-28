@@ -257,34 +257,35 @@ require([
 
 */
 
-  const addClass = function(val, colr, renderer) {
-    var sym = new SimpleMarkerSymbol({
-    	style: "circle",
-    	color: colr,
-    	outline: {
-    		color: [128,128,128,0.5],
-    		width: "0.5px"
-    	},
-    	visualVariables: [{
-    		type: "size",
-    		field: "Speed_km_h",
-    		stops: [{
-    			value: 1,
-    			size: 4,
-    			label: "less than 1 km/h"
-    		},
-    		{
-    			value: 5,
-    			size: 24,
-    			label: "more than 5 km/hr"
-    		}]
-    	}]
-    }
-    renderer.addUniqueValueInfo({
-    	value: val,
-    	symbol: sym,
+	const addClass = function(val, colr, renderer) {
+		var sym = new SimpleMarkerSymbol({
+			style: "circle",
+			color: colr,
+			outline: {
+				color: [128,128,128,0.5],
+				width: "0.5px"
+			},
+			visualVariables: [{
+				type: "size",
+				field: "Speed_km_h",
+				stops: [{
+					value: 1,
+					size: 4,
+					label: "less than 1 km/h"
+				},
+				{
+					value: 5,
+					size: 24,
+					label: "more than 5 km/hr"
+				}]
+			}]
+		})
+		renderer.addUniqueValueInfo({
+			value: val,
+			symbol: sym,
 
-    });
+		})
+	};
 
 
 	addClass("Batoka", [141,211,199,0.5], elephantRenderer);	//RGB color values, transparent
